@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sustainability – BabyFits</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="How BabyFits designs comfy baby apparel responsibly: materials, certifications, impact metrics, and roadmap." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Poppins',sans-serif; background:#F5F5F5; color:#333; }
+    .gradient-text { background:linear-gradient(90deg,#f59ac0,#f7c5d9); -webkit-background-clip:text; color:transparent; }
+    .card { background:#fff; border-radius:1rem; box-shadow:0 4px 18px -6px rgba(0,0,0,.10); }
+    .pillar-icon {
+      width:60px;height:60px;
+      background:#fff5f9;
+      border-radius:16px;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.5rem;
+      color:#f37fae;
+      box-shadow:0 2px 6px -2px rgba(0,0,0,.15);
+    }
+    .metric-ring {
+      width:120px;height:120px;
+      border-radius:50%;
+      background:conic-gradient(#f59ac0 var(--pct), #ffe5ef var(--pct));
+      display:flex;align-items:center;justify-content:center;
+      font-weight:600;font-size:1.1rem;color:#c64e82;
+      position:relative;
+    }
+    .metric-ring span {
+      position:absolute;
+      text-align:center;
+      font-size:.7rem;
+      line-height:1.1;
+      width:70%;
+      color:#555;
+      top:60%;
+      transform:translateY(-50%);
+    }
+    .timeline:before {
+      content:""; position:absolute; left:18px; top:0; bottom:0;
+      width:2px; background:linear-gradient(#ffc9da,#ffdfe9);
+    }
+    .tl-dot {
+      width:34px;height:34px; border-radius:50%; background:#f59ac0;
+      display:flex;align-items:center;justify-content:center;
+      font-weight:600;color:#fff; box-shadow:0 0 0 4px #ffe2ee;
+      flex-shrink:0;
+    }
+    details summary::-webkit-details-marker { display:none; }
+    details summary { cursor:pointer; }
+    details[open] summary .chevron { transform:rotate(180deg); }
+    .chevron { transition:transform .3s; }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="bg-[#FCD5CE] h-16 shadow-md">
+  <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+    <a href="index.html" class="flex items-center h-full">
+      <img src="images/babyfits-logo.png" alt="BabyFits Logo" class="h-14 w-14">
+    </a>
+    <nav class="flex items-center space-x-6 text-sm text-gray-800">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="shop.html" class="hover:underline">Shop</a>
+      <a href="girls.html" class="hover:underline">Girls</a>
+      <a href="boys.html" class="hover:underline">Boys</a>
+      <a href="our-story.html" class="hover:underline">Our Story</a>
+      <a href="sustainability.html" class="font-semibold underline decoration-pink-500">Sustainability</a>
+      <a href="careers.html" class="hover:underline">Careers</a>
+      <a href="contact.html" class="hover:underline">Contact</a>
+      <a href="cart.html" class="hover:underline">Cart 🛒</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative">
+  <div class="h-[300px] overflow-hidden">
+    <img src="images/hero-banner.jpg" alt="Nature & baby clothing" class="w-full h-full object-cover brightness-95">
+  </div>
+  <div class="absolute inset-0 bg-black/45 flex items-center">
+    <div class="max-w-5xl mx-auto px-6">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Soft on Babies, Lighter on Earth</h1>
+      <p class="text-white/90 max-w-2xl text-lg">
+        Sustainability at BabyFits is a continuous loop of learning, measuring, and improving—never a checkbox.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Intro Card -->
+<section class="max-w-5xl mx-auto px-6 -mt-14 relative z-10">
+  <div class="card p-8 md:p-10">
+    <h2 class="text-3xl font-semibold mb-4 gradient-text">Our Approach</h2>
+    <p class="leading-relaxed mb-4">
+      From yarn selection to packaging, we evaluate impact across the lifecycle: raw inputs, labor
+      conditions, chemical usage, durability, reuse pathways, and end‑of‑life. We optimize where the data
+      shows the largest footprint reductions—not just what’s trendy.
+    </p>
+    <p class="leading-relaxed">
+      We disclose both progress and gaps because transparency drives better questions—and better questions
+      drive better products for babies & the planet they’ll inherit.
+    </p>
+  </div>
+</section>
+
+<!-- Pillars -->
+<section class="max-w-6xl mx-auto px-6 mt-16">
+  <h2 class="text-2xl font-semibold mb-8 text-center">Sustainability Pillars</h2>
+  <div class="grid md:grid-cols-4 gap-6">
+    <div class="card p-6">
+      <div class="pillar-icon mb-4">🧵</div>
+      <h3 class="font-semibold mb-2">Preferred Fibers</h3>
+      <p class="text-sm leading-relaxed">
+        We prioritize organic, recycled, and responsible cellulosics—reducing pesticide load & water stress.
+      </p>
+    </div>
+    <div class="card p-6">
+      <div class="pillar-icon mb-4">✅</div>
+      <h3 class="font-semibold mb-2">Safe Chemistry</h3>
+      <p class="text-sm leading-relaxed">
+        Restricted substance list aligned with OEKO‑TEX & Bluesign guidelines; low‑impact dyes where possible.
+      </p>
+    </div>
+    <div class="card p-6">
+      <div class="pillar-icon mb-4">♻️</div>
+      <h3 class="font-semibold mb-2">Circular Design</h3>
+      <p class="text-sm leading-relaxed">
+        Durable stitching, repairable snaps, modular bundles & resale / donation pathways extend garment life.
+      </p>
+    </div>
+    <div class="card p-6">
+      <div class="pillar-icon mb-4">🤝</div>
+      <h3 class="font-semibold mb-2">Fair Partnerships</h3>
+      <p class="text-sm leading-relaxed">
+        Tier‑1 & key Tier‑2 suppliers audited for wages, hours, and child‑labor safeguards; improvement plans tracked.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Materials & Certifications -->
+<section class="max-w-6xl mx-auto px-6 mt-20">
+  <div class="grid md:grid-cols-2 gap-10 items-start">
+    <div>
+      <h2 class="text-2xl font-semibold mb-4">Materials We Favor</h2>
+      <ul class="space-y-4 text-sm leading-relaxed">
+        <li><span class="font-semibold text-pink-600">Organic Cotton:</span> Lower pesticide & fertilizer use vs. conventional; grown with better soil stewardship.</li>
+        <li><span class="font-semibold text-pink-600">Recycled Polyester (rPET):</span> Extends life of plastic bottles; targeted only where stretch / durability needs demand it.</li>
+        <li><span class="font-semibold text-pink-600">TENCEL™ Lyocell:</span> Closed‑loop solvent recovery (>99%) and traceable wood pulp sources.</li>
+        <li><span class="font-semibold text-pink-600">Recycled Nylon:</span> Introduced in trims & snaps to displace virgin sources as durability tests pass.</li>
+      </ul>
+    </div>
+    <div class="card p-8">
+      <h3 class="font-semibold text-lg mb-4">Certifications & Standards</h3>
+      <ul class="space-y-3 text-sm">
+        <li>GOTS (target: 80% of cotton styles by 2026)</li>
+        <li>OEKO‑TEX® Standard 100 for baby skin contact safety</li>
+        <li>GRS for recycled content claims verification</li>
+        <li>SAC Higg Facility Environmental Module participation (select partners)</li>
+      </ul>
+      <p class="text-xs text-gray-500 mt-6">
+        * Some certifications in progress. We publish annually which SKUs are covered and where audits are pending.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Impact Metrics (Mock) -->
+<section class="max-w-6xl mx-auto px-6 mt-24">
+  <h2 class="text-2xl font-semibold mb-10 text-center">Early Impact Snapshot (Mock Data)</h2>
+  <div class="flex flex-wrap justify-center gap-10">
+    <div class="flex flex-col items-center">
+      <div class="metric-ring" style="--pct:72%;">72%<span>Preferred Fibers (styles)</span></div>
+    </div>
+    <div class="flex flex-col items-center">
+      <div class="metric-ring" style="--pct:48%;">48%<span>Reusable / Recyclable Packaging</span></div>
+    </div>
+    <div class="flex flex-col items-center">
+      <div class="metric-ring" style="--pct:63%;">63%<span>Suppliers w/ Active Social Audit</span></div>
+    </div>
+    <div class="flex flex-col items-center">
+      <div class="metric-ring" style="--pct:35%;">35%<span>Styles w/ Recycled Content</span></div>
+    </div>
+  </div>
+  <p class="text-center text-xs text-gray-500 mt-6">
+    Figures illustrative; formal 2025 baseline report will refine methodology (scope 1–3 & water intensity).
+  </p>
+</section>
+
+<!-- Roadmap / Timeline -->
+<section class="max-w-5xl mx-auto px-6 mt-24">
+  <h2 class="text-2xl font-semibold mb-8 text-center">Roadmap</h2>
+  <div class="relative timeline pl-4">
+    <div class="space-y-10">
+      <div class="flex gap-6 items-start">
+        <div class="tl-dot">24</div>
+        <div>
+          <h3 class="font-semibold">2024 – Foundation</h3>
+          <p class="text-sm text-gray-600">Baseline fiber mix, packaging audit, pilot preferred dye house.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start">
+        <div class="tl-dot">25</div>
+        <div>
+          <h3 class="font-semibold">2025 – Verification</h3>
+            <p class="text-sm text-gray-600">Publish first impact report; expand GOTS coverage; launch resale / donation portal MVP.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start">
+        <div class="tl-dot">26</div>
+        <div>
+          <h3 class="font-semibold">2026 – Scale</h3>
+          <p class="text-sm text-gray-600">80% organic / recycled fiber target; supplier renewable energy pilots & packaging compostability trial.</p>
+        </div>
+      </div>
+      <div class="flex gap-6 items-start">
+        <div class="tl-dot">27</div>
+        <div>
+          <h3 class="font-semibold">2027 – Circularity</h3>
+          <p class="text-sm text-gray-600">Introduce take‑back + fiber‑to‑fiber recycling partnership; scope 3 reduction targets refinement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="max-w-4xl mx-auto px-6 mt-24">
+  <h2 class="text-2xl font-semibold mb-8 text-center">Sustainability FAQ</h2>
+  <div class="space-y-4">
+    <details class="card p-5">
+      <summary class="flex justify-between items-center cursor-pointer">
+        <span class="font-medium">How do you verify supplier claims?</span>
+        <svg class="chevron w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </summary>
+      <div class="mt-3 text-sm leading-relaxed">
+        We combine third‑party audit reports, certification documents, fiber transaction certificates,
+        and occasional unannounced spot checks via local compliance partners.
+      </div>
+    </details>
+    <details class="card p-5">
+      <summary class="flex justify-between items-center cursor-pointer">
+        <span class="font-medium">Why still use any synthetics?</span>
+        <svg class="chevron w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </summary>
+      <div class="mt-3 text-sm leading-relaxed">
+        Performance & longevity—certain closures or stretch panels prolong garment life, lowering total impact.
+        We restrict synthetics, emphasize recycled sources, and test bio‑based alternatives.
+      </div>
+    </details>
+    <details class="card p-5">
+      <summary class="flex justify-between items-center cursor-pointer">
+        <span class="font-medium">Do you offset carbon?</span>
+        <svg class="chevron w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </summary>
+      <div class="mt-3 text-sm leading-relaxed">
+        We focus first on absolute reduction in energy & material intensity. Select, high‑quality
+        nature‑based or carbon removal projects may supplement—but never replace—reductions.
+      </div>
+    </details>
+    <details class="card p-5">
+      <summary class="flex justify-between items-center cursor-pointer">
+        <span class="font-medium">How can customers help?</span>
+        <svg class="chevron w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </summary>
+      <div class="mt-3 text-sm leading-relaxed">
+        Follow care labels to extend life, pass along outgrown pieces via donation or resale, and share fit
+        & durability feedback—your real‑world data guides our design iterations.
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="max-w-4xl mx-auto px-6 mt-24 mb-24">
+  <div class="card p-10 text-center">
+    <h2 class="text-2xl font-semibold mb-4">Have Ideas or Feedback?</h2>
+    <p class="text-gray-600 mb-6">
+      Sustainability improves fastest when we co‑create. Tell us what you’d like to see next.
+    </p>
+    <a href="mailto:sustainability@babyfits.example"
+       class="inline-block bg-pink-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-pink-600 transition">
+      Contact Our Sustainability Team
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#FCD5CE] text-center py-6 text-sm text-gray-700">
+  &copy; 2025 BabyFits. All rights reserved.
+</footer>
+
+</body>
+</html>

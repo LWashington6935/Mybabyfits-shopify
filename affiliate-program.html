@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Affiliate Program – BabyFits</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Poppins',sans-serif; background:#F5F5F5; color:#334155; }
+    .tier-card { background:linear-gradient(135deg,#fde4ef,#fff); }
+    .glow { box-shadow:0 8px 20px -6px rgba(236,72,153,.25); }
+    .badge { background:#fde4ef; color:#be185d; font-weight:600; padding:4px 10px; border-radius:999px; font-size:.65rem; letter-spacing:.5px; }
+    .faq-btn[aria-expanded="true"] .chevron { transform:rotate(180deg); }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-[#FCD5CE] h-16 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="images/babyfits-logo.png" alt="BabyFits Logo" class="h-12 w-12">
+        <span class="font-bold text-lg hidden sm:inline">BabyFits</span>
+      </a>
+      <nav class="flex items-center gap-6 text-sm font-medium text-gray-800">
+        <a href="index.html" class="hover:text-pink-600">Home</a>
+        <a href="shop.html" class="hover:text-pink-600">Shop</a>
+        <a href="girls.html" class="hover:text-pink-600">Girls</a>
+        <a href="boys.html" class="hover:text-pink-600">Boys</a>
+        <a href="essentials.html" class="hover:text-pink-600">Essentials</a>
+        <a href="gift-cards.html" class="hover:text-pink-600">Gift Cards</a>
+        <a href="todays-deals.html" class="hover:text-pink-600">Deals</a>
+        <a href="affiliate-program.html" class="text-pink-700 font-semibold">Affiliate</a>
+        <a href="cart.html" class="hover:text-pink-600">Cart 🛒</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-pink-100 via-rose-50 to-white"></div>
+      <div class="relative max-w-6xl mx-auto px-6 py-16">
+        <div class="flex flex-col lg:flex-row gap-10 items-center">
+          <div class="flex-1">
+            <h1 class="text-4xl font-bold text-slate-800 mb-4">BabyFits Affiliate Program</h1>
+            <p class="text-slate-600 text-lg mb-6 max-w-xl">
+              Share adorable baby styles you love and earn commissions on every qualifying purchase.
+              Perfect for parenting bloggers, creators, doulas, gift guides & more.
+            </p>
+            <a href="#apply" class="inline-block bg-pink-500 hover:bg-pink-600 text-white font-semibold px-8 py-3 rounded-full shadow transition">
+              Apply Now
+            </a>
+          </div>
+          <div class="flex-1 grid grid-cols-2 gap-4 w-full max-w-md">
+            <div class="bg-white/80 backdrop-blur rounded-xl p-5 shadow text-center">
+              <p class="text-3xl font-bold text-pink-600 mb-1">10%</p>
+              <p class="text-xs uppercase tracking-wide text-slate-500">Base Commission</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur rounded-xl p-5 shadow text-center">
+              <p class="text-3xl font-bold text-pink-600 mb-1">30 Days</p>
+              <p class="text-xs uppercase tracking-wide text-slate-500">Cookie Window</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur rounded-xl p-5 shadow text-center">
+              <p class="text-3xl font-bold text-pink-600 mb-1">Tiered</p>
+              <p class="text-xs uppercase tracking-wide text-slate-500">Growth Bonuses</p>
+            </div>
+            <div class="bg-white/80 backdrop-blur rounded-xl p-5 shadow text-center">
+              <p class="text-3xl font-bold text-pink-600 mb-1">Net 30</p>
+              <p class="text-xs uppercase tracking-wide text-slate-500">Payouts</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview -->
+    <section class="max-w-5xl mx-auto px-6 py-14">
+      <h2 class="text-2xl font-semibold mb-4">Why Partner with BabyFits?</h2>
+      <p class="text-slate-600 mb-6">
+        We’re building a trusted destination for modern, comfortable, and stylish baby essentials.
+        Our affiliates fuel growth by introducing new parents and gift‑givers to our brand.
+        In return, we provide transparent tracking, timely payouts, and marketing assets.
+      </p>
+      <ul class="grid sm:grid-cols-2 gap-6 text-sm">
+        <li class="bg-white rounded-xl border border-pink-100 p-5 shadow-sm">
+          <p class="font-semibold mb-1">High‑Converting Catalog</p>
+          <p class="text-slate-600">Curated baby apparel & essentials with strong repeat purchase rates.</p>
+        </li>
+        <li class="bg-white rounded-xl border border-pink-100 p-5 shadow-sm">
+          <p class="font-semibold mb-1">Marketing Assets</p>
+          <p class="text-slate-600">Seasonal banners, product feeds, lifestyle photos & early launch previews.</p>
+        </li>
+        <li class="bg-white rounded-xl border border-pink-100 p-5 shadow-sm">
+          <p class="font-semibold mb-1">Transparent Dashboard</p>
+          <p class="text-slate-600">Real-time clicks, conversions & pending commissions (coming soon).</p>
+        </li>
+        <li class="bg-white rounded-xl border border-pink-100 p-5 shadow-sm">
+          <p class="font-semibold mb-1">Premium Support</p>
+          <p class="text-slate-600">Dedicated affiliate manager for top partners & campaign ideas.</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Tiers -->
+    <section class="bg-white border-y border-pink-100">
+      <div class="max-w-6xl mx-auto px-6 py-16">
+        <h2 class="text-2xl font-semibold mb-10">Commission Tiers</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="tier-card rounded-2xl p-6 shadow-sm border border-pink-100 flex flex-col">
+            <span class="badge mb-3">Starter</span>
+            <h3 class="text-xl font-semibold mb-2">Tier 1</h3>
+            <p class="text-slate-600 text-sm mb-4 flex-1">Perfect for new affiliates getting started.</p>
+            <ul class="text-sm space-y-2 mb-6">
+              <li>• 10% commission</li>
+              <li>• $0–$999 / mo referred sales</li>
+              <li>• Standard creatives</li>
+            </ul>
+            <p class="text-xs text-slate-500 mt-auto">Upgrades automatically at next threshold.</p>
+          </div>
+          <div class="tier-card rounded-2xl p-6 shadow glow border border-pink-200 flex flex-col">
+            <span class="badge mb-3 bg-pink-600 text-white">Growth</span>
+            <h3 class="text-xl font-semibold mb-2">Tier 2</h3>
+            <p class="text-slate-600 text-sm mb-4 flex-1">For partners gaining traction & scaling reach.</p>
+            <ul class="text-sm space-y-2 mb-6">
+              <li>• 12% commission</li>
+              <li>• $1k–$4,999 / mo referred sales</li>
+              <li>• Early product drops</li>
+              <li>• Bonus campaigns</li>
+            </ul>
+            <p class="text-xs text-slate-500 mt-auto">Maintained with consistent volume.</p>
+          </div>
+          <div class="tier-card rounded-2xl p-6 shadow-sm border border-pink-100 flex flex-col">
+            <span class="badge mb-3 bg-rose-500 text-white">Elite</span>
+            <h3 class="text-xl font-semibold mb-2">Tier 3</h3>
+            <p class="text-slate-600 text-sm mb-4 flex-1">Top-performing partners & strategic media.</p>
+            <ul class="text-sm space-y-2 mb-6">
+              <li>• 15%+ negotiated</li>
+              <li>• $5k+ / mo referred sales</li>
+              <li>• Custom landing pages</li>
+              <li>• Dedicated manager</li>
+              <li>• Co-branded campaigns</li>
+            </ul>
+            <p class="text-xs text-slate-500 mt-auto">Reviewed quarterly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="max-w-6xl mx-auto px-6 py-16">
+      <h2 class="text-2xl font-semibold mb-10">How It Works</h2>
+      <div class="grid md:grid-cols-4 gap-8">
+        <div class="bg-white rounded-xl border border-pink-100 p-5 shadow-sm">
+          <span class="badge mb-3">Step 1</span>
+          <p class="font-semibold mb-1">Apply</p>
+          <p class="text-slate-600 text-sm">Submit your info & audience details. We review within 3–5 business days.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-pink-100 p-5 shadow-sm">
+          <span class="badge mb-3">Step 2</span>
+          <p class="font-semibold mb-1">Get Your Links</p>
+          <p class="text-slate-600 text-sm">Receive unique tracking links, coupon code & creative assets.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-pink-100 p-5 shadow-sm">
+          <span class="badge mb-3">Step 3</span>
+          <p class="font-semibold mb-1">Promote</p>
+          <p class="text-slate-600 text-sm">Share via blog, reels, YouTube, email & gift guides.</p>
+        </div>
+        <div class="bg-white rounded-xl border border-pink-100 p-5 shadow-sm">
+          <span class="badge mb-3">Step 4</span>
+          <p class="font-semibold mb-1">Earn</p>
+          <p class="text-slate-600 text-sm">Earn commission on qualifying purchases—tracked for 30 days.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Application Form -->
+    <section id="apply" class="bg-white border-y border-pink-100">
+      <div class="max-w-4xl mx-auto px-6 py-16">
+        <h2 class="text-2xl font-semibold mb-6">Apply to Join</h2>
+        <p class="text-slate-600 text-sm mb-8">
+          Provide accurate details—approved partners receive onboarding instructions. Demo only (no real submission yet).
+        </p>
+        <form id="affiliateForm" class="grid md:grid-cols-2 gap-6">
+          <div class="md:col-span-1">
+            <label class="block text-sm font-medium mb-1" for="affName">Full Name</label>
+            <input id="affName" type="text" required class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <div class="md:col-span-1">
+            <label class="block text-sm font-medium mb-1" for="affEmail">Email</label>
+            <input id="affEmail" type="email" required class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="affWebsite">Primary Website / Handle</label>
+            <input id="affWebsite" type="text" placeholder="@username or https://" required class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="affAudience">Audience Size (approx.)</label>
+            <input id="affAudience" type="text" placeholder="e.g. 25k IG / 10k email" required class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium mb-1" for="affPlatforms">Primary Platforms</label>
+            <select id="affPlatforms" multiple
+                    class="w-full rounded border border-pink-200 px-3 py-2 h-32 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm">
+              <option>Instagram</option>
+              <option>TikTok</option>
+              <option>YouTube</option>
+              <option>Pinterest</option>
+              <option>Blog</option>
+              <option>Email Newsletter</option>
+              <option>Facebook</option>
+              <option>Other</option>
+            </select>
+            <p class="text-xs text-slate-500 mt-1">Hold CTRL / CMD to select multiple.</p>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium mb-1" for="affFit">Why are you a good fit?</label>
+            <textarea id="affFit" rows="4" required class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400"></textarea>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium mb-1" for="affNotes">Additional Notes (optional)</label>
+            <textarea id="affNotes" rows="3" class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400"></textarea>
+          </div>
+          <div class="md:col-span-2 flex items-start gap-2">
+            <input id="affAgree" type="checkbox" required class="mt-1 rounded border-pink-300">
+            <label for="affAgree" class="text-xs text-slate-600">
+              I agree to the BabyFits Affiliate Terms & will not engage in spam, trademark bidding, or prohibited content.
+            </label>
+          </div>
+          <div class="md:col-span-2 flex items-center gap-4">
+            <button class="bg-pink-500 hover:bg-pink-600 text-white px-8 py-3 rounded-md font-semibold transition">
+              Submit Application
+            </button>
+            <p id="affStatus" class="text-sm font-medium"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="max-w-5xl mx-auto px-6 py-16">
+      <h2 class="text-2xl font-semibold mb-8 text-center">Affiliate FAQ</h2>
+      <div id="faqList" class="space-y-4">
+        <!-- Items injected -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#FCD5CE] text-center py-6 mt-10 text-sm text-gray-700">
+    &copy; 2025 BabyFits. All rights reserved.
+  </footer>
+
+  <script>
+    /************* FAQ DATA *************/
+    const FAQ = [
+      { q: "How quickly are applications approved?",
+        a: "Most are reviewed within 3–5 business days. High‑volume creators may receive priority review." },
+      { q: "How long is the cookie window?",
+        a: "Standard window is 30 days. If a user purchases within 30 days of clicking your link, it qualifies." },
+      { q: "When & how are payouts issued?",
+        a: "Approved commissions are paid Net 30 via PayPal or ACH once a minimum $50 balance is reached." },
+      { q: "Can I run paid ads on brand terms?",
+        a: "No. Trademark or brand term bidding is prohibited unless you have explicit written authorization." },
+      { q: "Are discount / coupon sites allowed?",
+        a: "Selective. We prioritize content creators; coupon media is evaluated case by case." },
+      { q: "Do returns affect commission?",
+        a: "Yes. Returned or refunded orders have their related commission reversed in the next cycle." },
+    ];
+
+    /************* BUILD FAQ ACCORDION *************/
+    const faqList = document.getElementById('faqList');
+    FAQ.forEach((item,i) => {
+      const wrap = document.createElement('div');
+      wrap.className = "bg-white border border-pink-100 rounded-xl overflow-hidden";
+      wrap.innerHTML = `
+        <button class="faq-btn w-full flex justify-between items-center px-5 py-4 text-left text-sm font-medium text-slate-700 hover:bg-pink-50 focus:outline-none"
+                aria-expanded="false" aria-controls="faq-panel-${i}" id="faq-btn-${i}">
+          <span>${item.q}</span>
+          <svg class="chevron w-5 h-5 transition-transform" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <path d="M6 9l6 6 6-6"/>
+          </svg>
+        </button>
+        <div id="faq-panel-${i}" role="region" aria-labelledby="faq-btn-${i}" class="hidden px-5 pb-5 text-slate-600 text-sm">
+          ${item.a}
+        </div>
+      `;
+      faqList.appendChild(wrap);
+    });
+
+    faqList.addEventListener('click', e => {
+      const btn = e.target.closest('.faq-btn');
+      if(!btn) return;
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded);
+      document.getElementById(btn.getAttribute('aria-controls')).classList.toggle('hidden', expanded);
+    });
+
+    /************* AFFILIATE FORM (DEMO) *************/
+    const form = document.getElementById('affiliateForm');
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const aff = {
+        name: document.getElementById('affName').value.trim(),
+        email: document.getElementById('affEmail').value.trim(),
+        website: document.getElementById('affWebsite').value.trim(),
+        audience: document.getElementById('affAudience').value.trim(),
+        platforms: Array.from(document.getElementById('affPlatforms').selectedOptions).map(o=>o.value),
+        fit: document.getElementById('affFit').value.trim(),
+        notes: document.getElementById('affNotes').value.trim(),
+        agreed: document.getElementById('affAgree').checked,
+        submittedAt: new Date().toISOString()
+      };
+
+      // Store locally for demo
+      const KEY = 'bf_affiliate_apps';
+      const list = JSON.parse(localStorage.getItem(KEY) || '[]');
+      list.push(aff);
+      localStorage.setItem(KEY, JSON.stringify(list));
+
+      // Future: POST to backend
+      // fetch('/api/affiliate/apply',{ method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(aff) })
+
+      const status = document.getElementById('affStatus');
+      status.textContent = "✅ Application submitted! We'll review shortly (demo).";
+      status.className = "text-sm font-medium text-green-600";
+
+      form.reset();
+      setTimeout(()=> { status.textContent=""; }, 5000);
+    });
+  </script>
+</body>
+</html>

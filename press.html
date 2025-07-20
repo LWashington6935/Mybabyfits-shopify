@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Press – BabyFits</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="BabyFits press resources: media kit, brand assets, recent announcements, and media contact information." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Poppins',sans-serif; background:#F5F5F5; color:#333; }
+    .card { background:#fff; border-radius:1rem; box-shadow:0 4px 14px -4px rgba(0,0,0,.08); }
+    .gradient-text { background:linear-gradient(90deg,#f59ac0,#f7c5d9); -webkit-background-clip:text; color:transparent; }
+    .badge { background:#ffe3ef; color:#c53f78; padding:4px 10px; border-radius:999px; font-size:.6rem; font-weight:600; letter-spacing:.5px; }
+    .press-quote { background:linear-gradient(135deg,#fff,#ffeef5); }
+    details summary::-webkit-details-marker { display:none; }
+    details summary { cursor:pointer; }
+    details[open] summary .chev { transform:rotate(180deg); }
+    .chev { transition:transform .3s; }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="bg-[#FCD5CE] h-16 shadow-md">
+  <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+    <a href="index.html" class="flex items-center h-full">
+      <img src="images/babyfits-logo.png" alt="BabyFits Logo" class="h-14 w-14">
+    </a>
+    <nav class="flex items-center space-x-6 text-sm text-gray-800">
+      <a href="index.html" class="hover:underline">Home</a>
+      <a href="shop.html" class="hover:underline">Shop</a>
+      <a href="our-story.html" class="hover:underline">Our Story</a>
+      <a href="sustainability.html" class="hover:underline">Sustainability</a>
+      <a href="careers.html" class="hover:underline">Careers</a>
+      <a href="press.html" class="font-semibold underline decoration-pink-500">Press</a>
+      <a href="contact.html" class="hover:underline">Contact</a>
+      <a href="cart.html" class="hover:underline">Cart 🛒</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="relative">
+  <div class="h-[300px] overflow-hidden">
+    <img src="images/hero-banner.jpg" alt="BabyFits lifestyle" class="w-full h-full object-cover brightness-95">
+  </div>
+  <div class="absolute inset-0 bg-black/45 flex items-center">
+    <div class="max-w-5xl mx-auto px-6">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Press & Media</h1>
+      <p class="text-white/90 max-w-2xl text-lg mb-6">
+        Official announcements, brand assets & media resources for covering BabyFits.
+      </p>
+      <div class="flex flex-wrap gap-4">
+        <a href="#press-kit" class="bg-white text-pink-600 font-semibold px-6 py-3 rounded-full hover:bg-pink-50 transition">
+          Download Press Kit
+        </a>
+        <a href="mailto:press@babyfits.example" class="bg-pink-500 text-white font-semibold px-6 py-3 rounded-full hover:bg-pink-600 transition">
+          Media Contact
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Facts -->
+<section class="max-w-6xl mx-auto px-6 -mt-12 relative z-10">
+  <div class="grid md:grid-cols-4 gap-6">
+    <div class="card p-6 text-center">
+      <p class="text-3xl font-bold text-pink-600 mb-1">2023</p>
+      <p class="text-xs tracking-wide uppercase text-gray-500">Founded</p>
+    </div>
+    <div class="card p-6 text-center">
+      <p class="text-3xl font-bold text-pink-600 mb-1">+120K</p>
+      <p class="text-xs tracking-wide uppercase text-gray-500">Families Served*</p>
+    </div>
+    <div class="card p-6 text-center">
+      <p class="text-3xl font-bold text-pink-600 mb-1">30%</p>
+      <p class="text-xs tracking-wide uppercase text-gray-500">Repeat Rate*</p>
+    </div>
+    <div class="card p-6 text-center">
+      <p class="text-3xl font-bold text-pink-600 mb-1">15</p>
+      <p class="text-xs tracking-wide uppercase text-gray-500">Core Team</p>
+    </div>
+  </div>
+  <p class="text-[10px] text-gray-500 mt-2">*Illustrative metrics – replace with current verified figures.</p>
+</section>
+
+<!-- Latest Announcements -->
+<section class="max-w-6xl mx-auto px-6 mt-20">
+  <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-6">
+    <div>
+      <h2 class="text-2xl font-semibold gradient-text">Latest Announcements</h2>
+      <p class="text-sm text-gray-600">Recent press releases & product news.</p>
+    </div>
+    <div class="flex gap-3">
+      <input id="releaseSearch" type="text" placeholder="Search releases..."
+             class="border rounded-md px-3 py-2 text-sm" />
+      <button id="clearReleases" class="text-xs bg-gray-200 hover:bg-gray-300 px-3 py-2 rounded-md font-medium">
+        Reset
+      </button>
+    </div>
+  </div>
+
+  <div id="releasesGrid" class="grid md:grid-cols-3 gap-6"></div>
+  <div id="noReleases" class="hidden text-center text-gray-500 text-sm mt-8">
+    No announcements match your search.
+  </div>
+</section>
+
+<!-- Media Coverage -->
+<section class="max-w-6xl mx-auto px-6 mt-24">
+  <h2 class="text-2xl font-semibold mb-8 text-center">Media Coverage</h2>
+  <div class="card p-8">
+    <ul class="divide-y">
+      <li class="py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+        <div>
+          <p class="font-medium text-sm">“BabyFits puts thoughtful design into everyday baby essentials.”</p>
+          <p class="text-xs text-gray-500 mt-1">Parenting Today – Jan 12, 2025</p>
+        </div>
+        <a href="#" class="text-pink-600 text-sm font-medium hover:underline">Read Article →</a>
+      </li>
+      <li class="py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+        <div>
+          <p class="font-medium text-sm">“A sustainability‑centric approach to infant apparel sourcing.”</p>
+          <p class="text-xs text-gray-500 mt-1">Eco Retail Digest – Dec 3, 2024</p>
+        </div>
+        <a href="#" class="text-pink-600 text-sm font-medium hover:underline">Read Article →</a>
+      </li>
+      <li class="py-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+        <div>
+          <p class="font-medium text-sm">“Fast growth powered by community listening & iteration.”</p>
+          <p class="text-xs text-gray-500 mt-1">Startup Week Journal – Nov 18, 2024</p>
+        </div>
+        <a href="#" class="text-pink-600 text-sm font-medium hover:underline">Read Article →</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Press Kit -->
+<section id="press-kit" class="max-w-6xl mx-auto px-6 mt-24">
+  <h2 class="text-2xl font-semibold mb-8 text-center">Press Kit</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="card p-6 flex flex-col">
+      <span class="badge mb-3">Logos</span>
+      <h3 class="font-semibold mb-2">Brand Logos</h3>
+      <p class="text-sm text-gray-600 mb-4 flex-1">Primary / secondary lockups in PNG & SVG formats.</p>
+      <a href="assets/press/logos.zip" class="bg-pink-500 text-white text-sm font-semibold px-4 py-2 rounded-md hover:bg-pink-600 text-center transition">
+        Download
+      </a>
+    </div>
+    <div class="card p-6 flex flex-col">
+      <span class="badge mb-3">Photography</span>
+      <h3 class="font-semibold mb-2">Lifestyle Images</h3>
+      <p class="text-sm text-gray-600 mb-4 flex-1">Approved product & family lifestyle imagery (hi‑res).</p>
+      <a href="assets/press/photos.zip" class="bg-pink-500 text-white text-sm font-semibold px-4 py-2 rounded-md hover:bg-pink-600 text-center transition">
+        Download
+      </a>
+    </div>
+    <div class="card p-6 flex flex-col">
+      <span class="badge mb-3">Docs</span>
+      <h3 class="font-semibold mb-2">Fact Sheet</h3>
+      <p class="text-sm text-gray-600 mb-4 flex-1">Concise overview: mission, metrics, sustainability, founders.</p>
+      <a href="assets/press/fact-sheet.pdf" class="bg-pink-500 text-white text-sm font-semibold px-4 py-2 rounded-md hover:bg-pink-600 text-center transition">
+        PDF
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Brand Assets Gallery -->
+<section class="max-w-6xl mx-auto px-6 mt-24">
+  <h2 class="text-2xl font-semibold mb-8 text-center">Brand Assets Preview</h2>
+  <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
+    <!-- Repeat blocks with your actual images -->
+    <div class="relative group rounded-xl overflow-hidden shadow">
+      <img src="images/asset1.jpg" alt="BabyFits logo usage" class="w-full h-40 object-cover">
+      <a href="images/asset1.jpg" download
+         class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-sm font-medium transition">
+        Download
+      </a>
+    </div>
+    <div class="relative group rounded-xl overflow-hidden shadow">
+      <img src="images/asset2.jpg" alt="Lifestyle product shot" class="w-full h-40 object-cover">
+      <a href="images/asset2.jpg" download
+         class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-sm font-medium transition">
+        Download
+      </a>
+    </div>
+    <div class="relative group rounded-xl overflow-hidden shadow">
+      <img src="images/asset3.jpg" alt="Packaging" class="w-full h-40 object-cover">
+      <a href="images/asset3.jpg" download
+         class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-sm font-medium transition">
+        Download
+      </a>
+    </div>
+    <div class="relative group rounded-xl overflow-hidden shadow">
+      <img src="images/asset4.jpg" alt="Fabric detail" class="w-full h-40 object-cover">
+      <a href="images/asset4.jpg" download
+         class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 flex items-center justify-center text-white text-sm font-medium transition">
+        Download
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Quote / Founders -->
+<section class="max-w-5xl mx-auto px-6 mt-24">
+  <div class="press-quote card p-10 md:p-14">
+    <blockquote class="text-xl md:text-2xl font-semibold leading-relaxed text-slate-800 mb-8">
+      “We’re building BabyFits around a simple belief: baby essentials can be both irresistibly cozy
+      and consciously made—without asking families to pay luxury markups.”
+    </blockquote>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="flex gap-4">
+        <img src="images/founder1.jpg" alt="Founder 1" class="w-20 h-20 object-cover rounded-full border-4 border-white shadow">
+        <div>
+          <p class="font-semibold">Avery Moore</p>
+          <p class="text-xs text-gray-500 mb-2">Co‑Founder & CEO</p>
+          <p class="text-sm text-gray-600">Former childrenswear designer; drives product vision & partnerships.</p>
+        </div>
+      </div>
+      <div class="flex gap-4">
+        <img src="images/founder2.jpg" alt="Founder 2" class="w-20 h-20 object-cover rounded-full border-4 border-white shadow">
+        <div>
+          <p class="font-semibold">Jordan Lee</p>
+          <p class="text-xs text-gray-500 mb-2">Co‑Founder & COO</p>
+          <p class="text-sm text-gray-600">Operations & sustainability lead; focuses on ethical sourcing & quality.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="max-w-4xl mx-auto px-6 mt-24">
+  <h2 class="text-2xl font-semibold mb-8 text-center">Press FAQ</h2>
+  <div class="space-y-4">
+    <details class="card p-5">
+      <summary class="flex justify-between items-center">
+        <span class="font-medium">How do I request an interview?</span>
+        <svg class="chev h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </summary>
+      <div class="mt-3 text-sm text-gray-600">
+        Email <a href="mailto:press@babyfits.example" class="text-pink-600 hover:underline">press@babyfits.example</a>
+        with your outlet, topic, and deadline. We reply within 1–2 business days.
+      </div>
+    </details>
+    <details class="card p-5">
+      <summary class="flex justify-between items-center">
+        <span class="font-medium">May I use your photography?</span>
+        <svg class="chev h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </summary>
+      <div class="mt-3 text-sm text-gray-600">
+        Yes—any images in the Press Kit may be used for editorial coverage with credit “BabyFits”.
+      </div>
+    </details>
+    <details class="card p-5">
+      <summary class="flex justify-between items-center">
+        <span class="font-medium">Are product samples available?</span>
+        <svg class="chev h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </summary>
+      <div class="mt-3 text-sm text-gray-600">
+        We maintain a limited sample closet for accredited media & select creators. Include sizing & purpose in your request.
+      </div>
+    </details>
+    <details class="card p-5">
+      <summary class="flex justify-between items-center">
+        <span class="font-medium">Do you announce funding rounds?</span>
+        <svg class="chev h-5 w-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </summary>
+      <div class="mt-3 text-sm text-gray-600">
+        We selectively publicize financing events once strategic milestones are achieved; inquire for embargoed details.
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="max-w-4xl mx-auto px-6 mt-24 mb-24">
+  <div class="card p-10 text-center">
+    <h2 class="text-2xl font-semibold mb-4">Need Something Else?</h2>
+    <p class="text-gray-600 mb-6">
+      Let us know what assets, samples, or data you need for your story.
+    </p>
+    <a href="mailto:press@babyfits.example"
+       class="inline-block bg-pink-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-pink-600 transition">
+      Contact Press Team
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-[#FCD5CE] text-center py-6 text-sm text-gray-700">
+  &copy; 2025 BabyFits. All rights reserved.
+</footer>
+
+<script>
+  /* -------- Mock Press Releases Data -------- */
+  const PRESS_RELEASES = [
+    {
+      id:'2025-02-10',
+      date:'Feb 10, 2025',
+      title:'BabyFits Introduces Recycled Cotton Essentials Collection',
+      tag:'Product',
+      summary:'New capsule blends softness with recycled fiber content, advancing material goals.',
+      link:'#'
+    },
+    {
+      id:'2025-01-15',
+      date:'Jan 15, 2025',
+      title:'BabyFits Partners with Family Shelter Network',
+      tag:'Impact',
+      summary:'For every five orders, one warm layer donated to families in transition.',
+      link:'#'
+    },
+    {
+      id:'2024-12-05',
+      date:'Dec 5, 2024',
+      title:'Holiday 2024 Sleepwear Line Sells Out Core Sizes in 72 Hours',
+      tag:'Growth',
+      summary:'Strong demand highlights shift toward comfort‑driven gifting in baby category.',
+      link:'#'
+    },
+    {
+      id:'2024-11-20',
+      date:'Nov 20, 2024',
+      title:'BabyFits Announces Pilot Resale / Donation Portal',
+      tag:'Circularity',
+      summary:'Initiative extends garment life & reduces landfill load via verified partners.',
+      link:'#'
+    }
+  ];
+
+  const grid = document.getElementById('releasesGrid');
+  const searchInput = document.getElementById('releaseSearch');
+  const clearBtn = document.getElementById('clearReleases');
+  const emptyEl = document.getElementById('noReleases');
+
+  function renderReleases(){
+    const q = searchInput.value.trim().toLowerCase();
+    const filtered = PRESS_RELEASES.filter(r =>
+      !q || r.title.toLowerCase().includes(q) || r.summary.toLowerCase().includes(q) || r.tag.toLowerCase().includes(q)
+    );
+    grid.innerHTML = '';
+    if(!filtered.length){
+      emptyEl.classList.remove('hidden');
+      return;
+    }
+    emptyEl.classList.add('hidden');
+
+    filtered.forEach(r => {
+      const el = document.createElement('div');
+      el.className = 'card p-6 flex flex-col';
+      el.innerHTML = `
+        <div class="flex items-center justify-between mb-3">
+          <span class="badge">${r.tag}</span>
+          <span class="text-[11px] text-gray-500 font-medium">${r.date}</span>
+        </div>
+        <h3 class="font-semibold leading-snug mb-2">${r.title}</h3>
+        <p class="text-sm text-gray-600 flex-1 mb-4">${r.summary}</p>
+        <a href="${r.link}" class="inline-block text-pink-600 text-sm font-medium hover:underline">Read Release →</a>
+      `;
+      grid.appendChild(el);
+    });
+  }
+
+  searchInput.addEventListener('input', renderReleases);
+  clearBtn.addEventListener('click', () => { searchInput.value=''; renderReleases(); });
+
+  renderReleases();
+</script>
+
+</body>
+</html>

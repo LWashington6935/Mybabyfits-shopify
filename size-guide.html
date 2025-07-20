@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Size Guide – BabyFits</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body{font-family:'Poppins',sans-serif;background:#F5F5F5;color:#334155}
+    .tab-btn[aria-selected="true"]{background:#f472b6;color:#fff;box-shadow:0 2px 6px rgba(244,114,182,.35)}
+    table{border-collapse:collapse;width:100%}
+    th,td{padding:.65rem .75rem;text-align:center;font-size:.85rem}
+    thead th{background:#ffe4ec;font-weight:600;color:#334155}
+    tbody tr:nth-child(even){background:#fff8fb}
+    tbody tr:hover{background:#ffeef5}
+    .scroll-shadow{position:relative}
+    .scroll-shadow:before,.scroll-shadow:after{
+      content:"";pointer-events:none;position:absolute;top:0;width:32px;height:100%;
+    }
+    .scroll-shadow:before{left:0;background:linear-gradient(to right,#F5F5F5,rgba(245,245,245,0))}
+    .scroll-shadow:after{right:0;background:linear-gradient(to left,#F5F5F5,rgba(245,245,245,0))}
+    .fade-in{animation:fade .4s ease}
+    @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+    ::selection{background:#f9a8d4;color:#1f2937}
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-[#FCD5CE] h-16 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="images/babyfits-logo.png" alt="BabyFits" class="h-12 w-12">
+        <span class="font-semibold text-lg hidden sm:inline">BabyFits</span>
+      </a>
+      <nav class="flex items-center gap-6 text-sm font-medium text-gray-700">
+        <a href="index.html" class="hover:text-pink-600">Home</a>
+        <a href="shop.html" class="hover:text-pink-600">Shop</a>
+        <a href="girls.html" class="hover:text-pink-600">Girls</a>
+        <a href="boys.html" class="hover:text-pink-600">Boys</a>
+        <a href="essentials.html" class="hover:text-pink-600">Essentials</a>
+        <a href="cart.html" class="hover:text-pink-600">Cart 🛒</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-pink-100 via-rose-50 to-white"></div>
+      <div class="max-w-7xl mx-auto px-4 py-14 relative">
+        <div class="max-w-3xl">
+          <h1 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">Size Guide</h1>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            Picking the right size means more comfy wiggles & fewer returns. Use the body measurements below—
+            if baby is between sizes, we recommend sizing up for longer wear.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tabs -->
+    <section class="max-w-7xl mx-auto px-4 -mt-6 pb-4">
+      <div class="bg-white border border-pink-100 rounded-xl shadow-sm p-4 flex flex-wrap gap-2">
+        <button class="tab-btn px-4 py-2 text-sm rounded-md bg-white hover:bg-pink-100"
+                data-tab="tab-overview" aria-selected="true">Overview</button>
+        <button class="tab-btn px-4 py-2 text-sm rounded-md bg-white hover:bg-pink-100"
+                data-tab="tab-baby">Baby (NB–24M)</button>
+        <button class="tab-btn px-4 py-2 text-sm rounded-md bg-white hover:bg-pink-100"
+                data-tab="tab-tops">Tops / Bodysuits</button>
+        <button class="tab-btn px-4 py-2 text-sm rounded-md bg-white hover:bg-pink-100"
+                data-tab="tab-bottoms">Bottoms</button>
+        <button class="tab-btn px-4 py-2 text-sm rounded-md bg-white hover:bg-pink-100"
+                data-tab="tab-sleep">Sleepwear</button>
+        <button class="tab-btn px-4 py-2 text-sm rounded-md bg-white hover:bg-pink-100"
+                data-tab="tab-accessories">Accessories</button>
+      </div>
+    </section>
+
+    <!-- Panels -->
+    <section class="max-w-7xl mx-auto px-4 pb-20 space-y-10">
+
+      <!-- Overview -->
+      <div id="tab-overview" class="fade-in bg-white border border-pink-100 rounded-2xl shadow-sm p-8">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">How to Measure</h2>
+        <div class="grid md:grid-cols-3 gap-8 text-sm text-slate-600">
+          <div>
+            <h3 class="font-medium text-slate-700 mb-1">Height</h3>
+            <p>Lay baby down & measure from top of head to heel (legs gently straightened).</p>
+          </div>
+          <div>
+            <h3 class="font-medium text-slate-700 mb-1">Chest</h3>
+            <p>Under the arms, around the fullest part. Keep tape gently snug—not tight.</p>
+          </div>
+          <div>
+            <h3 class="font-medium text-slate-700 mb-1">Weight</h3>
+            <p>Use most recent pediatrician weight or stand on scale holding baby (subtract your weight).</p>
+          </div>
+        </div>
+        <div class="mt-8 grid md:grid-cols-2 gap-6">
+          <div class="bg-pink-50/70 border border-pink-100 rounded-xl p-5">
+            <h3 class="font-medium text-slate-700 mb-2">Fit Philosophy</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              BabyFits garments are designed with a little extra length & softness for movement and growth.
+              Cotton pieces may shrink up to 5% after first wash—factored into patterns.
+            </p>
+          </div>
+          <div class="bg-pink-50/70 border border-pink-100 rounded-xl p-5">
+            <h3 class="font-medium text-slate-700 mb-2">Between Sizes?</h3>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              If height is closer to the next size or diaper area feels snug, size up. For sleepwear, ensure
+              a safe close fit—do not intentionally oversize snug-fit PJs.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Baby -->
+      <div id="tab-baby" class="hidden fade-in bg-white border border-pink-100 rounded-2xl shadow-sm p-8">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Baby (NB – 24 Months)</h2>
+        <div class="overflow-x-auto scroll-shadow rounded-lg border border-pink-100">
+          <table>
+            <thead>
+              <tr>
+                <th>Label</th><th>Approx Age</th><th>Weight (lbs)</th><th>Weight (kg)</th>
+                <th>Height (in)</th><th>Height (cm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>NB</td><td>0–8 wks</td><td>5–8</td><td>2.3–3.6</td><td>17–21</td><td>43–53</td></tr>
+              <tr><td>0–3M</td><td>0–3 mo</td><td>8–12.5</td><td>3.6–5.7</td><td>21–24</td><td>53–61</td></tr>
+              <tr><td>3–6M</td><td>3–6 mo</td><td>12.5–17</td><td>5.7–7.7</td><td>24–27</td><td>61–69</td></tr>
+              <tr><td>6–9M</td><td>6–9 mo</td><td>17–20</td><td>7.7–9.1</td><td>27–28.5</td><td>69–72</td></tr>
+              <tr><td>9–12M</td><td>9–12 mo</td><td>20–23</td><td>9.1–10.4</td><td>28.5–30</td><td>72–76</td></tr>
+              <tr><td>12–18M</td><td>12–18 mo</td><td>23–27</td><td>10.4–12.2</td><td>30–32.5</td><td>76–83</td></tr>
+              <tr><td>18–24M</td><td>18–24 mo</td><td>27–30</td><td>12.2–13.6</td><td>32.5–34.5</td><td>83–88</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-xs text-slate-500">Ages are approximate; choose by current measurements.</p>
+      </div>
+
+      <!-- Tops -->
+      <div id="tab-tops" class="hidden fade-in bg-white border border-pink-100 rounded-2xl shadow-sm p-8">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Tops & Bodysuits</h2>
+        <div class="overflow-x-auto scroll-shadow rounded-lg border border-pink-100">
+          <table>
+            <thead>
+              <tr>
+                <th>Size</th><th>Chest (in)</th><th>Chest (cm)</th><th>Length (in)</th><th>Length (cm)</th>
+                <th>Sleeve (in)</th><th>Sleeve (cm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>NB</td><td>15</td><td>38</td><td>11.5</td><td>29</td><td>7</td><td>18</td></tr>
+              <tr><td>0–3M</td><td>16</td><td>41</td><td>12.5</td><td>32</td><td>7.5</td><td>19</td></tr>
+              <tr><td>3–6M</td><td>17</td><td>43</td><td>13.5</td><td>34</td><td>8</td><td>20</td></tr>
+              <tr><td>6–9M</td><td>18</td><td>46</td><td>14.25</td><td>36</td><td>8.5</td><td>22</td></tr>
+              <tr><td>9–12M</td><td>18.5</td><td>47</td><td>15</td><td>38</td><td>9</td><td>23</td></tr>
+              <tr><td>12–18M</td><td>19</td><td>48</td><td>16</td><td>41</td><td>9.5</td><td>24</td></tr>
+              <tr><td>18–24M</td><td>20</td><td>51</td><td>16.75</td><td>43</td><td>10</td><td>25</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-xs text-slate-500">Chest measured 1" below armhole. Length is highest point shoulder to hem.</p>
+      </div>
+
+      <!-- Bottoms -->
+      <div id="tab-bottoms" class="hidden fade-in bg-white border border-pink-100 rounded-2xl shadow-sm p-8">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Bottoms (Pants / Leggings / Shorts)</h2>
+        <div class="overflow-x-auto scroll-shadow rounded-lg border border-pink-100">
+          <table>
+            <thead>
+              <tr>
+                <th>Size</th><th>Waist (in)</th><th>Waist (cm)</th><th>Hip (in)</th><th>Hip (cm)</th>
+                <th>Inseam (in)</th><th>Inseam (cm)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>NB</td><td>15</td><td>38</td><td>16</td><td>41</td><td>5.5</td><td>14</td></tr>
+              <tr><td>0–3M</td><td>15.5</td><td>39</td><td>16.5</td><td>42</td><td>6</td><td>15</td></tr>
+              <tr><td>3–6M</td><td>16</td><td>41</td><td>17</td><td>43</td><td>6.75</td><td>17</td></tr>
+              <tr><td>6–9M</td><td>16.5</td><td>42</td><td>18</td><td>46</td><td>7.5</td><td>19</td></tr>
+              <tr><td>9–12M</td><td>17</td><td>43</td><td>18.5</td><td>47</td><td>8.25</td><td>21</td></tr>
+              <tr><td>12–18M</td><td>17.5</td><td>44</td><td>19</td><td>48</td><td>9</td><td>23</td></tr>
+              <tr><td>18–24M</td><td>18</td><td>46</td><td>20</td><td>51</td><td>10</td><td>25</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-xs text-slate-500">Elastic waists have stretch allowance; inseam from crotch seam to hem.</p>
+      </div>
+
+      <!-- Sleepwear -->
+      <div id="tab-sleep" class="hidden fade-in bg-white border border-pink-100 rounded-2xl shadow-sm p-8">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Sleepwear (Snug Fit)</h2>
+        <p class="text-sm text-slate-600 mb-4">
+          Sleepwear is designed to be snug for safety. Do not size up intentionally for flame‑resistant regulations.
+        </p>
+        <div class="overflow-x-auto scroll-shadow rounded-lg border border-pink-100">
+          <table>
+            <thead>
+              <tr>
+                <th>Size</th><th>Weight (lbs)</th><th>Height (in)</th><th>Chest (in)</th><th>Hip (in)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>0–3M</td><td>8–12.5</td><td>21–24</td><td>16</td><td>16.5</td></tr>
+              <tr><td>3–6M</td><td>12.5–17</td><td>24–27</td><td>17</td><td>17.5</td></tr>
+              <tr><td>6–12M</td><td>17–23</td><td>27–30</td><td>18</td><td>18.5</td></tr>
+              <tr><td>12–18M</td><td>23–27</td><td>30–32.5</td><td>19</td><td>19.5</td></tr>
+              <tr><td>18–24M</td><td>27–30</td><td>32.5–34.5</td><td>20</td><td>20.5</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="mt-6 bg-pink-50 border border-pink-100 rounded-lg p-4 text-xs text-slate-600 leading-relaxed">
+          <strong class="text-pink-600">Safety Tip:</strong> Always remove loose blankets & ensure garment is free of
+          dangling threads. Replace sleepwear if damaged or overly tight.
+        </div>
+      </div>
+
+      <!-- Accessories -->
+      <div id="tab-accessories" class="hidden fade-in bg-white border border-pink-100 rounded-2xl shadow-sm p-8">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Accessories (Hats / Booties / Bibs)</h2>
+        <div class="overflow-x-auto scroll-shadow rounded-lg border border-pink-100">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th><th>Size</th><th>Head / Foot Circ. (in)</th><th>Head / Foot Circ. (cm)</th><th>Age Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Beanie Hat</td><td>NB</td><td>13–14.5</td><td>33–37</td><td>0–2 mo</td></tr>
+              <tr><td>Beanie Hat</td><td>0–6M</td><td>14.5–16.5</td><td>37–42</td><td>0–6 mo</td></tr>
+              <tr><td>Beanie Hat</td><td>6–12M</td><td>16.5–18</td><td>42–46</td><td>6–12 mo</td></tr>
+              <tr><td>Booties</td><td>0–3M</td><td>3.25–3.5 (length)</td><td>8.3–8.9</td><td>0–3 mo</td></tr>
+              <tr><td>Booties</td><td>3–6M</td><td>3.5–3.75</td><td>8.9–9.5</td><td>3–6 mo</td></tr>
+              <tr><td>Bibs</td><td>One Size</td><td>Neck 10–11.5</td><td>25–29</td><td>0–24 mo</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mt-4 text-xs text-slate-500">Accessory sizing gives comfortable, not tight, circumference.</p>
+      </div>
+
+      <!-- CTA -->
+      <div class="bg-gradient-to-r from-pink-50 to-white border border-pink-100 rounded-2xl p-8 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div class="flex items-start gap-4">
+          <div class="h-12 w-12 bg-pink-100 text-pink-600 rounded-xl flex items-center justify-center shadow-sm">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2m6 0a10 10 0 11-20 0 10 10 0 0120 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-slate-800">Still Unsure About Sizing?</h3>
+            <p class="text-sm text-slate-600 mt-1">Send us baby’s weight, height & a quick note—we’ll recommend the best size.</p>
+          </div>
+        </div>
+        <a href="customer-service.html" class="inline-flex items-center gap-2 bg-pink-500 text-white font-medium px-6 py-3 rounded-lg shadow hover:bg-pink-600 transition">
+          Ask Support
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Footer (reuse structure) -->
+  <footer class="bg-[#fff8fb] border-t border-pink-200">
+    <div class="max-w-7xl mx-auto px-4 py-12 grid gap-10 md:grid-cols-5 text-sm">
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">Our Brands</h4>
+        <ul class="space-y-1 text-slate-600">
+          <li>BabyFits</li><li>CozyKidz</li><li>SoftSteps</li><li>TinyTrends</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">Help</h4>
+        <ul class="space-y-1">
+          <li><a href="customer-service.html" class="hover:underline">Customer Service</a></li>
+          <li><a href="track-order.html" class="hover:underline">Track Order</a></li>
+          <li><a href="shipping.html" class="hover:underline">Shipping</a></li>
+          <li><a href="returns.html" class="hover:underline">Returns</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">Quick Links</h4>
+        <ul class="space-y-1">
+          <li><a href="size-guide.html" class="hover:underline font-semibold">Size Guide</a></li>
+          <li><a href="#" class="hover:underline">Gift Cards</a></li>
+          <li><a href="#" class="hover:underline">Today’s Deals</a></li>
+          <li><a href="#" class="hover:underline">My Account</a></li>
+          <li><a href="#" class="hover:underline">Affiliate Program</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">About Us</h4>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:underline">Our Story</a></li>
+          <li><a href="#" class="hover:underline">Careers</a></li>
+          <li><a href="#" class="hover:underline">Sustainability</a></li>
+          <li><a href="#" class="hover:underline">Press</a></li>
+          <li><a href="#" class="hover:underline">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">Get In Touch</h4>
+        <div class="flex gap-3">
+          <a href="#"><img src="icons/instagram.svg" alt="Instagram" class="w-6 h-6"></a>
+          <a href="#"><img src="icons/tiktok.svg" alt="TikTok" class="w-6 h-6"></a>
+          <a href="#"><img src="icons/facebook.svg" alt="Facebook" class="w-6 h-6"></a>
+          <a href="#"><img src="icons/x.svg" alt="X" class="w-6 h-6"></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-xs text-slate-500 pb-6">&copy; 2025 BabyFits. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Tab switching
+    const tabs = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('[id^="tab-"]');
+    tabs.forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        tabs.forEach(b=>b.setAttribute('aria-selected','false'));
+        panels.forEach(p=>p.classList.add('hidden'));
+        btn.setAttribute('aria-selected','true');
+        const panel = document.getElementById(btn.dataset.tab);
+        panel.classList.remove('hidden');
+        // optional scroll into view on small screens
+        if(window.innerWidth < 640){
+          panel.scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    });
+  </script>
+</body>
+</html>

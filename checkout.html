@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Checkout – BabyFits</title>
+
+  <!-- Tailwind CSS (dev only) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Stripe.js -->
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <style>
+    body { font-family: 'Poppins', sans-serif; background: #F5F5F5; }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- NAVBAR -->
+  <header class="bg-pink-100 p-4 shadow">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold">BabyFits</a>
+      <nav class="space-x-4 text-gray-700">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="shop.html" class="hover:underline">Shop</a>
+        <a href="cart.html" class="hover:underline">Cart 🛒</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="flex-grow container mx-auto p-6">
+    <div class="max-w-lg mx-auto bg-white shadow rounded p-6 space-y-6">
+
+      <h1 class="text-2xl font-semibold">Review & Pay</h1>
+
+      <!-- ORDER SUMMARY -->
+      <div id="order-summary" class="space-y-2">
+        <!-- injected line items -->
+      </div>
+      <div class="flex justify-between font-semibold text-lg border-t pt-4">
+        <span>Total:</span>
+        <span id="order-total">$0.00</span>
+      </div>
+
+      <!-- SHIPPING ADDRESS -->
+      <fieldset class="pt-4">
+        <legend class="font-medium">Shipping Address</legend>
+        <div class="space-y-2 mt-2">
+          <input type="text" id="ship-name"    placeholder="Full name"          required class="w-full p-2 border rounded"/>
+          <input type="text" id="ship-line1"   placeholder="Address line 1"     required class="w-full p-2 border rounded"/>
+          <div class="flex gap-2">
+            <input type="text" id="ship-city"  placeholder="City"               required class="flex-1 p-2 border rounded"/>
+            <input type="text" id="ship-postal"placeholder="Postal / ZIP"      required class="w-24 p-2 border rounded"/>
+          </div>
+          <input type="text" id="ship-state"   placeholder="State / Province"   required class="w-full p-2 border rounded"/>
+          <input type="text" id="ship-country" placeholder="Country"            required class="w-full p-2 border rounded"/>
+        </div>
+      </fieldset>
+
+      <!-- BILLING TOGGLE -->
+      <div class="flex items-center space-x-2">
+        <input type="checkbox" id="same-as-shipping" checked />
+        <label for="same-as-shipping" class="text-sm">Billing same as shipping</label>
+      </div>
+
+      <!-- BILLING ADDRESS -->
+      <fieldset id="billing-fields" class="space-y-2 hidden">
+        <legend class="font-medium">Billing Address</legend>
+        <div class="space-y-2 mt-2">
+          <input type="text" id="bill-name"    placeholder="Full name"        class="w-full p-2 border rounded"/>
+          <input type="text" id="bill-line1"   placeholder="Address line 1"   class="w-full p-2 border rounded"/>
+          <div class="flex gap-2">
+            <input type="text" id="bill-city" placeholder="City"             class="flex-1 p-2 border rounded"/>
+            <input type="text" id="bill-postal" placeholder="Postal / ZIP" class="w-24 p-2 border rounded"/>
+          </div>
+          <input type="text" id="bill-state"   placeholder="State / Province" class="w-full p-2 border rounded"/>
+          <input type="text" id="bill-country" placeholder="Country"          class="w-full p-2 border rounded"/>
+        </div>
+      </fieldset>
+<div>
+  <label for="cust-email" class="font-medium">Email</label>
+  <input
+    type="email"
+    id="cust-email"
+    placeholder="you@example.com"
+    required
+    class="w-full p-2 border rounded mt-1"
+  />
+</div>
+      <!-- CARD ELEMENT -->
+      <div class="pt-4">
+        <label class="font-medium">Card Details</label>
+        <div id="card-element" class="mt-2 p-2 border rounded bg-white"></div>
+        <p id="card-errors" class="text-red-600 text-sm mt-2" role="alert"></p>
+      </div>
+
+      <!-- PAY BUTTON -->
+      <button id="submit"
+        class="w-full bg-pink-400 text-white py-2 rounded font-semibold hover:bg-pink-500 transition">
+        Pay <span id="pay-amount">$0.00</span>
+      </button>
+      <p id="payment-message" class="text-green-600 text-center mt-4"></p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-pink-100 p-4 text-center text-gray-600 text-sm">
+    &copy; 2025 BabyFits. All rights reserved.
+  </footer>
+
+  <!-- CHECKOUT SCRIPT -->
+  <script>
+  (async () => {
+    // 0) Grab cart & render summary
+    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const summaryEl = document.getElementById('order-summary');
+    const totalEl   = document.getElementById('order-total');
+    const payAmtEl  = document.getElementById('pay-amount');
+    const submitBtn = document.getElementById('submit');
+    const msgEl     = document.getElementById('payment-message');
+    const errEl     = document.getElementById('card-errors');
+
+    if (!cart.length) {
+      summaryEl.innerHTML = '<p class="text-red-600 text-center">Your cart is empty.</p>';
+      submitBtn.disabled = true;
+      return;
+    }
+
+    let total = 0;
+    cart.forEach(item => {
+      const qty  = item.quantity || 1;
+      const line = item.price * qty;
+      total += line;
+      const row = document.createElement('div');
+      row.className = 'flex justify-between';
+      row.innerHTML = `<span>${item.name} x${qty}</span><span>$${line.toFixed(2)}</span>`;
+      summaryEl.appendChild(row);
+    });
+    totalEl.textContent  = `$${total.toFixed(2)}`;
+    payAmtEl.textContent = `$${total.toFixed(2)}`;
+
+    // 1) Init Stripe
+    const stripe  = Stripe('pk_test_51Rl2ykFW9pJQZSjHhMMXtvrA0oqgaJoCzPjizl1KjgqV9bOMjfGVYbFcWenCedSrYpkM03Dh9iVynphsvuXucoRu002SifDq1u');
+    const elements = stripe.elements();
+    const card     = elements.create('card');
+    card.mount('#card-element');
+    card.on('change', e => {
+      errEl.textContent = e.error?.message || '';
+    });
+
+    // 2) Billing toggle
+    document.getElementById('same-as-shipping')
+      .addEventListener('change', e => {
+        document.getElementById('billing-fields')
+          .classList.toggle('hidden', e.target.checked);
+      });
+
+    // 3) Handle pay button click
+    submitBtn.addEventListener('click', async () => {
+      submitBtn.disabled = true;
+      errEl.textContent  = '';
+      msgEl.textContent  = '';
+
+      // Gather shipping
+      const shipping = {
+        name: document.getElementById('ship-name').value,
+        address: {
+          line1:       document.getElementById('ship-line1').value,
+          city:        document.getElementById('ship-city').value,
+          state:       document.getElementById('ship-state').value,
+          postal_code: document.getElementById('ship-postal').value,
+          country:     document.getElementById('ship-country').value
+        }
+      };
+
+      // Gather billing
+      let billing = shipping;
+      if (!document.getElementById('same-as-shipping').checked) {
+        billing = {
+          name: document.getElementById('bill-name').value,
+          address: {
+            line1:       document.getElementById('bill-line1').value,
+            city:        document.getElementById('bill-city').value,
+            state:       document.getElementById('bill-state').value,
+            postal_code: document.getElementById('bill-postal').value,
+            country:     document.getElementById('bill-country').value
+          }
+        };
+      }
+
+      // 4) Create PaymentIntent on the server
+      const resp = await fetch('http://localhost:4242/create-payment-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount: Math.round(total * 100),
+          shipping,
+          items: cart.map(i => ({ price: i.price * 100, qty: i.quantity || 1 }))
+        })
+      });
+      const { clientSecret, error: apiError } = await resp.json();
+      if (apiError) {
+        errEl.textContent = apiError;
+        submitBtn.disabled = false;
+        return;
+      }
+
+      // 5) Confirm the card payment (omit shipping here)
+      const { error: stripeError } = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: { card, billing_details: billing }
+      });
+
+      if (stripeError) {
+  errEl.textContent = stripeError.message;
+  submitBtn.disabled = false;
+} else {
+  // everything worked — redirect!
+  const email = document.getElementById('cust-email').value;
+  window.location.href =
+    `confirmation.html?email=${encodeURIComponent(email)}`;
+}
+    });
+  })();
+  </script>
+</body>
+</html>

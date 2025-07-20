@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Shipping Information – BabyFits</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Poppins',sans-serif; background:#F5F5F5; color:#334155; }
+    .faq-panel {
+      transition: all .28s cubic-bezier(.4,.0,.2,1);
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+    }
+    .faq-item[aria-expanded="true"] .faq-panel {
+      max-height: 500px;
+      opacity: 1;
+    }
+    .faq-item button svg { transition: transform .28s; }
+    .faq-item[aria-expanded="true"] button svg { transform: rotate(180deg); }
+    /* Thin scrollbar for overflow sections (optional) */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background:#e2e8f0; border-radius:4px; }
+    ::selection { background:#f9a8d4; color:#1f2937; }
+    .badge { @apply inline-block rounded-full px-2 py-0.5 text-xs font-medium; }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- Top Nav (reuse your site pattern) -->
+  <header class="bg-[#FCD5CE] h-16 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="images/babyfits-logo.png" alt="BabyFits Logo" class="h-12 w-12">
+        <span class="font-semibold text-lg hidden sm:inline">BabyFits</span>
+      </a>
+      <nav class="flex items-center gap-6 text-sm font-medium text-gray-700">
+        <a href="index.html" class="hover:text-pink-600">Home</a>
+        <a href="shop.html" class="hover:text-pink-600">Shop</a>
+        <a href="girls.html" class="hover:text-pink-600">Girls</a>
+        <a href="boys.html" class="hover:text-pink-600">Boys</a>
+        <a href="essentials.html" class="hover:text-pink-600">Essentials</a>
+        <a href="cart.html" class="hover:text-pink-600">Cart 🛒</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-pink-100 via-rose-100 to-white"></div>
+      <div class="max-w-7xl mx-auto px-4 py-14 relative">
+        <div class="max-w-3xl">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="h-12 w-12 flex items-center justify-center rounded-xl bg-white shadow ring-1 ring-pink-100">
+              <svg class="w-7 h-7 text-pink-500" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h2l2 9h11l2-6H6"/>
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 00-8 0v1h8V7z"/>
+                <circle cx="9" cy="19" r="1"/>
+                <circle cx="17" cy="19" r="1"/>
+              </svg>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-bold text-slate-800">Shipping Information</h1>
+          </div>
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed">
+            Everything you need to know about processing times, delivery options, tracking, and international shipping for your BabyFits order.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Highlight Cards -->
+    <section class="max-w-7xl mx-auto px-4 -mt-6 pb-4">
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-pink-50">
+          <h3 class="font-semibold mb-1 text-slate-800">Processing</h3>
+          <p class="text-sm text-slate-600">Most orders leave our warehouse in <strong>1–2 business days</strong>.</p>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-pink-50">
+          <h3 class="font-semibold mb-1 text-slate-800">Free Shipping</h3>
+          <p class="text-sm text-slate-600">Standard shipping free on orders over <strong>$60</strong>.</p>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-pink-50">
+          <h3 class="font-semibold mb-1 text-slate-800">Live Tracking</h3>
+          <p class="text-sm text-slate-600">Tracking link emailed immediately after dispatch.</p>
+        </div>
+        <div class="bg-white rounded-xl p-5 shadow-sm border border-pink-50">
+          <h3 class="font-semibold mb-1 text-slate-800">Global Reach</h3>
+          <p class="text-sm text-slate-600">Select international destinations supported.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methods Table -->
+    <section class="max-w-7xl mx-auto px-4 py-10">
+      <h2 class="text-2xl font-semibold mb-4 text-slate-800">Delivery Options</h2>
+      <div class="overflow-x-auto rounded-xl bg-white ring-1 ring-pink-100 shadow-sm">
+        <table class="w-full text-sm">
+          <thead class="bg-pink-50 text-slate-700">
+            <tr class="text-left">
+              <th class="py-3 px-4 font-semibold">Method</th>
+              <th class="py-3 px-4 font-semibold">Processing*</th>
+              <th class="py-3 px-4 font-semibold">Transit</th>
+              <th class="py-3 px-4 font-semibold">Total Est.</th>
+              <th class="py-3 px-4 font-semibold">Cost</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-pink-50">
+            <tr class="hover:bg-pink-25/50">
+              <td class="py-3 px-4 font-medium">Standard</td>
+              <td class="py-3 px-4">1–2 biz days</td>
+              <td class="py-3 px-4">3–6 biz days</td>
+              <td class="py-3 px-4">4–8 days</td>
+              <td class="py-3 px-4">
+                <span class="badge bg-pink-100 text-pink-700">Free $60+</span>
+                <span class="ml-2 text-slate-600">$6.95</span>
+              </td>
+            </tr>
+            <tr class="bg-pink-25/20 hover:bg-pink-25/50">
+              <td class="py-3 px-4 font-medium">Expedited</td>
+              <td class="py-3 px-4">Same day†</td>
+              <td class="py-3 px-4">2–3 biz days</td>
+              <td class="py-3 px-4">2–4 days</td>
+              <td class="py-3 px-4">$14.95</td>
+            </tr>
+            <tr class="hover:bg-pink-25/50">
+              <td class="py-3 px-4 font-medium">Express</td>
+              <td class="py-3 px-4">Same day†</td>
+              <td class="py-3 px-4">1–2 biz days</td>
+              <td class="py-3 px-4">1–3 days</td>
+              <td class="py-3 px-4">$24.95</td>
+            </tr>
+            <tr class="bg-pink-25/20 hover:bg-pink-25/50">
+              <td class="py-3 px-4 font-medium">International</td>
+              <td class="py-3 px-4">2–3 biz days</td>
+              <td class="py-3 px-4">7–14 biz days</td>
+              <td class="py-3 px-4">9–17 days</td>
+              <td class="py-3 px-4 text-slate-600 italic">At checkout</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-slate-500 mt-3">
+        *Processing = time to prepare & pack. †Same‑day if placed before 1 PM Eastern (Mon–Fri).
+      </p>
+    </section>
+
+    <!-- Timeline -->
+    <section class="max-w-7xl mx-auto px-4 pb-12">
+      <h2 class="text-2xl font-semibold mb-6 text-slate-800">Typical Order Journey</h2>
+      <ol class="flex flex-col md:flex-row md:items-stretch gap-6">
+        <!-- Each step -->
+        <li class="flex-1">
+          <div class="bg-white rounded-xl p-5 shadow-sm border border-pink-100 h-full flex flex-col">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="h-10 w-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-semibold">1</div>
+              <h3 class="font-semibold">Order Placed</h3>
+            </div>
+            <p class="text-sm text-slate-600">Confirmation email & order number sent within minutes.</p>
+          </div>
+        </li>
+        <li class="flex-1">
+          <div class="bg-white rounded-xl p-5 shadow-sm border border-pink-100 h-full flex flex-col">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="h-10 w-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-semibold">2</div>
+              <h3 class="font-semibold">Processing</h3>
+            </div>
+            <p class="text-sm text-slate-600">Picked, quality checked, & packed (1–2 business days).</p>
+          </div>
+        </li>
+        <li class="flex-1">
+          <div class="bg-white rounded-xl p-5 shadow-sm border border-pink-100 h-full flex flex-col">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="h-10 w-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-semibold">3</div>
+              <h3 class="font-semibold">In Transit</h3>
+            </div>
+            <p class="text-sm text-slate-600">Carrier scans → tracking link updates daily (or more).</p>
+          </div>
+        </li>
+        <li class="flex-1">
+          <div class="bg-white rounded-xl p-5 shadow-sm border border-pink-100 h-full flex flex-col">
+            <div class="flex items-center gap-3 mb-3">
+              <div class="h-10 w-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-600 font-semibold">4</div>
+              <h3 class="font-semibold">Delivered</h3>
+            </div>
+            <p class="text-sm text-slate-600">Package arrives — enjoy & tag us @BabyFits for a feature!</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- International & Split -->
+    <section class="max-w-7xl mx-auto px-4 pb-12 grid gap-10 lg:grid-cols-2">
+      <div class="bg-white rounded-2xl p-8 shadow-sm border border-pink-100">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">International Shipping</h2>
+        <p class="text-sm text-slate-600 leading-relaxed mb-4">
+          We ship to select countries. Duties & taxes may be collected by the destination carrier or customs authority.
+          These are the customer's responsibility unless explicitly stated at checkout.
+        </p>
+        <ul class="list-disc list-inside text-sm text-slate-600 space-y-1">
+          <li>Currency conversions are estimates; charges post in USD.</li>
+          <li>Some bulky / restricted items may not qualify.</li>
+          <li>Refused packages may incur return fees.</li>
+        </ul>
+      </div>
+      <div class="bg-white rounded-2xl p-8 shadow-sm border border-pink-100">
+        <h2 class="text-xl font-semibold mb-4 text-slate-800">Split Shipments</h2>
+        <p class="text-sm text-slate-600 leading-relaxed">
+          To speed delivery, items may ship from different fulfillment locations. You’ll get separate tracking emails
+          and are charged shipping only once (if applicable).
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="max-w-7xl mx-auto px-4 pb-16">
+      <h2 class="text-2xl font-semibold mb-6 text-slate-800">Shipping FAQ</h2>
+      <div class="space-y-4" id="faqContainer">
+        <!-- FAQ Item Template -->
+        <div class="faq-item bg-white border border-pink-100 rounded-xl shadow-sm" aria-expanded="false">
+          <button type="button" class="w-full flex items-center justify-between gap-4 text-left px-5 py-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-pink-400 rounded-xl">
+            <span class="font-medium text-slate-800">When will my order ship?</span>
+            <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-panel px-5 pb-5 text-sm text-slate-600 leading-relaxed">
+            Most orders ship within 1–2 business days. You’ll receive a tracking email as soon as the label is created.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white border border-pink-100 rounded-xl shadow-sm" aria-expanded="false">
+          <button type="button" class="w-full flex items-center justify-between gap-4 text-left px-5 py-4">
+            <span class="font-medium text-slate-800">Why is tracking not updating?</span>
+            <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-panel px-5 pb-5 text-sm text-slate-600 leading-relaxed">
+            Carriers may take up to 24 hours to show movement. If no scans after 2–3 days, contact our support team.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white border border-pink-100 rounded-xl shadow-sm" aria-expanded="false">
+          <button type="button" class="w-full flex items-center justify-between gap-4 text-left px-5 py-4">
+            <span class="font-medium text-slate-800">Package shows delivered but isn’t here?</span>
+            <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-panel px-5 pb-5 text-sm text-slate-600 leading-relaxed">
+            Check with neighbors, family, entrances, and mail room. Many carriers mark deliveries early. After 48 hours, reach out and we’ll investigate.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white border border-pink-100 rounded-xl shadow-sm" aria-expanded="false">
+          <button type="button" class="w-full flex items-center justify-between gap-4 text-left px-5 py-4">
+            <span class="font-medium text-slate-800">Can I change my shipping address?</span>
+            <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-panel px-5 pb-5 text-sm text-slate-600 leading-relaxed">
+            If the order hasn’t shipped, contact support immediately. Once carrier has it, changes aren’t guaranteed.
+          </div>
+        </div>
+
+        <div class="faq-item bg-white border border-pink-100 rounded-xl shadow-sm" aria-expanded="false">
+          <button type="button" class="w-full flex items-center justify-between gap-4 text-left px-5 py-4">
+            <span class="font-medium text-slate-800">Do you ship to P.O. Boxes & APO/FPO?</span>
+            <svg class="w-5 h-5 text-pink-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div class="faq-panel px-5 pb-5 text-sm text-slate-600 leading-relaxed">
+            Standard shipping generally supports P.O. and APO/FPO addresses. Expedited/Express may have restrictions.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Help CTA -->
+    <section class="max-w-5xl mx-auto px-4 pb-16">
+      <div class="bg-gradient-to-r from-pink-50 to-white border border-pink-100 rounded-2xl p-8 shadow-sm flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+        <div class="flex items-start gap-4">
+          <div class="h-12 w-12 bg-pink-100 text-pink-600 rounded-xl flex items-center justify-center shadow-sm">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 11.5v4m0-8v.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-slate-800">Need more assistance?</h3>
+            <p class="text-sm text-slate-600 mt-1">Our Customer Service team is happy to help with shipping questions or delivery issues.</p>
+          </div>
+        </div>
+        <a href="contact.html" class="inline-flex items-center gap-2 bg-pink-500 text-white font-medium px-6 py-3 rounded-lg shadow hover:bg-pink-600 transition">
+          Contact Support
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer (simplified to align with your pattern) -->
+  <footer class="bg-[#fff8fb] border-t border-pink-200">
+    <div class="max-w-7xl mx-auto px-4 py-12 grid gap-10 md:grid-cols-5 text-sm">
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">Our Brands</h4>
+        <ul class="space-y-1 text-slate-600">
+          <li>BabyFits</li><li>CozyKidz</li><li>SoftSteps</li><li>TinyTrends</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">Help</h4>
+        <ul class="space-y-1">
+          <li><a href="customer-service.html" class="hover:underline">Customer Service</a></li>
+          <li><a href="track-order.html" class="hover:underline">Track Order</a></li>
+          <li><a href="shipping.html" class="hover:underline font-semibold">Shipping</a></li>
+          <li><a href="returns.html" class="hover:underline">Returns</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">Quick Links</h4>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:underline">Size Guide</a></li>
+          <li><a href="#" class="hover:underline">Gift Cards</a></li>
+          <li><a href="#" class="hover:underline">Today’s Deals</a></li>
+          <li><a href="#" class="hover:underline">My Account</a></li>
+          <li><a href="#" class="hover:underline">Affiliate Program</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">About Us</h4>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:underline">Our Story</a></li>
+          <li><a href="#" class="hover:underline">Careers</a></li>
+          <li><a href="#" class="hover:underline">Sustainability</a></li>
+          <li><a href="#" class="hover:underline">Press</a></li>
+          <li><a href="#" class="hover:underline">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">Get In Touch</h4>
+        <div class="flex gap-3">
+          <a href="#"><img src="icons/instagram.svg" alt="Instagram" class="w-6 h-6"></a>
+          <a href="#"><img src="icons/tiktok.svg" alt="TikTok" class="w-6 h-6"></a>
+          <a href="#"><img src="icons/facebook.svg" alt="Facebook" class="w-6 h-6"></a>
+          <a href="#"><img src="icons/x.svg" alt="X" class="w-6 h-6"></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-xs text-slate-500 pb-6">&copy; 2025 BabyFits. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-item > button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const expanded = item.getAttribute('aria-expanded') === 'true';
+        // Close others
+        document.querySelectorAll('.faq-item').forEach(i => i.setAttribute('aria-expanded','false'));
+        // Toggle this
+        item.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      });
+    });
+  </script>
+</body>
+</html>

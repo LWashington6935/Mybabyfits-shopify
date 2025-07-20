@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My Account – BabyFits</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Poppins',sans-serif; background:#F5F5F5; color:#334155; }
+    .tab-btn[aria-selected="true"] {
+      background:#ec4899; color:#fff; box-shadow:0 2px 6px rgba(236,72,153,.35);
+    }
+    .glass {
+      backdrop-filter:blur(14px);
+      background:rgba(255,255,255,0.6);
+    }
+    ::selection { background:#f9a8d4; color:#1f2937; }
+    .pill { background:#fde4ef; color:#c02661; font-size:.6rem; padding:4px 8px; font-weight:600; border-radius:999px; letter-spacing:.5px; }
+    .status-badge { font-size:.65rem; font-weight:600; padding:4px 8px; border-radius:999px; }
+    .status-processing { background:#fef9c3; color:#854d0e; }
+    .status-shipped { background:#dbeafe; color:#1e40af; }
+    .status-delivered { background:#dcfce7; color:#166534; }
+    .status-cancelled { background:#fee2e2; color:#991b1b; }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-[#FCD5CE] h-16 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="images/babyfits-logo.png" alt="BabyFits Logo" class="h-12 w-12">
+        <span class="font-semibold text-lg hidden sm:inline">BabyFits</span>
+        <span class="pill hidden sm:inline">ACCOUNT</span>
+      </a>
+      <nav class="flex items-center gap-6 text-sm font-medium text-gray-700">
+        <a href="index.html" class="hover:text-pink-600">Home</a>
+        <a href="shop.html" class="hover:text-pink-600">Shop</a>
+        <a href="girls.html" class="hover:text-pink-600">Girls</a>
+        <a href="boys.html" class="hover:text-pink-600">Boys</a>
+        <a href="essentials.html" class="hover:text-pink-600">Essentials</a>
+        <a href="gift-cards.html" class="hover:text-pink-600">Gift Cards</a>
+        <a href="cart.html" class="hover:text-pink-600">Cart 🛒</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-pink-100 via-rose-50 to-white"></div>
+      <div class="relative max-w-7xl mx-auto px-4 py-12">
+        <h1 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-2">My Account</h1>
+        <p class="text-slate-600 max-w-2xl">
+          Manage orders, addresses, and preferences. Create an account to track your BabyFits journey.
+        </p>
+      </div>
+    </section>
+
+    <!-- Auth Panels (shown if not logged in) -->
+    <section id="authSection" class="max-w-xl mx-auto px-4 -mt-6 pb-16">
+      <div class="bg-white/80 backdrop-blur border border-pink-100 rounded-2xl shadow p-6">
+        <div class="flex gap-2 mb-6">
+          <button class="tab-btn flex-1 px-4 py-2 rounded-md text-sm font-medium bg-white hover:bg-pink-100"
+                  data-tab="signin" aria-selected="true">Sign In</button>
+          <button class="tab-btn flex-1 px-4 py-2 rounded-md text-sm font-medium bg-white hover:bg-pink-100"
+                  data-tab="register" aria-selected="false">Create Account</button>
+        </div>
+
+        <!-- Sign In Form -->
+        <form id="formSignin" class="space-y-5 auth-panel" data-panel="signin">
+          <div>
+            <label class="block text-sm font-medium mb-1" for="signinEmail">Email</label>
+            <input id="signinEmail" type="email" required
+                   class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+            <div>
+              <label class="block text-sm font-medium mb-1" for="signinPassword">Password</label>
+              <input id="signinPassword" type="password" required minlength="6"
+                     class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+            </div>
+            <button class="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 rounded-md transition">
+              Sign In
+            </button>
+            <p id="signinStatus" class="text-sm font-medium"></p>
+            <p class="text-xs text-slate-500">Demo only – no real authentication yet.</p>
+        </form>
+
+        <!-- Register Form -->
+        <form id="formRegister" class="space-y-5 auth-panel hidden" data-panel="register">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1" for="regFirst">First Name</label>
+              <input id="regFirst" type="text" required
+                     class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1" for="regLast">Last Name</label>
+              <input id="regLast" type="text" required
+                     class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="regEmail">Email</label>
+            <input id="regEmail" type="email" required
+                   class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="regPassword">Password</label>
+            <input id="regPassword" type="password" required minlength="6"
+                   class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <div class="flex items-center gap-2 text-xs text-slate-600">
+            <input id="regNews" type="checkbox" class="rounded border-pink-300">
+            <label for="regNews">Email me style inspiration & exclusive offers</label>
+          </div>
+          <button class="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-2 rounded-md transition">
+            Create Account
+          </button>
+          <p id="registerStatus" class="text-sm font-medium"></p>
+          <p class="text-xs text-slate-500">Passwords stored in localStorage ONLY for demo (do not use real password).</p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Dashboard (hidden until logged in) -->
+    <section id="dashboardSection" class="max-w-7xl mx-auto px-4 py-14 hidden">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-10">
+        <div>
+          <h2 class="text-2xl font-semibold text-slate-800 mb-1">Welcome back, <span id="dashName">User</span> 👋</h2>
+          <p class="text-slate-600 text-sm">Manage your recent orders, saved addresses & preferences below.</p>
+        </div>
+        <div class="flex gap-3">
+          <button id="btnSignOut"
+                  class="bg-white border border-pink-300 text-pink-700 font-medium px-4 py-2 rounded-md hover:bg-pink-50 transition">
+            Sign Out
+          </button>
+          <button id="btnRefreshDemo"
+                  class="bg-pink-500 text-white font-medium px-4 py-2 rounded-md hover:bg-pink-600 transition">
+            Reload Demo Data
+          </button>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-10">
+        <!-- Left Column (Orders & Wishlist) -->
+        <div class="lg:col-span-2 space-y-10">
+
+          <!-- Recent Orders -->
+          <div class="bg-white rounded-2xl shadow-sm border border-pink-100 p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-semibold text-slate-800">Recent Orders</h3>
+              <a href="track-order.html" class="text-sm text-pink-600 hover:underline">Track Order →</a>
+            </div>
+            <div id="ordersList" class="divide-y divide-pink-50">
+              <!-- Orders injected -->
+            </div>
+            <p id="ordersEmpty" class="text-sm text-slate-500 mt-4 hidden">No orders yet. Start shopping!</p>
+          </div>
+
+          <!-- Wishlist -->
+          <div class="bg-white rounded-2xl shadow-sm border border-pink-100 p-6">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-lg font-semibold text-slate-800">Wishlist</h3>
+              <a href="shop.html" class="text-sm text-pink-600 hover:underline">Browse Products →</a>
+            </div>
+            <div id="wishlistGrid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+              <!-- Wishlist items -->
+            </div>
+            <p id="wishlistEmpty" class="text-sm text-slate-500 mt-4 hidden">Your wishlist is empty.</p>
+          </div>
+
+        </div>
+
+        <!-- Right Column (Account Info) -->
+        <div class="space-y-10">
+
+          <!-- Account Details -->
+          <div class="bg-white rounded-2xl shadow-sm border border-pink-100 p-6">
+            <h3 class="text-lg font-semibold text-slate-800 mb-4">Account Details</h3>
+            <dl class="text-sm text-slate-600 space-y-2" id="accountDetails">
+              <!-- Populated -->
+            </dl>
+            <button id="btnEditAccount" class="mt-4 text-xs font-medium text-pink-600 hover:underline">
+              Edit (demo)
+            </button>
+          </div>
+
+            <!-- Addresses -->
+            <div class="bg-white rounded-2xl shadow-sm border border-pink-100 p-6">
+              <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold text-slate-800">Saved Addresses</h3>
+                <button id="btnAddAddress"
+                        class="bg-pink-500 text-white text-xs px-3 py-1.5 rounded hover:bg-pink-600 transition">
+                  Add
+                </button>
+              </div>
+              <div id="addressList" class="space-y-4">
+                <!-- Addresses -->
+              </div>
+              <p id="addressEmpty" class="text-sm text-slate-500 mt-2 hidden">No addresses saved.</p>
+            </div>
+
+          <!-- Preferences -->
+          <div class="bg-white rounded-2xl shadow-sm border border-pink-100 p-6">
+            <h3 class="text-lg font-semibold text-slate-800 mb-4">Email Preferences</h3>
+            <div class="space-y-3 text-sm">
+              <label class="flex items-start gap-3">
+                <input type="checkbox" id="prefNews" class="mt-1 rounded border-pink-300">
+                <span><span class="font-medium">News & Style Updates</span><br><span class="text-slate-500 text-xs">Weekly – new collections & stories.</span></span>
+              </label>
+              <label class="flex items-start gap-3">
+                <input type="checkbox" id="prefDeals" class="mt-1 rounded border-pink-300">
+                <span><span class="font-medium">Exclusive Deals</span><br><span class="text-slate-500 text-xs">Flash sales & member offers.</span></span>
+              </label>
+              <label class="flex items-start gap-3">
+                <input type="checkbox" id="prefReminders" class="mt-1 rounded border-pink-300">
+                <span><span class="font-medium">Cart & Re‑stock Reminders</span><br><span class="text-slate-500 text-xs">Alerts when saved items return.</span></span>
+              </label>
+            </div>
+            <button id="btnSavePrefs"
+                    class="mt-5 bg-pink-500 hover:bg-pink-600 text-white text-sm px-5 py-2 rounded font-medium transition">
+              Save Preferences
+            </button>
+            <p id="prefsStatus" class="text-xs font-medium mt-2"></p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#fff8fb] border-t border-pink-200">
+    <div class="max-w-7xl mx-auto px-4 py-10 grid gap-10 md:grid-cols-5 text-sm">
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">Help</h4>
+        <ul class="space-y-1">
+          <li><a href="customer-service.html" class="hover:underline">Customer Service</a></li>
+          <li><a href="track-order.html" class="hover:underline">Track Order</a></li>
+          <li><a href="shipping.html" class="hover:underline">Shipping</a></li>
+          <li><a href="returns.html" class="hover:underline">Returns</a></li>
+          <li><a href="size-guide.html" class="hover:underline">Size Guide</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">Account</h4>
+        <ul class="space-y-1">
+          <li><a href="my-account.html" class="hover:underline font-semibold">My Account</a></li>
+          <li><a href="gift-cards.html" class="hover:underline">Gift Cards</a></li>
+          <li><a href="todays-deals.html" class="hover:underline">Today’s Deals</a></li>
+          <li><a href="affiliate-program.html" class="hover:underline">Affiliate Program</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">About</h4>
+        <ul class="space-y-1">
+          <li><a href="#" class="hover:underline">Our Story</a></li>
+          <li><a href="#" class="hover:underline">Sustainability</a></li>
+          <li><a href="#" class="hover:underline">Careers</a></li>
+          <li><a href="#" class="hover:underline">Press</a></li>
+          <li><a href="#" class="hover:underline">Blog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">Follow</h4>
+        <div class="flex gap-3">
+          <a href="#"><img src="icons/instagram.svg" alt="Instagram" class="w-6 h-6"></a>
+          <a href="#"><img src="icons/tiktok.svg" alt="TikTok" class="w-6 h-6"></a>
+          <a href="#"><img src="icons/facebook.svg" alt="Facebook" class="w-6 h-6"></a>
+          <a href="#"><img src="icons/x.svg" alt="X" class="w-6 h-6"></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-semibold text-pink-600 mb-2">Newsletter</h4>
+        <form id="footerNews" class="flex gap-2">
+          <input type="email" placeholder="Email" required
+                 class="flex-1 rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          <button class="bg-pink-500 text-white px-4 rounded hover:bg-pink-600">Join</button>
+        </form>
+        <p id="footerNewsMsg" class="text-xs mt-2"></p>
+      </div>
+    </div>
+    <div class="text-center text-xs text-slate-500 pb-6">&copy; 2025 BabyFits. All rights reserved.</div>
+  </footer>
+
+  <script>
+    /************ SIMPLE DEMO "AUTH" ************/
+    const KEY_USER = 'bf_user';
+    const KEY_ORDERS = 'bf_orders';
+    const KEY_WISHLIST = 'bf_wishlist';
+    const KEY_ADDR = 'bf_addresses';
+    const KEY_PREFS = 'bf_prefs';
+
+    const authSection = document.getElementById('authSection');
+    const dashboardSection = document.getElementById('dashboardSection');
+    const dashName = document.getElementById('dashName');
+
+    function getUser(){ return JSON.parse(localStorage.getItem(KEY_USER) || 'null'); }
+    function setUser(u){ localStorage.setItem(KEY_USER, JSON.stringify(u)); }
+    function signOut(){
+      localStorage.removeItem(KEY_USER);
+      location.reload();
+    }
+
+    /************ INIT DEMO DATA ************/
+    function ensureDemoData(){
+      if(!localStorage.getItem(KEY_ORDERS)){
+        const demoOrders = [
+          {
+            id:'BF-10045',
+            date:'2025-02-05',
+            total: 54.94,
+            status:'Processing',
+            items:[
+              { name:'Pink Cotton Onesie', qty:1, price:19.99 },
+              { name:'Neutral Bib Set', qty:1, price:14.99 },
+              { name:'Shipping', qty:1, price:9.99 },
+              { name:'Tax', qty:1, price:9.97 }
+            ]
+          },
+          {
+            id:'BF-10031',
+            date:'2025-01-28',
+            total:34.95,
+            status:'Delivered',
+            items:[
+              { name:'Little Man Suit', qty:1, price:34.95 }
+            ]
+          }
+        ];
+        localStorage.setItem(KEY_ORDERS, JSON.stringify(demoOrders));
+      }
+      if(!localStorage.getItem(KEY_WISHLIST)){
+        const demoWish = [
+          { id:'201', name:'Floral Dress Set', image:'images/girls1.jpg', price:29.99 },
+          { id:'301', name:'Little Man Suit', image:'images/boys1.jpg', price:34.95 }
+        ];
+        localStorage.setItem(KEY_WISHLIST, JSON.stringify(demoWish));
+      }
+    }
+
+    /************ RENDER DASHBOARD ************/
+    function renderDashboard(){
+      const user = getUser();
+      if(!user){
+        authSection.classList.remove('hidden');
+        dashboardSection.classList.add('hidden');
+        return;
+      }
+      authSection.classList.add('hidden');
+      dashboardSection.classList.remove('hidden');
+
+      dashName.textContent = user.firstName || 'User';
+
+      // Account details
+      const acct = document.getElementById('accountDetails');
+      acct.innerHTML = `
+        <div><span class="font-medium">Name:</span> ${user.firstName||''} ${user.lastName||''}</div>
+        <div><span class="font-medium">Email:</span> ${user.email}</div>
+        <div><span class="font-medium">Member Since:</span> ${user.since || '2025'}</div>
+      `;
+
+      // Orders
+      const orders = JSON.parse(localStorage.getItem(KEY_ORDERS) || '[]');
+      const ordersList = document.getElementById('ordersList');
+      const ordersEmpty = document.getElementById('ordersEmpty');
+      ordersList.innerHTML = '';
+      if(!orders.length){
+        ordersEmpty.classList.remove('hidden');
+      } else {
+        ordersEmpty.classList.add('hidden');
+        orders.forEach(o => {
+          const statusClass = {
+            'Processing':'status-processing',
+            'Shipped':'status-shipped',
+            'Delivered':'status-delivered',
+            'Cancelled':'status-cancelled'
+          }[o.status] || 'status-processing';
+          const div = document.createElement('div');
+          div.className = 'py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3';
+          div.innerHTML = `
+            <div>
+              <p class="font-medium text-slate-800">Order #${o.id}</p>
+              <p class="text-xs text-slate-500">${o.date}</p>
+            </div>
+            <div class="flex flex-col items-start sm:items-end gap-1">
+              <span class="status-badge ${statusClass}">${o.status}</span>
+              <span class="text-sm font-medium">$${o.total.toFixed(2)}</span>
+              <button class="text-xs text-pink-600 hover:underline" data-view="${o.id}">View Details</button>
+            </div>
+          `;
+          ordersList.appendChild(div);
+        });
+      }
+
+      // Wishlist
+      const wishlist = JSON.parse(localStorage.getItem(KEY_WISHLIST) || '[]');
+      const wlGrid = document.getElementById('wishlistGrid');
+      const wlEmpty = document.getElementById('wishlistEmpty');
+      wlGrid.innerHTML = '';
+      if(!wishlist.length){
+        wlEmpty.classList.remove('hidden');
+      } else {
+        wlEmpty.classList.add('hidden');
+        wishlist.forEach(item => {
+          const card = document.createElement('div');
+            card.className = 'border border-pink-100 rounded-lg p-3 bg-white flex flex-col';
+            card.innerHTML = `
+              <a href="product.html?id=${item.id}">
+                <img src="${item.image}" alt="${item.name}" class="w-full h-32 object-cover rounded mb-2">
+              </a>
+              <p class="text-sm font-medium line-clamp-2 mb-1">${item.name}</p>
+              <p class="text-xs text-pink-600 font-semibold mb-2">$${item.price.toFixed(2)}</p>
+              <button data-add="${item.id}" class="mt-auto bg-pink-500 hover:bg-pink-600 text-white text-xs font-semibold px-3 py-1.5 rounded">
+                Add to Cart
+              </button>
+            `;
+          wlGrid.appendChild(card);
+        });
+      }
+
+      // Addresses
+      const addresses = JSON.parse(localStorage.getItem(KEY_ADDR) || '[]');
+      const addrList = document.getElementById('addressList');
+      const addrEmpty = document.getElementById('addressEmpty');
+      addrList.innerHTML = '';
+      if(!addresses.length){
+        addrEmpty.classList.remove('hidden');
+      } else {
+        addrEmpty.classList.add('hidden');
+        addresses.forEach((a,i) => {
+          const div = document.createElement('div');
+          div.className = 'p-4 border border-pink-100 rounded-lg bg-white flex justify-between gap-4';
+          div.innerHTML = `
+            <div class="text-xs leading-relaxed">
+              <p class="font-medium text-slate-700">${a.name}</p>
+              <p>${a.line1}</p>
+              <p>${a.city}, ${a.state} ${a.postal}</p>
+              <p>${a.country}</p>
+              ${a.default ? '<span class="inline-block mt-1 bg-pink-100 text-pink-700 px-2 py-0.5 rounded-full text-[10px] font-semibold">DEFAULT</span>' : ''}
+            </div>
+            <div class="flex flex-col gap-2 text-[11px]">
+              <button data-set-default="${i}" class="text-pink-600 hover:underline">Set Default</button>
+              <button data-delete-addr="${i}" class="text-red-500 hover:underline">Delete</button>
+            </div>
+          `;
+          addrList.appendChild(div);
+        });
+      }
+
+      // Prefs
+      const prefs = JSON.parse(localStorage.getItem(KEY_PREFS) || '{}');
+      document.getElementById('prefNews').checked = !!prefs.news;
+      document.getElementById('prefDeals').checked = !!prefs.deals;
+      document.getElementById('prefReminders').checked = !!prefs.reminders;
+    }
+
+    /************ EVENTS: Auth Tabs ************/
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b=>b.setAttribute('aria-selected','false'));
+        btn.setAttribute('aria-selected','true');
+        const tab = btn.dataset.tab;
+        document.querySelectorAll('.auth-panel').forEach(p => {
+          p.classList.toggle('hidden', p.dataset.panel !== tab);
+        });
+      });
+    });
+
+    /************ EVENTS: Sign In / Register (Demo Only) ************/
+    document.getElementById('formSignin').addEventListener('submit', e => {
+      e.preventDefault();
+      const email = document.getElementById('signinEmail').value.trim();
+      const pass = document.getElementById('signinPassword').value;
+      const user = getUser();
+      const status = document.getElementById('signinStatus');
+      if(!user || user.email !== email || user.password !== pass){
+        status.textContent = 'Invalid credentials (demo).';
+        status.className = 'text-sm font-medium text-red-600';
+        return;
+      }
+      status.textContent = 'Signed in!';
+      status.className = 'text-sm font-medium text-green-600';
+      setTimeout(() => renderDashboard(), 400);
+    });
+
+    document.getElementById('formRegister').addEventListener('submit', e => {
+      e.preventDefault();
+      const u = {
+        firstName: document.getElementById('regFirst').value.trim(),
+        lastName: document.getElementById('regLast').value.trim(),
+        email: document.getElementById('regEmail').value.trim(),
+        password: document.getElementById('regPassword').value,
+        since: new Date().toISOString().slice(0,10)
+      };
+      setUser(u);
+      document.getElementById('registerStatus').textContent = 'Account created! You are signed in.';
+      document.getElementById('registerStatus').className = 'text-sm font-medium text-green-600';
+      setTimeout(()=>renderDashboard(),500);
+    });
+
+    /************ EVENTS: Sign Out ************/
+    document.getElementById('btnSignOut').addEventListener('click', signOut);
+
+    /************ EVENTS: Preferences ************/
+    document.getElementById('btnSavePrefs').addEventListener('click', () => {
+      const prefs = {
+        news: document.getElementById('prefNews').checked,
+        deals: document.getElementById('prefDeals').checked,
+        reminders: document.getElementById('prefReminders').checked
+      };
+      localStorage.setItem(KEY_PREFS, JSON.stringify(prefs));
+      const ps = document.getElementById('prefsStatus');
+      ps.textContent = 'Preferences saved.';
+      ps.className = 'text-xs font-medium text-green-600';
+      setTimeout(()=> ps.textContent='',1500);
+    });
+
+    /************ EVENTS: Addresses ************/
+    document.getElementById('btnAddAddress').addEventListener('click', () => {
+      const name = prompt('Name');
+      if(!name) return;
+      const line1 = prompt('Address line 1');
+      const city = prompt('City');
+      const state = prompt('State');
+      const postal = prompt('Postal Code');
+      const country = prompt('Country');
+      const addresses = JSON.parse(localStorage.getItem(KEY_ADDR) || '[]');
+      addresses.push({ name,line1,city,state,postal,country, default: addresses.length===0 });
+      localStorage.setItem(KEY_ADDR, JSON.stringify(addresses));
+      renderDashboard();
+    });
+
+    document.getElementById('addressList').addEventListener('click', e => {
+      const setDef = e.target.getAttribute('data-set-default');
+      const del = e.target.getAttribute('data-delete-addr');
+      if(setDef !== null){
+        const addresses = JSON.parse(localStorage.getItem(KEY_ADDR) || '[]');
+        addresses.forEach((a,i)=>a.default = i==setDef);
+        localStorage.setItem(KEY_ADDR, JSON.stringify(addresses));
+        renderDashboard();
+      }
+      if(del !== null){
+        const addresses = JSON.parse(localStorage.getItem(KEY_ADDR) || '[]');
+        addresses.splice(del,1);
+        if(addresses.length) addresses[0].default = true;
+        localStorage.setItem(KEY_ADDR, JSON.stringify(addresses));
+        renderDashboard();
+      }
+    });
+
+    /************ EVENTS: Wishlist Add to Cart ************/
+    document.getElementById('wishlistGrid').addEventListener('click', e => {
+      const id = e.target.getAttribute('data-add');
+      if(!id) return;
+      const wishlist = JSON.parse(localStorage.getItem(KEY_WISHLIST) || '[]');
+      const item = wishlist.find(w=>w.id===id);
+      if(!item) return;
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const existing = cart.find(c=>c.id===item.id);
+      if(existing) existing.quantity = (existing.quantity||1)+1;
+      else cart.push({ id:item.id, name:item.name, price:item.price, image:item.image, quantity:1 });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      e.target.textContent = 'Added ✓';
+      e.target.disabled = true;
+      setTimeout(()=> { e.target.textContent='Add to Cart'; e.target.disabled=false; },1200);
+    });
+
+    /************ EVENTS: Orders View Details ************/
+    document.getElementById('ordersList').addEventListener('click', e => {
+      const view = e.target.getAttribute('data-view');
+      if(!view) return;
+      const orders = JSON.parse(localStorage.getItem(KEY_ORDERS) || '[]');
+      const order = orders.find(o=>o.id===view);
+      if(!order) return;
+      alert('Order #' + order.id + '\\nItems:\\n' + order.items.map(i=>`${i.qty} x ${i.name} ($${i.price.toFixed(2)})`).join('\\n'));
+    });
+
+    /************ Reload Demo Data ************/
+    document.getElementById('btnRefreshDemo').addEventListener('click', () => {
+      localStorage.removeItem(KEY_ORDERS);
+      localStorage.removeItem(KEY_WISHLIST);
+      ensureDemoData();
+      renderDashboard();
+    });
+
+    /************ Footer newsletter ************/
+    document.getElementById('footerNews').addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('footerNewsMsg').textContent = 'Thanks for joining! 🎉';
+      e.target.reset();
+      setTimeout(()=>document.getElementById('footerNewsMsg').textContent='',3000);
+    });
+
+    /************ ON LOAD ************/
+    ensureDemoData();
+    renderDashboard();
+  </script>
+</body>
+</html>

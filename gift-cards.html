@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gift Cards – BabyFits</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; background:#F5F5F5; color:#333; }
+    .glass {
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.65);
+    }
+    .gradient-card {
+      background: linear-gradient(135deg,#fbc2eb 0%, #a6c1ee 100%);
+    }
+    .denom-btn[aria-pressed="true"] {
+      background:#ec4899; color:#fff; border-color:#ec4899;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- Header -->
+  <header class="bg-[#FCD5CE] h-16 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2">
+        <img src="images/babyfits-logo.png" alt="BabyFits" class="h-12 w-12">
+        <span class="font-bold text-xl">BabyFits</span>
+      </a>
+      <nav class="flex items-center gap-6 text-sm">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="shop.html" class="hover:underline">Shop</a>
+        <a href="girls.html" class="hover:underline">Girls</a>
+        <a href="boys.html" class="hover:underline">Boys</a>
+        <a href="essentials.html" class="hover:underline">Essentials</a>
+        <a href="cart.html" class="hover:underline">Cart 🛒</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="flex-grow">
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0">
+        <img src="images/hero-banner.jpg" alt="" class="w-full h-full object-cover opacity-40">
+      </div>
+      <div class="relative max-w-4xl mx-auto px-6 py-20 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 text-pink-700">Give the Gift of Adorable Style</h1>
+        <p class="text-lg md:text-xl text-gray-700 mb-6">
+          BabyFits digital gift cards arrive instantly—perfect for showers, birthdays, or just because.
+        </p>
+        <a href="#purchase" class="inline-block bg-pink-500 hover:bg-pink-600 text-white font-semibold px-8 py-3 rounded-full transition shadow">
+          Purchase a Gift Card
+        </a>
+      </div>
+    </section>
+
+    <!-- Purchase Section -->
+    <section id="purchase" class="max-w-7xl mx-auto px-6 py-16 grid lg:grid-cols-2 gap-12">
+      <!-- Configurator -->
+      <div>
+        <h2 class="text-2xl font-semibold mb-4">Buy a Gift Card</h2>
+        <p class="text-gray-600 mb-6">
+          Choose a denomination, personalize it, and we’ll email the card instantly to your recipient (or to you).
+        </p>
+
+        <!-- Denominations -->
+        <div class="mb-6">
+          <h3 class="font-medium mb-2">Select Amount</h3>
+            <div class="flex flex-wrap gap-3" id="denominationGroup">
+              <!-- buttons injected by JS OR you can hardcode -->
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form id="giftCardForm" class="space-y-5 bg-white p-6 rounded-xl shadow">
+          <div>
+            <label class="block text-sm font-medium mb-1" for="toName">Recipient Name</label>
+            <input id="toName" type="text" required class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="toEmail">Recipient Email</label>
+            <input id="toEmail" type="email" required class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="fromName">Your Name</label>
+            <input id="fromName" type="text" required class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="message">Personal Message <span class="text-gray-400 text-xs">(optional)</span></label>
+            <textarea id="message" rows="3" maxlength="240" class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400" placeholder="Write something sweet…"></textarea>
+            <p id="charsLeft" class="text-xs text-gray-500 mt-1 text-right">0 / 240</p>
+          </div>
+
+          <div class="flex items-center justify-between">
+            <div class="text-sm">
+              <span class="text-gray-500">Selected Amount:</span>
+              <span id="selectedAmount" class="font-semibold text-pink-600">$25.00</span>
+            </div>
+            <button type="submit" class="bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-md font-semibold transition shadow">
+              Add to Cart
+            </button>
+          </div>
+          <p id="formStatus" class="text-sm font-medium"></p>
+        </form>
+      </div>
+
+      <!-- Preview Card -->
+      <div class="flex flex-col">
+        <h2 class="text-2xl font-semibold mb-4">Preview</h2>
+        <div class="gradient-card rounded-xl p-6 text-white shadow-xl relative overflow-hidden">
+          <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10"></div>
+          <div class="absolute -bottom-12 -left-8 w-56 h-56 rounded-full bg-white/10"></div>
+          <div class="relative">
+            <h3 class="text-xl font-semibold mb-2">BabyFits Gift Card</h3>
+            <p class="text-sm mb-6 opacity-90">The cutest way to spoil a tiny human.</p>
+            <p class="text-4xl font-bold mb-4" id="previewAmount">$25</p>
+            <div class="bg-white/20 rounded p-4 text-sm leading-relaxed">
+              <p><span class="opacity-80">To:</span> <span id="previewTo">—</span></p>
+              <p><span class="opacity-80">From:</span> <span id="previewFrom">—</span></p>
+              <p class="mt-2 italic line-clamp-4" id="previewMsg">Your personal message appears here.</p>
+              <p class="mt-4 font-mono tracking-wide text-xs opacity-80">Code: XXXX-XXXX-XXXX</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perks -->
+        <ul class="mt-8 space-y-3 text-sm">
+          <li class="flex items-start gap-2"><span class="text-pink-500">✔</span> Delivered instantly by email (or schedule later – future feature).</li>
+          <li class="flex items-start gap-2"><span class="text-pink-500">✔</span> Never expires. Usable on any BabyFits item.</li>
+          <li class="flex items-start gap-2"><span class="text-pink-500">✔</span> Partial balances remain for future purchases.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Redeem Section -->
+    <section class="bg-white border-y border-pink-100">
+      <div class="max-w-5xl mx-auto px-6 py-14 grid md:grid-cols-2 gap-12">
+        <div>
+          <h2 class="text-2xl font-semibold mb-4">Have a Gift Card?</h2>
+          <p class="text-gray-600 mb-6">
+            Enter your code below to check the current balance. (Demo only – no real lookup.)
+          </p>
+          <form id="redeemForm" class="space-y-4">
+            <input type="text" id="redeemCode" placeholder="Enter gift card code" required
+                   class="w-full rounded border border-pink-200 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-pink-400">
+            <button class="bg-pink-500 hover:bg-pink-600 text-white px-5 py-2 rounded font-medium transition">
+              Check Balance
+            </button>
+            <p id="redeemStatus" class="text-sm font-medium mt-2"></p>
+          </form>
+        </div>
+
+        <div>
+          <h2 class="text-2xl font-semibold mb-4">How It Works</h2>
+          <ol class="list-decimal list-inside space-y-2 text-gray-700 text-sm">
+            <li>Choose an amount & personalize.</li>
+            <li>Add to cart & complete checkout.</li>
+            <li>Recipient gets an instant email with their card.</li>
+            <li>They redeem at checkout by entering the code.</li>
+          </ol>
+          <p class="mt-4 text-xs text-gray-500">
+            * For the demo, gift card purchase adds a placeholder item to your cart. Integrate real codes later with your backend / Stripe.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="max-w-5xl mx-auto px-6 py-16">
+      <h2 class="text-2xl font-semibold mb-8 text-center">Gift Card FAQ</h2>
+      <div class="space-y-4" id="faq">
+        <!-- FAQ item template -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#FCD5CE] p-6 text-center text-sm text-gray-700">
+    &copy; 2025 BabyFits. All rights reserved.
+  </footer>
+
+  <script>
+    /* ---------- Data ---------- */
+    const DENOMINATIONS = [25, 50, 75, 100, 150];
+    const FAQ_ITEMS = [
+      {
+        q: "When will the gift card arrive?",
+        a: "Immediately after purchase (demo). In a production build you can also offer scheduled delivery."
+      },
+      {
+        q: "Does it expire?",
+        a: "No. BabyFits gift cards currently have no expiration date."
+      },
+      {
+        q: "Can I reload a card?",
+        a: "Reload functionality is not in this demo, but you could add an endpoint to increase balance."
+      },
+      {
+        q: "Can I refund a gift card?",
+        a: "Refunds follow local regulations; typically unused balances within a cooling-off period may be refunded."
+      },
+      {
+        q: "Can I use multiple cards?",
+        a: "Yes—during real checkout you’d apply multiple codes and combine balances."
+      }
+    ];
+
+    /* ---------- DOM Refs ---------- */
+    const denomGroup = document.getElementById('denominationGroup');
+    const selectedAmountSpan = document.getElementById('selectedAmount');
+    const previewAmount = document.getElementById('previewAmount');
+    const toName = document.getElementById('toName');
+    const toEmail = document.getElementById('toEmail');
+    const fromName = document.getElementById('fromName');
+    const message = document.getElementById('message');
+    const previewTo = document.getElementById('previewTo');
+    const previewFrom = document.getElementById('previewFrom');
+    const previewMsg = document.getElementById('previewMsg');
+    const charsLeft = document.getElementById('charsLeft');
+    const formStatus = document.getElementById('formStatus');
+    const redeemForm = document.getElementById('redeemForm');
+    const redeemStatus = document.getElementById('redeemStatus');
+    const faqWrapper = document.getElementById('faq');
+
+    let selectedAmount = DENOMINATIONS[0];
+
+    /* ---------- Build Denomination Buttons ---------- */
+    DENOMINATIONS.forEach(val => {
+      const btn = document.createElement('button');
+      btn.type = "button";
+      btn.className =
+        "denom-btn px-4 py-2 rounded border border-pink-300 text-sm font-medium bg-white hover:bg-pink-50 transition focus:outline-none focus:ring-2 focus:ring-pink-400";
+      btn.textContent = `$${val}`;
+      btn.setAttribute('aria-pressed', val === selectedAmount ? 'true' : 'false');
+      btn.addEventListener('click', () => {
+        selectedAmount = val;
+        updateAmountUI();
+      });
+      denomGroup.appendChild(btn);
+    });
+
+    function updateAmountUI() {
+      selectedAmountSpan.textContent = `$${selectedAmount.toFixed(2)}`;
+      previewAmount.textContent = `$${selectedAmount}`;
+      [...denomGroup.children].forEach(c =>
+        c.setAttribute('aria-pressed',
+          parseInt(c.textContent.replace('$','')) === selectedAmount ? 'true':'false'));
+    }
+
+    /* ---------- Live Preview ---------- */
+    function updatePreview() {
+      previewTo.textContent = toName.value || '—';
+      previewFrom.textContent = fromName.value || '—';
+      previewMsg.textContent = message.value || 'Your personal message appears here.';
+      charsLeft.textContent = `${message.value.length} / 240`;
+    }
+    [toName, fromName, message].forEach(el => el.addEventListener('input', updatePreview));
+    updatePreview();
+
+    /* ---------- Form Submit (Mock Add to Cart) ---------- */
+    document.getElementById('giftCardForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const cart = JSON.parse(localStorage.getItem('cart') || '[]');
+      const item = {
+        id: 'giftcard-' + Date.now(),
+        type: 'giftcard',
+        name: `Gift Card ($${selectedAmount})`,
+        price: selectedAmount,
+        quantity: 1,
+        meta: {
+          to: toName.value,
+          toEmail: toEmail.value,
+          from: fromName.value,
+          msg: message.value
+        }
+      };
+      cart.push(item);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      formStatus.textContent = "✅ Added to cart! You can checkout now.";
+      formStatus.className = "text-green-600 text-sm font-medium";
+      formStatus.scrollIntoView({behavior:'smooth', block:'center'});
+      e.target.reset();
+      message.value = "";
+      updatePreview();
+    });
+
+    /* ---------- Redeem (Mock) ---------- */
+    redeemForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const code = document.getElementById('redeemCode').value.trim();
+      // Simple fake logic: any code length 14 returns $50 else invalid
+      if (code.length >= 8) {
+        const balance = (Math.random()*100+10).toFixed(2);
+        redeemStatus.textContent = `Balance: $${balance}`;
+        redeemStatus.className = "text-green-600 text-sm font-medium";
+      } else {
+        redeemStatus.textContent = "Invalid or unknown code.";
+        redeemStatus.className = "text-red-600 text-sm font-medium";
+      }
+    });
+
+    /* ---------- FAQ Accordion ---------- */
+    FAQ_ITEMS.forEach((item, idx) => {
+      const wrapper = document.createElement('div');
+      wrapper.className = "border border-pink-200 rounded-lg bg-white overflow-hidden";
+      wrapper.innerHTML = `
+        <button
+          class="w-full flex justify-between items-center px-4 py-3 text-left font-medium text-gray-700 hover:bg-pink-50 focus:outline-none focus:ring-2 focus:ring-pink-300"
+          aria-expanded="false"
+          id="faq-btn-${idx}"
+        >
+          <span>${item.q}</span>
+          <svg class="w-5 h-5 transition-transform" data-icon rotate="0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+          </svg>
+        </button>
+        <div class="hidden px-4 pb-4 text-sm text-gray-600" id="faq-panel-${idx}" role="region" aria-labelledby="faq-btn-${idx}">
+          ${item.a}
+        </div>
+      `;
+      const btn = wrapper.querySelector('button');
+      const panel = wrapper.querySelector(`#faq-panel-${idx}`);
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !expanded);
+        panel.classList.toggle('hidden');
+        const icon = btn.querySelector('[data-icon]');
+        icon.style.transform = expanded ? 'rotate(0deg)' : 'rotate(180deg)';
+      });
+      faqWrapper.appendChild(wrapper);
+    });
+
+  </script>
+</body>
+</html>

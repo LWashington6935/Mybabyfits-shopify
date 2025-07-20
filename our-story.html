@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Our Story – BabyFits</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Discover the BabyFits story—why we started, what we value, and how we design comfy, sustainable styles for tiny humans." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; background:#F5F5F5; color:#333; }
+    .gradient-text { background: linear-gradient(90deg,#f59ac0,#f7b6d1); -webkit-background-clip: text; color: transparent; }
+    .section-card { background:#fff; border-radius:1rem; box-shadow:0 4px 14px -4px rgba(0,0,0,.08); }
+    .milestone:before {
+      content:"";
+      position:absolute;
+      left:0.75rem;
+      top:0.6rem;
+      width:12px;
+      height:12px;
+      background:#f59ac0;
+      border:3px solid #ffe2ee;
+      border-radius:50%;
+      box-shadow:0 0 0 3px #fcd5ce55;
+    }
+    .milestone-line:after {
+      content:"";
+      position:absolute;
+      left:1.18rem;
+      top:2.2rem;
+      width:2px;
+      height:calc(100% - 2.2rem);
+      background:linear-gradient(to bottom,#fcd5ce,#ffdfea);
+    }
+    .value-icon {
+      width:48px; height:48px; display:flex; align-items:center; justify-content:center;
+      background:#fff5f9; border-radius:14px; color:#f37fae; font-weight:600; font-size:1.1rem;
+      box-shadow:0 2px 6px -2px rgba(0,0,0,.12);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header (clone of main site – adjust links if needed) -->
+  <header class="bg-[#FCD5CE] h-16 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+      <a href="index.html" class="flex items-center h-full">
+        <img src="images/babyfits-logo.png" alt="BabyFits Logo" class="h-14 w-14">
+      </a>
+      <nav class="flex items-center space-x-6 text-sm text-gray-800">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="shop.html" class="hover:underline">Shop</a>
+        <a href="girls.html" class="hover:underline">Girls</a>
+        <a href="boys.html" class="hover:underline">Boys</a>
+        <a href="essentials.html" class="hover:underline">Essentials</a>
+        <a href="our-story.html" class="font-semibold underline decoration-pink-500">Our Story</a>
+        <a href="contact.html" class="hover:underline">Contact</a>
+        <a href="cart.html" class="hover:underline">Cart 🛒</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="relative">
+    <div class="h-[360px] w-full overflow-hidden">
+      <img src="images/hero-banner.jpg" alt="Baby wearing comfy outfit"
+           class="w-full h-full object-cover brightness-90">
+    </div>
+    <div class="absolute inset-0 bg-black/40 flex items-center">
+      <div class="max-w-4xl mx-auto px-6">
+        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+          The BabyFits Journey
+        </h1>
+        <p class="text-white/90 text-lg max-w-2xl">
+          From a cozy living room idea to a growing community of families who care about comfort,
+          quality, and kindness. This is our story.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission / Intro -->
+  <section class="max-w-5xl mx-auto px-6 -mt-16 relative z-10">
+    <div class="section-card p-8 md:p-10">
+      <h2 class="text-3xl font-semibold mb-4 gradient-text">Why We Started</h2>
+      <p class="leading-relaxed mb-4">
+        BabyFits began with a simple frustration: adorable baby clothes often sacrificed either
+        comfort, durability, or ethics. We believed parents shouldn’t have to choose. So we started
+        designing pieces that are **soft enough for delicate skin**, **sturdy enough for crawling
+        adventures**, and **responsibly made**.
+      </p>
+      <p class="leading-relaxed">
+        Today, every stitch reflects our promise: lovable looks, long‑lasting fabrics, and a lighter
+        footprint on the planet those little feet will walk on.
+      </p>
+    </div>
+  </section>
+
+  <!-- Core Values -->
+  <section class="max-w-6xl mx-auto px-6 mt-14">
+    <h2 class="text-2xl font-semibold mb-6 text-center">Our Core Values</h2>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="section-card p-6">
+        <div class="value-icon mb-4">♡</div>
+        <h3 class="font-semibold text-lg mb-2">Gentle Comfort</h3>
+        <p class="text-sm leading-relaxed">
+          We choose buttery-soft blends and tagless finishes so babies giggle—not fuss.
+        </p>
+      </div>
+      <div class="section-card p-6">
+        <div class="value-icon mb-4">♻︎</div>
+        <h3 class="font-semibold text-lg mb-2">Responsible Making</h3>
+        <p class="text-sm leading-relaxed">
+          Ethical partner workshops, lower-impact dyes, and smarter packaging guide our process.
+        </p>
+      </div>
+      <div class="section-card p-6">
+        <div class="value-icon mb-4">★</div>
+        <h3 class="font-semibold text-lg mb-2">Everyday Joy</h3>
+        <p class="text-sm leading-relaxed">
+          Playful prints + practical cuts = pieces parents reach for again and again.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="max-w-5xl mx-auto px-6 mt-16">
+    <h2 class="text-2xl font-semibold mb-6 text-center">Milestones</h2>
+    <div class="relative">
+      <ul class="space-y-8 ml-6">
+        <li class="relative milestone milestone-line pl-10">
+          <h4 class="font-semibold">2023 – The Spark</h4>
+          <p class="text-sm text-gray-600 mt-1">
+            Late‑night brainstorming while rocking a sleepy newborn became BabyFits.
+          </p>
+        </li>
+        <li class="relative milestone milestone-line pl-10">
+            <h4 class="font-semibold">2024 – First Collection</h4>
+            <p class="text-sm text-gray-600 mt-1">
+              Launched our debut capsule of 12 essentials; sold out select sizes in 10 days.
+            </p>
+        </li>
+        <li class="relative milestone milestone-line pl-10">
+          <h4 class="font-semibold">2024 – Giving Back</h4>
+          <p class="text-sm text-gray-600 mt-1">
+            Partnered with local family shelters: one donated garment for every fifth order.
+          </p>
+        </li>
+        <li class="relative milestone pl-10">
+          <h4 class="font-semibold">2025 – Growing & Refining</h4>
+          <p class="text-sm text-gray-600 mt-1">
+            Expanding fabrics & introducing recycled cotton blends while improving fit grading.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Sustainability / Promise -->
+  <section class="max-w-5xl mx-auto px-6 mt-16">
+    <div class="section-card p-8 md:p-10">
+      <h2 class="text-2xl font-semibold mb-4">Our Promise to You</h2>
+      <p class="leading-relaxed mb-4">
+        We’ll keep iterating: softer seams, smarter sourcing, longer wear life. We listen to parent
+        feedback constantly—because your little ones are our ultimate quality testers.
+      </p>
+      <p class="leading-relaxed">
+        Thank you for trusting BabyFits with their first outfits, milestone photos, and everyday
+        messes. You’re part of our story now. ♡
+      </p>
+      <a href="shop.html"
+         class="inline-block mt-6 bg-pink-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-pink-600 transition">
+        Explore the Collection
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA Newsletter -->
+  <section class="max-w-4xl mx-auto px-6 mt-16 mb-20">
+    <div class="section-card p-8 md:p-10 text-center">
+      <h3 class="text-xl font-semibold mb-2">Stay in the Loop</h3>
+      <p class="text-gray-600 mb-5">New arrivals, restocks & early access to specials.</p>
+      <form id="story-signup" class="flex flex-col sm:flex-row gap-3 justify-center">
+        <input type="email" id="story-email" required
+               placeholder="Your email address"
+               class="px-4 py-3 rounded-md border border-pink-200 flex-1 min-w-[220px] focus:outline-none focus:ring-2 focus:ring-pink-400" />
+        <button class="bg-pink-500 text-white font-semibold px-6 py-3 rounded-md hover:bg-pink-600 transition">
+          Subscribe
+        </button>
+      </form>
+      <p id="story-msg" class="text-green-600 font-medium mt-4 hidden">Thanks for joining! 🌱</p>
+    </div>
+  </section>
+
+  <!-- Footer (reuse existing footer if you have a shared partial) -->
+  <footer class="bg-[#FCD5CE] text-center py-6 text-sm text-gray-700">
+    &copy; 2025 BabyFits. All rights reserved.
+  </footer>
+
+  <script>
+    // Simple newsletter stub
+    document.getElementById('story-signup').addEventListener('submit', e => {
+      e.preventDefault();
+      const email = document.getElementById('story-email').value.trim();
+      if(!email) return;
+      document.getElementById('story-msg').classList.remove('hidden');
+      e.target.reset();
+      setTimeout(() => document.getElementById('story-msg').classList.add('hidden'), 4000);
+    });
+  </script>
+</body>
+</html>

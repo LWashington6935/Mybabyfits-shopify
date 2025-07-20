@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Product Details – BabyFits</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family:'Poppins',sans-serif; background:#F5F5F5 }
+    #thumbnails img { transition: transform .1s }
+    #thumbnails img:hover { transform: scale(1.05) }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <header class="bg-pink-100 p-4 shadow">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-xl font-bold">BabyFits</a>
+      <nav class="space-x-4 text-gray-700">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="shop.html" class="hover:underline">Shop</a>
+        <a href="cart.html" class="hover:underline">Cart 🛒</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-grow container mx-auto p-6">
+    <div id="product-details" class="bg-white p-6 rounded shadow max-w-4xl mx-auto">
+      <p class="text-center text-gray-600">Loading product…</p>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-pink-100 p-4 text-center text-gray-600 text-sm">
+    &copy; 2025 BabyFits. All rights reserved.
+  </footer>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const container = document.getElementById('product-details');
+    const params    = new URLSearchParams(location.search);
+    const id        = params.get('id');
+    if (!id) {
+      container.innerHTML = '<p class="text-red-600 text-center">No product specified.</p>';
+      return;
+    }
+
+    // Load the JSON
+    let products;
+    try {
+      const r = await fetch('products.json');
+      if (!r.ok) throw new Error('Could not fetch products.json');
+      products = await r.json();
+    } catch (e) {
+      console.error(e);
+      container.innerHTML = '<p class="text-red-600 text-center">Failed to load products.</p>';
+      return;
+    }
+
+    // Find the product
+    const product = products[id];
+    if (!product) {
+      container.innerHTML = '<p class="text-red-600 text-center">Product not found.</p>';
+      return;
+    }
+
+    // Render markup
+    container.innerHTML = `
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Image gallery -->
+        <div>
+          <img id="main-image" src="${product.images[0]}" alt="${product.name}"
+               class="w-full h-auto rounded mb-4 shadow"/>
+          <div id="thumbnails" class="flex space-x-2 overflow-x-auto"></div>
+        </div>
+
+        <!-- Details & options -->
+        <div class="flex flex-col">
+          <h1 class="text-2xl font-bold mb-2">${product.name}</h1>
+          <p class="text-2xl text-pink-600 font-semibold mb-4">
+            $${product.price.toFixed(2)}
+          </p>
+          <p class="text-gray-700 mb-6">${product.description}</p>
+
+          <div class="mb-4">
+            <label for="product-color" class="font-medium">Color:</label>
+            <select id="product-color" class="mt-1 w-full border rounded p-2"></select>
+          </div>
+          <div class="mb-6">
+            <label for="product-size" class="font-medium">Size:</label>
+            <select id="product-size" class="mt-1 w-full border rounded p-2"></select>
+          </div>
+
+          <button id="add-to-cart"
+                  class="bg-[#CDE8F6] text-blue-900 px-6 py-3 rounded hover:bg-blue-200 transition">
+            Add to Cart
+          </button>
+          <p id="confirmation" class="mt-4 text-green-600 font-semibold hidden">
+            ✔ Added to cart!
+          </p>
+        </div>
+      </div>
+    `;
+
+    // Thumbnails
+    const mainImg = document.getElementById('main-image');
+    const thumbs  = document.getElementById('thumbnails');
+    product.images.forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = product.name;
+      img.className = 'w-16 h-16 object-cover rounded cursor-pointer border';
+      img.addEventListener('click', () => mainImg.src = src);
+      thumbs.appendChild(img);
+    });
+
+    // Colors & sizes
+    const colorSel = document.getElementById('product-color');
+    product.colors.forEach(c => colorSel.add(new Option(c, c)));
+
+    const sizeSel = document.getElementById('product-size');
+    product.sizes.forEach(s => sizeSel.add(new Option(s, s)));
+
+    // Add to cart
+    document.getElementById('add-to-cart').addEventListener('click', () => {
+      const cart = JSON.parse(localStorage.getItem('cart')||'[]');
+      const key  = `${product.id}|${colorSel.value}|${sizeSel.value}`;
+
+      // merge duplicates
+      let item = cart.find(i => i.key===key);
+      if (item) {
+        item.quantity++;
+      } else {
+        cart.push({
+          key,
+          id:       product.id,
+          name:     product.name,
+          price:    product.price,
+          image:    product.images[0],
+          color:    colorSel.value,
+          size:     sizeSel.value,
+          quantity: 1
+        });
+      }
+
+      localStorage.setItem('cart', JSON.stringify(cart));
+      document.getElementById('confirmation').classList.remove('hidden');
+    });
+  });
+  </script>
+</body>
+</html>

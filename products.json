@@ -1,0 +1,64 @@
+{
+  "123": {
+    "id": 123,
+    "name": "Pink Cotton Onesie",
+    "description": "Soft, breathable cotton onesie for baby girls.",
+    "price": 19.99,
+    "images": [
+      "images/product1-1.jpg",
+      "images/product1-2.jpg",
+      "images/product1-3.jpg"
+    ],
+    "colors": ["Baby Pink", "White", "Heather Gray"],
+    "sizes": ["0–3 mo", "3–6 mo", "6–12 mo", "12–18 mo"]
+  },
+  "124": {
+    "id": 124,
+    "name": "Blue Baby Romper",
+    "description": "Lightweight romper perfect for playtime.",
+    "price": 22.99,
+    "images": [
+      "images/product2-1.jpg",
+      "images/product2-2.jpg"
+    ],
+    "colors": ["Sky Blue", "Navy"],
+    "sizes": ["0–3 mo", "3–6 mo", "6–12 mo"]
+  },
+  "125": {
+    "id": 125,
+    "name": "Neutral Bib Set (3‑pack)",
+    "description": "Practical and stylish bibs for everyday use.",
+    "price": 14.99,
+    "images": [
+      "images/product3-1.jpg",
+      "images/product3-2.jpg",
+      "images/product3-3.jpg"
+    ],
+    "colors": ["Beige", "Gray", "White"],
+    "sizes": ["One size fits all"]
+  },
+  "201": {
+    "id": 201,
+    "name": "Floral Dress Set",
+    "description": "Beautiful floral dress for baby girls.",
+    "price": 29.99,
+    "images": [
+      "images/girls1-1.jpg",
+      "images/girls1-2.jpg"
+    ],
+    "colors": ["Pink", "Yellow", "Green"],
+    "sizes": ["6‑12 mo", "12‑18 mo", "18‑24 mo"]
+  },
+  "301": {
+    "id": 301,
+    "name": "Little Man Suit",
+    "description": "Formal baby boy outfit for special occasions.",
+    "price": 34.95,
+    "images": [
+      "images/boys1-1.jpg",
+      "images/boys1-2.jpg"
+    ],
+    "colors": ["Black", "Gray", "Navy"],
+    "sizes": ["0–3 mo", "3–6 mo", "6–12 mo"]
+  }
+}

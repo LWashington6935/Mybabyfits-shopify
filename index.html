@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BabyFits – Adorable Baby Outfits</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; background-color:#F5F5F5; color:#333; }
+
+    /* Email Signup */
+    .email-signup { background:#fff8fb; padding:60px 20px; text-align:center; border-top:3px solid #ffe0eb; }
+    .signup-container { max-width:600px; margin:0 auto; }
+    .signup-title { font-size:2rem; color:#d680a8; margin-bottom:10px; }
+    .signup-subtext { color:#777; margin-bottom:25px; }
+    .signup-form { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+    .signup-input { padding:12px 16px; border:2px solid #f8c8de; border-radius:8px; width:250px; max-width:100%; font-size:1rem; }
+    .signup-button { padding:12px 20px; background:#f9a8c2; color:#fff; border:none; border-radius:8px; font-weight:600; cursor:pointer; transition:.25s; }
+    .signup-button:hover { background:#f589ae; }
+    .signup-message { margin-top:20px; color:#47a168; font-weight:600; }
+
+    /* Footer */
+    .footer { background:#fff8fb; border-top:3px solid #ffd6e7; padding:40px 20px 20px; color:#444; }
+    .footer-top { display:flex; flex-wrap:wrap; justify-content:space-between; gap:30px; max-width:1200px; margin:0 auto; }
+    .footer-box { flex:1 1 150px; min-width:160px; }
+    .footer-box h4 { font-size:1.1rem; color:#e48fbf; margin-bottom:12px; }
+    .footer-box ul { list-style:none; padding:0; margin:0; }
+    .footer-box li { margin-bottom:8px; }
+    .footer-box a { color:#666; text-decoration:none; font-size:.95rem; }
+    .footer-box a:hover { text-decoration:underline; }
+    .social-icons a { display:inline-block; margin-right:8px; }
+    .social-icons img { width:24px; height:24px; filter:grayscale(100%); transition:filter .3s; }
+    .social-icons img:hover { filter:none; }
+    .footer-bottom { text-align:center; margin-top:30px; font-size:.85rem; color:#999; }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="bg-[#FCD5CE] h-16 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
+      <!-- Logo -->
+      <a href="index.html" class="h-full flex items-center">
+        <img src="images/babyfits-logo.png" alt="BabyFits Logo" class="h-14 w-14">
+      </a>
+
+      <!-- Nav -->
+      <nav class="flex items-center space-x-6 text-sm text-gray-800">
+        <a href="index.html" class="hover:underline">Home</a>
+        <a href="shop.html" class="hover:underline">Shop</a>
+
+        <!-- Girls -->
+        <div class="relative" data-dd>
+          <button id="girlsBtn" class="hover:underline flex items-center gap-1">
+            Girls
+            <svg class="w-4 h-4 transition-transform" data-caret fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="girlsMenu"
+               class="absolute top-full mt-2 left-0 w-64 bg-white shadow-lg border rounded-md z-50 p-4 text-sm
+                      opacity-0 pointer-events-none scale-95 origin-top transition">
+            <h4 class="font-semibold mb-2">Baby Girl</h4>
+            <ul class="space-y-1 mb-4">
+              <li><a href="#" class="block hover:text-pink-600">Pajamas</a></li>
+              <li><a href="#" class="block hover:text-pink-600">Outfit Sets</a></li>
+              <li><a href="#" class="block hover:text-pink-600">Bodysuits</a></li>
+              <li><a href="#" class="block hover:text-pink-600">Tops</a></li>
+              <li><a href="#" class="block hover:text-pink-600">Bottoms</a></li>
+              <li><a href="#" class="block hover:text-pink-600">Dresses</a></li>
+              <li><a href="#" class="block hover:text-pink-600">Rompers &amp; Jumpsuits</a></li>
+              <li><a href="#" class="block hover:text-pink-600">Swimwear</a></li>
+              <li><a href="#" class="block hover:text-pink-600">Jackets &amp; Coats</a></li>
+              <li><a href="#" class="block hover:text-pink-600">Shoes</a></li>
+              <li><a href="#" class="block hover:text-pink-600">Accessories</a></li>
+              <li><a href="#" class="block hover:text-pink-600 font-medium">Deals</a></li>
+            </ul>
+            <h4 class="font-semibold mb-2">Trending</h4>
+            <ul class="space-y-1">
+              <li><a href="#" class="block hover:text-pink-600">Summer Outfits</a></li>
+              <li><a href="#" class="block hover:text-pink-600">Bluey</a></li>
+              <li><a href="#" class="block hover:text-pink-600">Varsity</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Boys -->
+        <div class="relative" data-dd>
+          <button id="boysBtn" class="hover:underline flex items-center gap-1">
+            Boys
+            <svg class="w-4 h-4 transition-transform" data-caret fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+          <div id="boysMenu"
+               class="absolute top-full mt-2 left-0 w-64 bg-white shadow-lg border rounded-md z-50 p-4 text-sm
+                      opacity-0 pointer-events-none scale-95 origin-top transition">
+            <h4 class="font-semibold mb-2">Baby Boy</h4>
+            <ul class="space-y-1 mb-4">
+              <li><a href="#" class="block hover:text-blue-600">Onesies</a></li>
+              <li><a href="#" class="block hover:text-blue-600">Rompers</a></li>
+              <li><a href="#" class="block hover:text-blue-600">Tops</a></li>
+              <li><a href="#" class="block hover:text-blue-600">Bottoms</a></li>
+              <li><a href="#" class="block hover:text-blue-600">Jackets</a></li>
+              <li><a href="#" class="block hover:text-blue-600">Shoes</a></li>
+              <li><a href="#" class="block hover:text-blue-600">Accessories</a></li>
+              <li><a href="#" class="block hover:text-blue-600 font-medium">Deals</a></li>
+            </ul>
+            <h4 class="font-semibold mb-2">Trending</h4>
+            <ul class="space-y-1">
+              <li><a href="#" class="block hover:text-blue-600">Summer Outfits</a></li>
+              <li><a href="#" class="block hover:text-blue-600">Varsity</a></li>
+              <li><a href="#" class="block hover:text-blue-600">Playtime Picks</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <a href="essentials.html" class="hover:underline">Essentials</a>
+        <a href="cart.html" class="hover:underline">Cart 🛒</a>
+      </nav>
+
+      <!-- Single Search -->
+      <form id="nav-search-form" class="flex items-center gap-2">
+        <input
+          id="navSearchInput"
+          type="text"
+          placeholder="Search products..."
+          class="h-9 w-56 px-3 py-1 rounded-md border border-pink-200 focus:outline-none focus:ring-2 focus:ring-pink-400 text-sm"
+          autocomplete="off"
+        />
+        <button
+          type="submit"
+          class="h-9 bg-pink-500 text-white px-4 rounded-md text-sm hover:bg-pink-600 transition"
+        >Search</button>
+      </form>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="container mx-auto px-4 py-10">
+
+    <!-- Hero -->
+    <section class="relative h-[500px] rounded-xl overflow-hidden shadow mb-12">
+      <img src="images/hero-banner.jpg" alt="Happy baby with teddy bear" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-white text-center px-4">
+        <h2 class="text-4xl md:text-5xl font-bold mb-3">Adorable Fits for Tiny Humans</h2>
+        <p class="text-lg md:text-xl mb-4">Comfy, stylish babywear for every little moment.</p>
+        <a href="shop.html"
+           class="bg-[#FCD5CE] text-gray-800 px-6 py-2 rounded hover:bg-white hover:text-black transition">
+          Shop New Arrivals
+        </a>
+      </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="py-12 bg-gray-100 rounded-xl shadow mb-12">
+      <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-8">
+        <div class="text-center">
+          <img src="images/baby-girl-hero.jpg" alt="Baby Girl Clothing"
+               class="rounded-2xl shadow-lg w-full h-80 object-cover mb-4">
+          <h3 class="text-2xl font-bold text-pink-600 mb-2">Shop Baby Girls</h3>
+          <a href="girls.html" class="inline-block px-5 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600 transition">Explore</a>
+        </div>
+        <div class="text-center">
+          <img src="images/baby-boy-hero.jpg" alt="Baby Boy Clothing"
+               class="rounded-2xl shadow-lg w-full h-80 object-cover mb-4">
+          <h3 class="text-2xl font-bold text-blue-600 mb-2">Shop Baby Boys</h3>
+          <a href="boys.html" class="inline-block px-5 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition">Explore</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured -->
+    <section class="mb-12">
+      <h3 class="text-2xl font-semibold mb-6 text-center">Featured Outfits</h3>
+      <div id="featured-products" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <!-- Script will populate cards here -->
+      </div>
+    </section>
+
+    <!-- Email Signup -->
+    <section class="email-signup mb-12">
+      <div class="signup-container">
+        <h2 class="signup-title">Join the BabyFits Family</h2>
+        <p class="signup-subtext">Get exclusive deals, new arrivals & adorable updates—straight to your inbox.</p>
+        <form id="signup-form" class="signup-form">
+          <input type="email" id="email" class="signup-input" placeholder="Enter your email address" required />
+          <button type="submit" class="signup-button">Subscribe</button>
+        </form>
+        <p id="signup-message" class="signup-message"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-box">
+        <h4>Our Brands</h4>
+        <ul><li>BabyFits</li><li>CozyKidz</li><li>SoftSteps</li><li>TinyTrends</li></ul>
+      </div>
+      <div class="footer-box">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="customer-service.html" class="hover:underline">Customer Service</a></li>
+          <li><a href="track-order.html" class="hover:underline">Track Order</a></li>
+          <li><a href="shipping.html" class="hover:underline">Shipping</a></li>
+          <li><a href="returns.html" class="hover:underline">Returns</a></li>
+          <li><a href="contact.html" class="hover:underline">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-box">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="size-guide.html">Size Guide</a></li>
+          <li><a href="gift-cards.html">Gift Cards</a></li>
+          <li><a href="todays-deals.html">Today’s Deals</a></li>
+          <li><a href="my-account.html">My Account</a></li>
+          <li><a href="affiliate-program.html">Affiliate Program</a></li>
+        </ul>
+      </div>
+      <div class="footer-box">
+        <h4>About Us</h4>
+        <ul>
+          <li><a href="our-story.html">Our Story</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="sustainability.html">Sustainability</a></li>
+          <li><a href="press.html">Press</a></li>
+          <li><a href="blog.html">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-box">
+        <h4>Get In Touch</h4>
+        <div class="social-icons">
+          <a href="#"><img src="icons/instagram.svg" alt="Instagram" /></a>
+            <a href="#"><img src="icons/tiktok.svg" alt="TikTok" /></a>
+            <a href="#"><img src="icons/facebook.svg" alt="Facebook" /></a>
+            <a href="#"><img src="icons/x.svg" alt="Twitter X" /></a>
+            <a href="#"><img src="icons/pinterest.svg" alt="Pinterest" /></a>
+            <a href="#"><img src="icons/youtube.svg" alt="YouTube" /></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 BabyFits. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Discount Modal -->
+  <div id="welcomeDiscountModal" class="fixed inset-0 z-[999] hidden">
+    <div id="discountBackdrop" class="absolute inset-0 bg-black/50 backdrop-blur-sm opacity-0 transition-opacity"></div>
+    <div id="discountPanel"
+         class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-md bg-white rounded-2xl shadow-2xl
+                p-8 md:p-10 opacity-0 scale-95 transition-all flex flex-col">
+      <button id="discountCloseBtn" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600" aria-label="Close discount popup">✕</button>
+      <div class="text-center">
+        <div class="inline-block mb-4 px-4 py-1 rounded-full bg-pink-100 text-pink-600 text-xs font-semibold tracking-wide">
+          LIMITED TIME
+        </div>
+        <h2 class="text-4xl font-extrabold leading-tight mb-2 text-pink-500">20% OFF</h2>
+        <p class="text-gray-700 font-medium mb-4">Your first order at BabyFits</p>
+        <p class="text-sm text-gray-500 mb-6">
+          Join our list for early access to drops, cozy tips & exclusive offers.
+        </p>
+        <form id="discountForm" class="space-y-4">
+          <div>
+            <input type="email" id="discountEmail" required placeholder="Email address"
+                   class="w-full px-4 py-3 rounded-lg border border-pink-300 focus:outline-none focus:ring-2 focus:ring-pink-400 placeholder-gray-400"/>
+          </div>
+          <button type="submit"
+                  class="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold py-3 rounded-lg transition">
+            Get 20% Off Code
+          </button>
+        </form>
+        <div id="discountSuccess" class="hidden mt-4 text-green-600 text-sm font-medium">
+          🎉 Thanks! Your code: <span class="font-semibold">WELCOME20</span><br/>
+          (Use at checkout.)
+        </div>
+        <p class="text-[11px] text-gray-400 mt-6 leading-snug">
+          By subscribing you agree to receive marketing emails. Unsubscribe anytime.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shop / shared code for featured (if needed) -->
+  <script src="scripts/shop.js"></script>
+  <script>
+    /* ---------- NAV SEARCH (redirect to shop) ---------- */
+    document.getElementById('nav-search-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const q = document.getElementById('navSearchInput').value.trim();
+      window.location.href = q ? `shop.html?search=${encodeURIComponent(q)}` : 'shop.html';
+    });
+
+    /* ---------- DROPDOWNS ---------- */
+    function toggleMenu(btnId, menuId) {
+      const btn  = document.getElementById(btnId);
+      const menu = document.getElementById(menuId);
+      const caret = btn.querySelector('[data-caret]');
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const open = menu.classList.contains('opacity-100');
+        closeAllMenus();
+        if (!open) openMenu(menu, caret);
+      });
+    }
+    function openMenu(menu, caret){
+      menu.classList.remove('opacity-0','pointer-events-none','scale-95');
+      menu.classList.add('opacity-100','pointer-events-auto','scale-100');
+      caret && caret.classList.add('rotate-180');
+    }
+    function closeAllMenus(){
+      document.querySelectorAll('#girlsMenu,#boysMenu').forEach(m=>{
+        m.classList.remove('opacity-100','pointer-events-auto','scale-100');
+        m.classList.add('opacity-0','pointer-events-none','scale-95');
+      });
+      document.querySelectorAll('[data-caret]').forEach(c=>c.classList.remove('rotate-180'));
+    }
+    document.addEventListener('click', closeAllMenus);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAllMenus(); });
+    toggleMenu('girlsBtn','girlsMenu');
+    toggleMenu('boysBtn','boysMenu');
+
+    /* ---------- EMAIL SIGNUP (demo) ---------- */
+    document.getElementById('signup-form').addEventListener('submit', e=>{
+      e.preventDefault();
+      const email = e.target.email.value.trim();
+      if (!email) return;
+      document.getElementById('signup-message').textContent =
+        `Thanks for signing up, ${email}! 💕`;
+      e.target.reset();
+    });
+
+    /* ---------- FEATURED PRODUCTS (simple load) ---------- */
+    (async function loadFeatured(){
+      try {
+        const res = await fetch('products.json');
+        if (!res.ok) return;
+        const data = await res.json();
+        const target = document.getElementById('featured-products');
+        Object.entries(data).slice(0,3).forEach(([id,p])=>{
+          const card = document.createElement('div');
+          card.className = 'product-card bg-white rounded shadow p-4 text-center';
+          card.innerHTML = `
+            <a href="product.html?id=${id}">
+              <img src="${p.image}" alt="${p.name}" class="w-40 h-40 object-cover mx-auto mb-3 rounded">
+              <h4 class="product-name font-semibold text-lg mb-1">${p.name}</h4>
+              <p class="product-description text-gray-500 text-sm mb-2">${p.description || ''}</p>
+              <p class="text-pink-600 font-bold">$${p.price.toFixed(2)}</p>
+            </a>
+            <button
+              class="mt-3 bg-[#CDE8F6] text-blue-900 px-4 py-2 rounded hover:bg-blue-200 transition add-to-cart"
+              data-id="${id}">
+              Add to Cart
+            </button>`;
+          target.appendChild(card);
+        });
+        target.addEventListener('click', e=>{
+          const btn = e.target.closest('.add-to-cart');
+          if (!btn) return;
+            const prod = data[btn.dataset.id];
+            const cart = JSON.parse(localStorage.getItem('cart')||'[]');
+            cart.push({
+              id: btn.dataset.id,
+              name: prod.name,
+              image: prod.image,
+              price: prod.price,
+              quantity:1
+            });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            btn.textContent = 'Added!';
+            setTimeout(()=> btn.textContent = 'Add to Cart', 1500);
+        });
+      } catch(err) { console.warn('Featured load failed', err); }
+    })();
+
+    /* ---------- DISCOUNT MODAL ---------- */
+    const DISCOUNT_STORAGE_KEY = 'bf_welcome_discount_shown_v1';
+    const MODAL_DELAY_MS = 2500;
+    const SHOW_AGAIN_AFTER_HOURS = 24;
+
+    function hasRecentlySeenDiscount(){
+      try {
+        const raw = localStorage.getItem(DISCOUNT_STORAGE_KEY);
+        if(!raw) return false;
+        const { ts } = JSON.parse(raw);
+        if(!ts) return false;
+        return (Date.now() - ts)/(1000*60*60) < SHOW_AGAIN_AFTER_HOURS;
+      } catch(e){ return false; }
+    }
+    function markDiscountSeen(){
+      try { localStorage.setItem(DISCOUNT_STORAGE_KEY, JSON.stringify({ ts: Date.now() })); } catch(e){}
+    }
+
+    const modal = document.getElementById('welcomeDiscountModal');
+    const panel = document.getElementById('discountPanel');
+    const backdrop = document.getElementById('discountBackdrop');
+    const closeBtn = document.getElementById('discountCloseBtn');
+    const discountForm = document.getElementById('discountForm');
+    const discountEmail = document.getElementById('discountEmail');
+    const discountSuccess = document.getElementById('discountSuccess');
+
+    function openDiscountModal(){
+      modal.classList.remove('hidden');
+      requestAnimationFrame(()=>{
+        backdrop.classList.remove('opacity-0');
+        panel.classList.remove('opacity-0','scale-95');
+      });
+      markDiscountSeen();
+      setTimeout(()=>discountEmail.focus(),300);
+    }
+    function closeDiscountModal(){
+      backdrop.classList.add('opacity-0');
+      panel.classList.add('opacity-0','scale-95');
+      setTimeout(()=>modal.classList.add('hidden'),200);
+    }
+
+    window.addEventListener('load', () => {
+      if(!hasRecentlySeenDiscount()){
+        setTimeout(openDiscountModal, MODAL_DELAY_MS);
+      }
+    });
+    closeBtn.addEventListener('click', closeDiscountModal);
+    backdrop.addEventListener('click', closeDiscountModal);
+    document.addEventListener('keydown', e => {
+      if(e.key === 'Escape' && !modal.classList.contains('hidden')) closeDiscountModal();
+    });
+    discountForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = discountEmail.value.trim();
+      if(!email) return;
+      // TODO: send to backend API
+      discountSuccess.classList.remove('hidden');
+      discountForm.classList.add('hidden');
+      setTimeout(closeDiscountModal, 6000);
+    });
+  </script>
+</body>
+</html>
