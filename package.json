@@ -1,24 +1,18 @@
 {
-  "name": "babyfits_pro",
+  "name": "mybabyfits",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "homepage": "https://LWashington6935.github.io/Mybabyfits",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "live-server .",        
+    "predeploy": "echo \"No build step, deploying static files\"",
+    "deploy": "gh-pages -d ."
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LWashington6935/Mybabyfits.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/LWashington6935/Mybabyfits/issues"
-  },
-  "homepage": "https://github.com/LWashington6935/Mybabyfits#readme",
   "dependencies": {
     "shopify-buy": "^3.0.7"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "live-server": "^1.2.2"
   }
 }
