@@ -2,60 +2,206 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your Cart – BabyFits</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BabyFits – Your Shopping Cart</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-    rel="stylesheet"
-  />
   <style>
-    body { font-family: 'Poppins', sans-serif; background-color: #F5F5F5; color: #333; }
+    /* Ensure table columns don’t force a scrollbar */
+    .cart-table { table-layout: auto; width: 100%; }
+    .cart-table img { max-width: 64px; max-height: 64px; object-fit: cover; }
   </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-  <!-- Navbar -->
-  <header class="bg-pink-100 p-4 shadow">
-    <div class="container mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold">BabyFits</a>
-      <nav class="space-x-4 text-gray-700">
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-20">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="images/babyfits-logo.png" alt="BabyFits Logo" class="h-10 w-10" />
+        <span class="text-2xl font-bold text-purple-700">BabyFits</span>
+      </a>
+      <nav class="space-x-6 text-sm text-gray-700">
         <a href="index.html" class="hover:underline">Home</a>
         <a href="shop.html" class="hover:underline">Shop</a>
-        <a href="cart.html" class="hover:underline font-semibold">Cart 🛒</a>
+        <a href="cart.html" class="font-semibold text-purple-700">Cart 🛒</a>
       </nav>
     </div>
   </header>
 
-  <!-- Main Cart -->
-  <main class="flex-grow container mx-auto p-6">
-    <h1 class="text-2xl font-semibold mb-6">Your Cart</h1>
-
-    <!-- items will be injected here -->
-    <div id="cart-items" class="space-y-4"></div>
-
-    <!-- total & checkout -->
-    <div class="mt-6 flex justify-between items-center font-semibold text-lg border-t pt-4">
-      <span>Total:</span>
-      <span id="cart-total">$0.00</span>
-    </div>
-    <div class="mt-6 text-right">
-      <a
-        href="checkout.html"
-        id="checkout-btn"
-        class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition"
-      >
-        Proceed to Checkout
-      </a>
+  <!-- Main -->
+  <main class="flex-grow max-w-6xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-6">Your Shopping Cart</h1>
+    <div id="cart-container" class="bg-white rounded-lg shadow overflow-hidden">
+      <p id="loading" class="p-8 text-center text-gray-500">Loading your cart…</p>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-pink-100 p-4 text-center text-gray-600 text-sm">
-    &copy; 2025 BabyFits. All rights reserved.
-  </footer>
+  <!-- Shopify Buy SDK -->
+  <script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
+  <script>
+  (async () => {
+    const mount = document.getElementById('cart-container');
 
-  <!-- Cart script -->
-  <script src="scripts/cart.js"></script>
+    if (!window.ShopifyBuy) {
+      mount.innerHTML = '<p class="p-8 text-center text-red-500">⚠️ Shopify SDK failed to load.</p>';
+      return;
+    }
+
+    const client = ShopifyBuy.buildClient({
+      domain: 'mybabyfitsoriginal.myshopify.com',
+      storefrontAccessToken: 'befadbd49a6aed0ef16c3b91744cc025'
+    });
+
+    // 1) Load or create checkout
+    let checkoutId = localStorage.getItem('checkout_id');
+    if (!checkoutId) {
+      try {
+        const newCo = await client.checkout.create();
+        checkoutId = newCo.id;
+        localStorage.setItem('checkout_id', checkoutId);
+      } catch (e) {
+        console.error('Error creating checkout', e);
+        mount.innerHTML = '<p class="p-8 text-center text-red-500">Failed to initialize cart.</p>';
+        return;
+      }
+    }
+
+    // 2) Fetch checkout
+    let checkout;
+    try {
+      checkout = await client.checkout.fetch(checkoutId);
+    } catch (e) {
+      console.error('Error fetching checkout', e);
+      mount.innerHTML = '<p class="p-8 text-center text-red-500">Failed to load cart.</p>';
+      return;
+    }
+
+    // 3) Render
+    renderCart(checkout);
+
+    async function renderCart(co) {
+      mount.innerHTML = '';
+
+      if (co.lineItems.length === 0) {
+        mount.innerHTML = '<p class="p-8 text-center text-gray-600">Your cart is empty.</p>';
+        return;
+      }
+
+      // Table
+      const tableWrapper = document.createElement('div');
+      tableWrapper.className = 'overflow-x-auto';
+      const table = document.createElement('table');
+      table.className = 'cart-table min-w-full divide-y divide-gray-200';
+      table.innerHTML = `
+        <thead class="bg-gray-100 text-left text-gray-600">
+          <tr>
+            <th class="px-4 py-3">Product</th>
+            <th class="px-4 py-3">Options</th>
+            <th class="px-4 py-3">Price</th>
+            <th class="px-4 py-3">Qty</th>
+            <th class="px-4 py-3">Total</th>
+            <th class="px-4 py-3"></th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200"></tbody>
+      `;
+      const tbody = table.querySelector('tbody');
+
+      co.lineItems.forEach(item => {
+        // use priceV2 for accurate numbers
+        const price   = parseFloat(item.variant.priceV2.amount);
+        const currency= item.variant.priceV2.currencyCode;
+        const total   = price * item.quantity;
+
+        const row = document.createElement('tr');
+        row.className = 'text-sm text-gray-700';
+        row.innerHTML = `
+          <td class="px-4 py-4 flex items-center space-x-4">
+            <img src="${item.variant.image?.src}" alt="" class="rounded" />
+            <div>${item.title}</div>
+          </td>
+          <td class="px-4 py-4 text-gray-500">
+            ${item.variant.title}
+          </td>
+          <td class="px-4 py-4 font-medium">
+            ${currency} ${price.toFixed(2)}
+          </td>
+          <td class="px-4 py-4">
+            <input
+              type="number"
+              min="1"
+              value="${item.quantity}"
+              data-line-id="${item.id}"
+              class="w-16 border rounded px-2 py-1 text-center"
+            />
+          </td>
+          <td class="px-4 py-4 font-medium">
+            ${currency} ${total.toFixed(2)}
+          </td>
+          <td class="px-4 py-4">
+            <button data-remove-id="${item.id}" class="text-red-500 hover:underline">Remove</button>
+          </td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      tableWrapper.appendChild(table);
+      mount.appendChild(tableWrapper);
+
+      // Subtotal + actions
+      const footer = document.createElement('div');
+      footer.className = 'flex flex-col md:flex-row items-center justify-between gap-4 p-4 bg-white';
+      const subPrice = parseFloat(co.subtotalPriceV2.amount);
+      const subCurr  = co.subtotalPriceV2.currencyCode;
+      footer.innerHTML = `
+        <div class="text-lg font-semibold">
+          Subtotal: ${subCurr} ${subPrice.toFixed(2)}
+        </div>
+        <div class="flex gap-2">
+          <a href="shop.html"
+             class="px-4 py-2 border rounded hover:bg-gray-100 transition">
+            ← Continue Shopping
+          </a>
+          <button id="checkoutBtn"
+             class="px-6 py-2 bg-purple-600 text-white rounded hover:bg-purple-700 transition">
+            Proceed to Checkout
+          </button>
+        </div>
+      `;
+      mount.appendChild(footer);
+
+      // Handlers
+      // Quantity change
+      tbody.querySelectorAll('input[type="number"]').forEach(input => {
+        input.addEventListener('change', async e => {
+          const newQty = parseInt(e.target.value) || 1;
+          const lineId = e.target.dataset.lineId;
+          try {
+            const updated = await client.checkout.updateLineItems(checkoutId, [
+              { id: lineId, quantity: newQty }
+            ]);
+            renderCart(updated);
+          } catch(err) { console.error('Qty update failed', err); }
+        });
+      });
+
+      // Remove item
+      tbody.querySelectorAll('button[data-remove-id]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const removeId = btn.dataset.removeId;
+          try {
+            const updated = await client.checkout.removeLineItems(checkoutId, [removeId]);
+            renderCart(updated);
+          } catch(err) { console.error('Remove failed', err); }
+        });
+      });
+
+      // Proceed to Shopify checkout
+      document.getElementById('checkoutBtn').addEventListener('click', () => {
+        window.location.href = co.webUrl;
+      });
+    }
+  })();
+  </script>
 </body>
 </html>

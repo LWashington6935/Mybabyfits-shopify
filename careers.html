@@ -2,327 +2,163 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Careers – BabyFits</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Join BabyFits – help us design and deliver comfy, sustainable baby apparel loved by families everywhere. Explore open roles & culture." />
+  <title>Careers – BabyFits</title>
+  <meta name="description" content="Join BabyFits – help us design and deliver comfy, sustainable baby apparel loved by families everywhere. Explore open software & tech roles and our culture." />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     body { font-family:'Poppins',sans-serif; background:#F5F5F5; color:#333; }
-    .gradient-text { background:linear-gradient(90deg,#f59ac0,#f7b6d1); -webkit-background-clip:text; color:transparent; }
-    .card { background:#fff; border-radius:1rem; box-shadow:0 4px 14px -4px rgba(0,0,0,.08); }
-    .badge { background:#ffe9f1; color:#c24b7d; padding:0.25rem .6rem; border-radius:999px; font-size:.65rem; font-weight:600; letter-spacing:.5px; }
-    .tag { background:#f3f4f6; padding:.35rem .55rem; border-radius:.55rem; font-size:.65rem; font-weight:500; }
-    .process-step { position:relative; }
-    .process-step:before {
-      content:""; position:absolute; left:1.05rem; top:2.4rem; width:2px; height:calc(100% - 2.4rem);
-      background:linear-gradient(to bottom,#fcd5ce,#ffddea);
-    }
-    .process-dot {
-      width:34px; height:34px; border-radius:50%; background:#f59ac0; color:#fff;
-      display:flex; align-items:center; justify-content:center; font-weight:600;
-      box-shadow:0 0 0 4px #ffe2ee;
-    }
-    .value-icon {
-      width:54px; height:54px; background:#fff5f9; border-radius:16px;
-      display:flex; align-items:center; justify-content:center; font-weight:600;
-      color:#f37fae; font-size:1.2rem; box-shadow:0 2px 6px -2px rgba(0,0,0,.15);
-    }
+    .value-icon { width:54px; height:54px; background:#fff5f9; border-radius:16px; display:flex; align-items:center; justify-content:center; color:#f37fae; font-size:1.5rem; box-shadow:0 2px 6px -2px rgba(0,0,0,.15); }
+    .card { background:#fff; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); }
+    .badge { background:#ffe9f1; color:#c24b7d; padding:0.25rem .5rem; border-radius:9999px; font-size:.65rem; font-weight:600; }
+    .tag { background:#f3f4f6; padding:.35rem .55rem; border-radius:.5rem; font-size:.65rem; font-weight:500; }
+    .process-dot { width:32px; height:32px; border-radius:50%; background:#f59ac0; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:600; box-shadow:0 0 0 3px #ffe2ee; }
   </style>
 </head>
-<body>
+<body class="flex flex-col min-h-screen">
 
-  <!-- Header -->
-  <header class="bg-[#FCD5CE] h-16 shadow-md">
-    <div class="max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
-      <a href="index.html" class="flex items-center h-full">
-        <img src="images/babyfits-logo.png" alt="BabyFits Logo" class="h-14 w-14">
-      </a>
-      <nav class="flex items-center space-x-6 text-sm text-gray-800">
+  <!-- HEADER -->
+  <header class="bg-[#FCD5CE] p-4 shadow-md">
+    <div class="max-w-4xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-2xl font-bold text-purple-700">BabyFits</a>
+      <nav class="space-x-6 text-gray-800 text-sm">
         <a href="index.html" class="hover:underline">Home</a>
-        <a href="shop.html" class="hover:underline">Shop</a>
-        <a href="girls.html" class="hover:underline">Girls</a>
-        <a href="boys.html" class="hover:underline">Boys</a>
-        <a href="essentials.html" class="hover:underline">Essentials</a>
-        <a href="our-story.html" class="hover:underline">Our Story</a>
-        <a href="careers.html" class="font-semibold underline decoration-pink-500">Careers</a>
-        <a href="contact.html" class="hover:underline">Contact</a>
+        <a href="shop.html" class="font-semibold underline">Shop</a>
         <a href="cart.html" class="hover:underline">Cart 🛒</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- HERO -->
   <section class="relative">
-    <div class="h-[320px] overflow-hidden">
-      <img src="images/hero-banner.jpg" alt="Team collaboration" class="w-full h-full object-cover brightness-90">
+    <div class="h-80 overflow-hidden">
+      <img src="images/careers-hero.jpg" alt="Team collaboration" class="w-full h-full object-cover brightness-90" />
     </div>
-    <div class="absolute inset-0 bg-black/45 flex items-center">
-      <div class="max-w-5xl mx-auto px-6">
-        <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Build Something Cozy</h1>
-        <p class="text-white/90 text-lg max-w-2xl">
-          We’re a small, product‑obsessed team crafting better baby basics—with heart,
-          responsibility, and creativity. Come grow with us.
-        </p>
+    <div class="absolute inset-0 bg-black/40 flex items-center">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h1 class="text-4xl font-bold text-white mb-2">Careers at BabyFits</h1>
+        <p class="text-lg text-white/90">Join our growing tech team and help us build an exceptional shopping experience for families worldwide.</p>
       </div>
     </div>
   </section>
 
-  <!-- Intro -->
-  <section class="max-w-5xl mx-auto px-6 -mt-14 relative z-10">
-    <div class="card p-8 md:p-10">
-      <h2 class="text-3xl font-semibold mb-4 gradient-text">Why Work at BabyFits?</h2>
-      <p class="leading-relaxed mb-4">
-        You’ll join an early, agile team where your ideas can move from concept to customer closets quickly.
-        We balance craftsmanship with data, aesthetics with durability, and growth with ethics.
-      </p>
-      <p class="leading-relaxed">
-        If you love delightful product details, iterative experimentation, and supporting families—
-        you’ll fit right in (pun proudly intended).
-      </p>
-    </div>
-  </section>
-
-  <!-- Values -->
-  <section class="max-w-6xl mx-auto px-6 mt-16">
-    <h2 class="text-2xl font-semibold mb-6 text-center">Team Values</h2>
-    <div class="grid md:grid-cols-4 gap-6">
-      <div class="card p-6">
-        <div class="value-icon mb-4">💡</div>
-        <h3 class="font-semibold mb-2">Inventive</h3>
-        <p class="text-sm leading-relaxed">Progress > perfection. We prototype fast & learn faster.</p>
-      </div>
-      <div class="card p-6">
-        <div class="value-icon mb-4">🧵</div>
-        <h3 class="font-semibold mb-2">Craft‑Driven</h3>
-        <p class="text-sm leading-relaxed">Details in seams, copy, code & service all matter.</p>
-      </div>
-      <div class="card p-6">
-        <div class="value-icon mb-4">🤝</div>
-        <h3 class="font-semibold mb-2">Kind & Candid</h3>
-        <p class="text-sm leading-relaxed">We give direct feedback with empathy & humility.</p>
-      </div>
-      <div class="card p-6">
-        <div class="value-icon mb-4">🌱</div>
-        <h3 class="font-semibold mb-2">Responsible</h3>
-        <p class="text-sm leading-relaxed">We design with longevity & environmental care.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Open Roles -->
-  <section class="max-w-6xl mx-auto px-6 mt-20">
-    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-6">
-      <div>
-        <h2 class="text-2xl font-semibold">Open Roles</h2>
-        <p class="text-sm text-gray-600">Don’t see the perfect fit? Apply anyway—great people > perfect resumes.</p>
-      </div>
-      <div class="flex flex-wrap gap-3">
-        <select id="deptFilter" class="border rounded-md px-3 py-2 bg-white text-sm">
-          <option value="">All Departments</option>
-        </select>
-        <select id="typeFilter" class="border rounded-md px-3 py-2 bg-white text-sm">
-          <option value="">All Types</option>
-          <option value="Full-Time">Full-Time</option>
-          <option value="Part-Time">Part-Time</option>
-          <option value="Contract">Contract</option>
-          <option value="Internship">Internship</option>
-        </select>
-        <input id="searchRoles" type="text" placeholder="Search roles..."
-               class="border rounded-md px-3 py-2 text-sm w-48" />
-        <button id="clearFilters"
-          class="text-xs bg-gray-200 hover:bg-gray-300 px-3 py-2 rounded-md font-medium">
-          Reset
-        </button>
-      </div>
+  <main class="max-w-4xl mx-auto px-4 py-12 space-y-12">
+    <!-- WHY WORK -->
+    <div class="card p-8">
+      <h2 class="text-2xl font-semibold text-purple-700 mb-4">Why Build With Us?</h2>
+      <ul class="list-disc list-inside space-y-2 text-gray-700">
+        <li>Direct impact on our customer-facing platform.</li>
+        <li>Work with modern tech (React, Node.js, GraphQL).</li>
+        <li>Continuous learning: mentoring and leadership tracks.</li>
+        <li>Collaborative, inclusive, and data-driven culture.</li>
+      </ul>
     </div>
 
-    <div id="rolesContainer" class="grid md:grid-cols-2 gap-6"></div>
+    <!-- VALUES -->
+    <section>
+      <h2 class="text-2xl font-semibold text-center mb-6">Our Core Values</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="card p-6 text-center">
+          <div class="value-icon mx-auto mb-4">💡</div>
+          <h3 class="font-medium mb-1">Innovate</h3>
+          <p class="text-sm text-gray-600">Constantly explore new ideas and technologies.</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="value-icon mx-auto mb-4">⚙️</div>
+          <h3 class="font-medium mb-1">Engineer Quality</h3>
+          <p class="text-sm text-gray-600">Write clean, maintainable, and tested code.</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="value-icon mx-auto mb-4">🤝</div>
+          <h3 class="font-medium mb-1">Collaborate</h3>
+          <p class="text-sm text-gray-600">Build cross-functional partnerships across teams.</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="value-icon mx-auto mb-4">🚀</div>
+          <h3 class="font-medium mb-1">Deliver</h3>
+          <p class="text-sm text-gray-600">Ship user-focused features quickly and reliably.</p>
+        </div>
+      </div>
+    </section>
 
-    <div id="noRoles" class="hidden text-center text-gray-500 text-sm mt-8">
-      No roles match your filters (yet). Try clearing filters or check back soon!
-    </div>
-  </section>
+    <!-- OPEN ROLES -->
+    <section>
+      <h2 class="text-2xl font-semibold text-center mb-6">Open Positions</h2>
+      <div id="rolesContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+      <p id="noRoles" class="hidden text-center text-gray-500 mt-8">No positions available at the moment. Check back soon!</p>
+    </section>
 
-  <!-- Hiring Process -->
-  <section class="max-w-5xl mx-auto px-6 mt-24">
-    <h2 class="text-2xl font-semibold mb-8 text-center">Our Hiring Process</h2>
-    <div class="card p-8 md:p-10">
-      <ol class="space-y-10">
-        <li class="process-step flex gap-6">
-          <div class="process-dot mt-1">1</div>
-          <div>
-            <h3 class="font-semibold mb-1">Quick Review</h3>
-            <p class="text-sm text-gray-600">We scan for alignment on mission, relevant impact, and clarity of thought.</p>
-          </div>
-        </li>
-        <li class="process-step flex gap-6">
-          <div class="process-dot mt-1">2</div>
-          <div>
-            <h3 class="font-semibold mb-1">Intro Chat</h3>
-            <p class="text-sm text-gray-600">A casual 20–30 min conversation about goals & role expectations.</p>
-          </div>
-        </li>
-        <li class="process-step flex gap-6">
-          <div class="process-dot mt-1">3</div>
-          <div>
-            <h3 class="font-semibold mb-1">Role Deep Dive</h3>
-            <p class="text-sm text-gray-600">Meet future collaborators; walk through past work, scenarios & Q&A.</p>
-          </div>
-        </li>
-        <li class="process-step flex gap-6">
-          <div class="process-dot mt-1">4</div>
-          <div>
-            <h3 class="font-semibold mb-1">Practical Exercise</h3>
-            <p class="text-sm text-gray-600">A lightweight task (1–3 hrs max) to explore how we’d work together.</p>
-          </div>
-        </li>
-        <li class="flex gap-6">
-          <div class="process-dot mt-1">5</div>
-          <div>
-            <h3 class="font-semibold mb-1">Offer & Onboarding</h3>
-            <p class="text-sm text-gray-600">We move fast—usually within a few days of final conversation.</p>
-          </div>
-        </li>
-      </ol>
-    </div>
-  </section>
+    <!-- PROCESS -->
+    <section>
+      <h2 class="text-2xl font-semibold text-center mb-6">Hiring Process</h2>
+      <div class="card p-8">
+        <ol class="space-y-8">
+          <li class="flex items-start space-x-4">
+            <div class="process-dot mt-1">1</div>
+            <div>
+              <h3 class="font-medium mb-1">Application Review</h3>
+              <p class="text-sm text-gray-600">We screen resumes for fit and skills.</p>
+            </div>
+          </li>
+          <li class="flex items-start space-x-4">
+            <div class="process-dot mt-1">2</div>
+            <div>
+              <h3 class="font-medium mb-1">Technical Interview</h3>
+              <p class="text-sm text-gray-600">Pair programming or take-home exercise.</p>
+            </div>
+          </li>
+          <li class="flex items-start space-x-4">
+            <div class="process-dot mt-1">3</div>
+            <div>
+              <h3 class="font-medium mb-1">Culture Interview</h3>
+              <p class="text-sm text-gray-600">Discuss values, teamwork, and goals.</p>
+            </div>
+          </li>
+          <li class="flex items-start space-x-4">
+            <div class="process-dot mt-1">4</div>
+            <div>
+              <h3 class="font-medium mb-1">Offer & Onboarding</h3>
+              <p class="text-sm text-gray-600">Join us and start making an impact!</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
 
-  <!-- CTA -->
-  <section class="max-w-4xl mx-auto px-6 mt-24 mb-20">
-    <div class="card p-10 text-center">
-      <h2 class="text-2xl font-semibold mb-4">Excited but Unsure?</h2>
-      <p class="text-gray-600 mb-6">
-        We value transferable skills and potential. Send a note about what you’d love to build here.
-      </p>
-      <a href="mailto:careers@babyfits.example"
-         class="inline-block bg-pink-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-pink-600 transition">
-        Introduce Yourself
-      </a>
-    </div>
-  </section>
+    <!-- CTA -->
+    <section class="text-center">
+      <div class="card p-8">
+        <h2 class="text-xl font-semibold mb-2">Not seeing your role?</h2>
+        <p class="text-gray-600 mb-4">Send us your resume and let us know what you’d like to build.</p>
+        <a href="mailto:careers@babyfits.example" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition">Reach Out</a>
+      </div>
+    </section>
+  </main>
 
-  <!-- Footer -->
-  <footer class="bg-[#FCD5CE] text-center py-6 text-sm text-gray-700">
+  <!-- FOOTER -->
+  <footer class="bg-[#fff8fb] border-t-4 border-pink-200 p-6 text-center text-sm text-gray-600">
     &copy; 2025 BabyFits. All rights reserved.
   </footer>
 
   <!-- Roles Script -->
   <script>
-    // Mock roles (replace with fetch to backend later)
     const ROLES = [
-      {
-        id: 'prod-designer-1',
-        title: 'Product Designer (Apparel)',
-        dept: 'Product',
-        type: 'Full-Time',
-        location: 'Remote (US)',
-        tags: ['CAD', 'Textiles', 'Sustainability'],
-        summary: 'Design soft, functional garments; iterate with sampling partners & parent testers.'
-      },
-      {
-        id: 'frontend-engineer-1',
-        title: 'Front-End Engineer',
-        dept: 'Engineering',
-        type: 'Full-Time',
-        location: 'Hybrid – Cincinnati, OH',
-        tags: ['JavaScript', 'Accessibility', 'Performance'],
-        summary: 'Own UI components & optimize storefront performance and accessibility scores.'
-      },
-      {
-        id: 'lifecycle-marketer-1',
-        title: 'Lifecycle Marketing Specialist',
-        dept: 'Growth',
-        type: 'Full-Time',
-        location: 'Remote (US/CA)',
-        tags: ['Email', 'CRM', 'Analytics'],
-        summary: 'Craft lifecycle journeys & A/B tests that boost retention & first‑to‑repeat conversion.'
-      },
-      {
-        id: 'customer-care-pt',
-        title: 'Customer Care Advocate',
-        dept: 'Support',
-        type: 'Part-Time',
-        location: 'Remote',
-        tags: ['Empathy', 'Zendesk', 'Problem-Solving'],
-        summary: 'Delight customers through fast, thoughtful resolutions & pattern feedback loops.'
-      },
-      {
-        id: 'social-intern-1',
-        title: 'Social Media Intern',
-        dept: 'Marketing',
-        type: 'Internship',
-        location: 'Remote',
-        tags: ['Content', 'Short-Form Video', 'Trends'],
-        summary: 'Assist with concepting, filming & scheduling playful, on‑brand social content.'
-      }
+      { id:'frontend', title:'Frontend Engineer', type:'Full‑Time', dept:'Engineering', loc:'Remote (US)', tags:['React','JS','TS'], summary:'Build & optimize our React storefront.' },
+      { id:'backend', title:'Backend Engineer', type:'Full‑Time', dept:'Engineering', loc:'Remote (US)', tags:['Node.js','GraphQL','AWS'], summary:'Design & maintain storefront APIs.' },
+      { id:'devops', title:'DevOps Engineer', type:'Full‑Time', dept:'Infrastructure', loc:'Remote (US)', tags:['CI/CD','Docker','K8s'], summary:'Implement scalable pipelines.' },
+      { id:'qa', title:'QA Engineer', type:'Full‑Time', dept:'QA', loc:'Remote (US)', tags:['Testing','Selenium','Jest'], summary:'Develop automated tests.' }
     ];
-
-    const rolesContainer = document.getElementById('rolesContainer');
-    const deptFilter     = document.getElementById('deptFilter');
-    const typeFilter     = document.getElementById('typeFilter');
-    const searchRoles    = document.getElementById('searchRoles');
-    const noRoles        = document.getElementById('noRoles');
-    const clearBtn       = document.getElementById('clearFilters');
-
-    // Populate dept dropdown
-    [...new Set(ROLES.map(r => r.dept))].sort().forEach(d => {
-      const opt = document.createElement('option'); opt.value=d; opt.textContent=d;
-      deptFilter.appendChild(opt);
-    });
-
+    const container=document.getElementById('rolesContainer'), noRoles=document.getElementById('noRoles');
     function renderRoles(){
-      const dept = deptFilter.value;
-      const type = typeFilter.value;
-      const q    = searchRoles.value.trim().toLowerCase();
-
-      const filtered = ROLES.filter(r => {
-        const matchDept = !dept || r.dept === dept;
-        const matchType = !type || r.type === type;
-        const text = (r.title + r.dept + r.summary + r.tags.join(" ")).toLowerCase();
-        const matchQ = !q || text.includes(q);
-        return matchDept && matchType && matchQ;
-      });
-
-      rolesContainer.innerHTML = '';
-      if(!filtered.length){
-        noRoles.classList.remove('hidden');
-        return;
-      }
-      noRoles.classList.add('hidden');
-
-      filtered.forEach(r => {
-        const card = document.createElement('div');
-        card.className = 'card p-6 flex flex-col';
-        card.innerHTML = `
-          <div class="flex items-start justify-between gap-4 mb-2">
-            <h3 class="font-semibold text-lg leading-tight">${r.title}</h3>
-            <span class="badge">${r.type}</span>
-          </div>
-          <p class="text-xs uppercase tracking-wide text-gray-500 mb-2">${r.dept} • ${r.location}</p>
-          <p class="text-sm text-gray-600 mb-4">${r.summary}</p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            ${r.tags.map(t => `<span class="tag">${t}</span>`).join('')}
-          </div>
-          <div class="mt-auto">
-            <a href="mailto:careers@babyfits.example?subject=${encodeURIComponent('Application: '+r.title)}"
-               class="inline-block bg-pink-500 text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-pink-600 transition">
-              Apply
-            </a>
-          </div>
-        `;
-        rolesContainer.appendChild(card);
+      container.innerHTML='';
+      if(!ROLES.length){ noRoles.classList.remove('hidden'); return; }
+      ROLES.forEach(r=>{
+        const card=document.createElement('div'); card.className='card p-6 flex flex-col';
+        card.innerHTML=`<div class="flex justify-between items-start mb-2"><h3 class="font-medium text-lg">${r.title}</h3><span class="badge">${r.type}</span></div><p class="text-sm text-gray-600 mb-2 uppercase tracking-wide">${r.dept} • ${r.loc}</p><p class="text-gray-700 mb-4">${r.summary}</p><div class="flex flex-wrap gap-2 mb-4">${r.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div><a href="mailto:careers@babyfits.example?subject=Application:%20${encodeURIComponent(r.title)}" class="mt-auto bg-purple-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-purple-700 transition text-center">Apply Now</a>`;
+        container.appendChild(card);
       });
     }
-
-    [deptFilter,typeFilter,searchRoles].forEach(el => el.addEventListener('input', renderRoles));
-    clearBtn.addEventListener('click', () => {
-      deptFilter.value='';
-      typeFilter.value='';
-      searchRoles.value='';
-      renderRoles();
-    });
-
     renderRoles();
   </script>
 </body>

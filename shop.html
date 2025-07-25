@@ -1,60 +1,286 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF‑8">
-  <meta name="viewport" content="width=device‑width,initial‑scale=1">
-  <title>Shop – BabyFits</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>BabyFits – Shop</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-    rel="stylesheet">
-  <style>
-    body { font-family: 'Poppins', sans-serif; background: #F5F5F5; color: #333; }
-  </style>
 </head>
-<body class="flex flex-col min-h-screen">
+<body class="bg-gray-50 text-gray-800">
 
-  <!-- Navbar -->
-  <header class="bg-pink-100 p-4 shadow">
-    <div class="container mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-2xl font-bold">BabyFits</a>
-      <nav class="space-x-4 text-gray-700">
-        <a href="index.html" class="hover:underline">Home</a>
-        <a href="shop.html" class="hover:underline font-semibold">Shop</a>
-        <a href="girls.html" class="hover:underline">Girls</a>
-        <a href="boys.html" class="hover:underline">Boys</a>
-        <a href="cart.html" class="hover:underline">Cart 🛒</a>
+  <!-- Header -->
+  <header class="bg-white shadow sticky top-0 z-10">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <h1 class="text-2xl font-bold text-purple-700">BabyFits</h1>
+      <nav class="space-x-6">
+        <a href="/" class="hover:text-purple-600">Home</a>
+        <a href="/shop.html" class="font-semibold text-purple-700">Shop</a>
+        <a href="/cart.html" class="hover:text-purple-600">Cart 🛒</a>
       </nav>
     </div>
   </header>
 
-  <!-- Search + Product Grid -->
-  <main class="container mx-auto p-6 flex-grow">
-    <div class="mb-6 flex">
-      <input
-        id="search-input"
-        type="text"
-        placeholder="Search products…"
-        class="flex-1 p-2 border rounded-l"
-      />
-      <button
-        id="search-btn"
-        class="bg-pink-500 text-white px-4 rounded-r hover:bg-pink-600"
-      >
-        Search
-      </button>
-    </div>
+  <!-- Main -->
+  <main class="max-w-6xl mx-auto py-8 px-4">
+    <h2 class="text-3xl font-bold mb-6 text-center">Shop Our Collection</h2>
+    <div class="flex flex-col md:flex-row gap-6">
+      
+<!-- Sidebar: swap this in place of your old one -->
+<aside class="w-full md:w-64 space-y-6">
+  <div class="bg-white p-4 rounded-lg shadow">
+    <!-- Baby Section -->
+    <h3 class="font-semibold mb-2">Baby</h3>
+    <ul class="space-y-1">
+      <li>
+        <a href="shop.html?search=baby%20girl"
+           class="block text-purple-700 hover:underline">
+          Girls
+        </a>
+      </li>
+      <li>
+        <a href="shop.html?search=baby%20boy"
+           class="block text-purple-700 hover:underline">
+          Boys
+        </a>
+      </li>
+    </ul>
 
-    <div id="product-list"
-         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      <!-- shop.js will inject cards here -->
+    <!-- Kids Section -->
+    <h3 class="font-semibold mt-4 mb-2">Kids</h3>
+    <ul class="space-y-1">
+      <li>
+        <a href="shop.html?search=kids%20girl"
+           class="block text-purple-700 hover:underline">
+          Girls
+        </a>
+      </li>
+      <li>
+        <a href="shop.html?search=kids%20boy"
+           class="block text-purple-700 hover:underline">
+          Boys
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Type Filter (unchanged) -->
+  <div class="bg-white p-4 rounded-lg shadow">
+    <h3 class="font-semibold mb-2">Type</h3>
+    <div class="grid grid-cols-2 gap-2">
+      <label class="inline-flex items-center">
+        <input type="checkbox" value="Shoes" class="form-checkbox">
+        <span class="ml-2 text-gray-700">Shoes</span>
+      </label>
+      <label class="inline-flex items-center">
+        <input type="checkbox" value="Pants" class="form-checkbox">
+        <span class="ml-2 text-gray-700">Pants</span>
+      </label>
+      <label class="inline-flex items-center">
+        <input type="checkbox" value="Shirts" class="form-checkbox">
+        <span class="ml-2 text-gray-700">Shirts</span>
+      </label>
+      <label class="inline-flex items-center">
+        <input type="checkbox" value="Accessories" class="form-checkbox">
+        <span class="ml-2 text-gray-700">Accessories</span>
+      </label>
+    </div>
+  </div>
+</aside>
+
+
+
+      <!-- Product area -->
+      <section class="flex-1">
+        <!-- Controls -->
+        <div class="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mb-6 space-y-4 sm:space-y-0">
+          <input
+            id="search"
+            type="text"
+            placeholder="Search products..."
+            class="flex-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm
+                   focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+          />
+          <select id="filter" class="px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-400">
+            <option value="all">Filter: All Prices</option>
+            <option value="under-20">Under $20</option>
+            <option value="20-40">$20 – $40</option>
+            <option value="over-40">Over $40</option>
+          </select>
+          <select id="sort" class="px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-purple-400">
+            <option value="alpha-asc">Sort: Name A→Z</option>
+            <option value="alpha-desc">Name Z→A</option>
+            <option value="price-asc">Price Low→High</option>
+            <option value="price-desc">Price High→Low</option>
+          </select>
+        </div>
+
+        <!-- Grid -->
+        <div
+          id="product-list"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 overflow-auto"
+          style="max-height:70vh;"
+        >
+          <p id="loading" class="col-span-full text-center text-gray-500">
+            Loading products…
+          </p>
+        </div>
+      </section>
     </div>
   </main>
 
-  <footer class="bg-pink-100 p-4 text-center text-gray-600 text-sm">
-    &copy; 2025 BabyFits. All rights reserved.
-  </footer>
+  <!-- Shopify Buy SDK -->
+  <script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
+  <script>
+    // DOM refs
+    const container = document.getElementById('product-list');
+    const loading   = document.getElementById('loading');
+    const searchIn  = document.getElementById('search');
+    const priceSel  = document.getElementById('filter');
+    const sortSel   = document.getElementById('sort');
 
-  <script src="scripts/shop.js"></script>
+    let allProducts    = [];
+    let currentCategory = null;
+    let selectedTypes   = [];
+
+    // 1) Init Shopify client
+    if (!window.ShopifyBuy) {
+      loading.textContent = '⚠️ Shopify SDK failed to load';
+      throw new Error('ShopifyBuy SDK not available');
+    }
+    const client = ShopifyBuy.buildClient({
+      domain: 'mybabyfitsoriginal.myshopify.com',
+      storefrontAccessToken: 'befadbd49a6aed0ef16c3b91744cc025'
+    });
+
+    // 2) Render helper
+    function renderProducts(list) {
+      container.innerHTML = '';
+      if (list.length === 0) {
+        container.innerHTML = '<p class="col-span-full text-center text-gray-600">No products found.</p>';
+        return;
+      }
+      list.forEach(product => {
+        const v = product.variants[0];
+        const link = document.createElement('a');
+        link.href = `product.html?handle=${product.handle}`;
+        link.className = 'block';
+
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-lg shadow p-4 flex flex-col hover:shadow-lg transition';
+
+        if (product.images.length) {
+          const img = document.createElement('img');
+          img.src = product.images[0].src;
+          img.alt = product.title;
+          img.className = 'w-full h-40 object-cover rounded mb-4';
+          card.appendChild(img);
+        }
+
+        const title = document.createElement('h3');
+        title.textContent = product.title;
+        title.className = 'text-sm font-medium mb-1';
+        card.appendChild(title);
+
+        const price = document.createElement('p');
+        price.textContent = `${v.priceV2.amount} ${v.priceV2.currencyCode}`;
+        price.className = 'text-purple-700 font-semibold';
+        card.appendChild(price);
+
+        link.appendChild(card);
+        container.appendChild(link);
+      });
+    }
+
+    // 3) Combined filter+search+sort display
+    function updateDisplay() {
+      let list = allProducts.slice();
+
+      // a) Category
+      if (currentCategory) {
+        list = list.filter(p =>
+          p.tags.some(t => t.toLowerCase().replace(/\s+/g,'-') === currentCategory)
+        );
+      }
+
+      // b) Type
+      if (selectedTypes.length) {
+        list = list.filter(p =>
+          selectedTypes.some(type =>
+            p.tags.some(t => t.toLowerCase() === type)
+          )
+        );
+      }
+
+      // c) Search
+      const term = searchIn.value.toLowerCase().trim();
+      if (term) {
+        list = list.filter(p =>
+          p.title.toLowerCase().includes(term)
+        );
+      }
+
+      // d) Price filter
+      const f = priceSel.value;
+      list = list.filter(p => {
+        const price = parseFloat(p.variants[0].priceV2.amount);
+        if (f === 'under-20') return price < 20;
+        if (f === '20-40')   return price >=20 && price <=40;
+        if (f === 'over-40') return price > 40;
+        return true;
+      });
+
+      // e) Sort
+      const s = sortSel.value;
+      list.sort((a,b) => {
+        const pa = parseFloat(a.variants[0].priceV2.amount);
+        const pb = parseFloat(b.variants[0].priceV2.amount);
+        const ta = a.title.toLowerCase(), tb = b.title.toLowerCase();
+        if (s === 'alpha-asc')  return ta.localeCompare(tb);
+        if (s === 'alpha-desc') return tb.localeCompare(ta);
+        if (s === 'price-asc')  return pa - pb;
+        if (s === 'price-desc') return pb - pa;
+        return 0;
+      });
+
+      renderProducts(list);
+    }
+
+    // 4) Fetch products
+    client.product.fetchAll(250)
+      .then(products => {
+        allProducts = products;
+        loading.remove();
+        updateDisplay();
+      })
+      .catch(err => {
+        console.error(err);
+        container.innerHTML = '<p class="col-span-full text-center text-red-500">Failed to load products.</p>';
+      });
+
+    // 5) Wire up controls
+    searchIn.addEventListener('input', updateDisplay);
+    priceSel.addEventListener('change', updateDisplay);
+    sortSel.addEventListener('change', updateDisplay);
+
+    // Category clicks
+    document.querySelectorAll('[data-catid]').forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        const cat = el.dataset.catid;
+        currentCategory = currentCategory === cat ? null : cat;
+        updateDisplay();
+      });
+    });
+
+    // Type checkboxes
+    document.querySelectorAll('input[data-type]').forEach(cb => {
+      cb.addEventListener('change', () => {
+        selectedTypes = Array.from(
+          document.querySelectorAll('input[data-type]:checked')
+        ).map(i => i.dataset.type);
+        updateDisplay();
+      });
+    });
+  </script>
 </body>
 </html>

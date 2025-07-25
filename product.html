@@ -3,153 +3,232 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Product Details – BabyFits</title>
+  <title>Product Details – BabyFits</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body { font-family:'Poppins',sans-serif; background:#F5F5F5 }
-    #thumbnails img { transition: transform .1s }
-    #thumbnails img:hover { transform: scale(1.05) }
+    /* --------------------
+       Carousel styling
+       -------------------- */
+    #slides::-webkit-scrollbar { display: none; }
+    #slides { -ms-overflow-style: none; scrollbar-width: none; }
+    .slide-container {
+      width: 100%; height: 24rem;        /* h-96 */
+      flex-shrink: 0;
+      scroll-snap-align: start;          /* snap-start */
+      display: flex; align-items: center; justify-content: center;
+      background-color: #f3f4f6;         /* bg-gray-100 */
+    }
+    .slide-container img {
+      max-width: 100%; max-height: 100%;
+      object-fit: contain;
+    }
   </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="bg-gray-50 text-gray-800 flex flex-col min-h-screen">
 
-  <!-- Navbar -->
-  <header class="bg-pink-100 p-4 shadow">
-    <div class="container mx-auto flex justify-between items-center">
-      <a href="index.html" class="text-xl font-bold">BabyFits</a>
-      <nav class="space-x-4 text-gray-700">
+  <!-- Header -->
+  <header class="bg-white p-4 shadow-md">
+    <div class="max-w-6xl mx-auto flex justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="images/babyfits-logo.png" alt="Logo" class="h-10 w-10" />
+        <span class="text-2xl font-bold text-purple-700">BabyFits</span>
+      </a>
+      <nav class="space-x-6 text-sm text-gray-800">
         <a href="index.html" class="hover:underline">Home</a>
         <a href="shop.html" class="hover:underline">Shop</a>
-        <a href="cart.html" class="hover:underline">Cart 🛒</a>
+        <a href="cart.html" class="font-semibold">Cart 🛒</a>
       </nav>
     </div>
   </header>
 
-  <!-- Main -->
-  <main class="flex-grow container mx-auto p-6">
-    <div id="product-details" class="bg-white p-6 rounded shadow max-w-4xl mx-auto">
-      <p class="text-center text-gray-600">Loading product…</p>
+  <!-- Main Product Container -->
+  <main class="flex-grow max-w-4xl mx-auto p-6">
+    <a href="shop.html" class="text-purple-600 hover:underline mb-4 inline-block">← Back to Shop</a>
+    <div id="product-container" class="bg-white rounded-lg shadow p-6 space-y-6">
+      <p id="loading" class="text-center text-gray-500">Loading product…</p>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-pink-100 p-4 text-center text-gray-600 text-sm">
-    &copy; 2025 BabyFits. All rights reserved.
-  </footer>
+  <!-- Shopify Buy SDK -->
+  <script src="https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js"></script>
 
+  <!-- Product page logic -->
   <script>
-  document.addEventListener('DOMContentLoaded', async () => {
-    const container = document.getElementById('product-details');
-    const params    = new URLSearchParams(location.search);
-    const id        = params.get('id');
-    if (!id) {
-      container.innerHTML = '<p class="text-red-600 text-center">No product specified.</p>';
-      return;
+    console.log('🟢 product page script loaded');
+    const params = new URLSearchParams(window.location.search);
+    const handle = params.get('handle');
+    console.log('→ handle =', handle);
+
+    const container = document.getElementById('product-container');
+    if (!handle) {
+      container.innerHTML = '<p class="text-red-500">No product handle provided.</p>';
+      throw new Error('Missing handle');
+    }
+    if (!window.ShopifyBuy) {
+      container.innerHTML = '<p class="text-red-500">Shopify SDK failed to load.</p>';
+      throw new Error('ShopifyBuy missing');
     }
 
-    // Load the JSON
-    let products;
-    try {
-      const r = await fetch('products.json');
-      if (!r.ok) throw new Error('Could not fetch products.json');
-      products = await r.json();
-    } catch (e) {
-      console.error(e);
-      container.innerHTML = '<p class="text-red-600 text-center">Failed to load products.</p>';
-      return;
-    }
-
-    // Find the product
-    const product = products[id];
-    if (!product) {
-      container.innerHTML = '<p class="text-red-600 text-center">Product not found.</p>';
-      return;
-    }
-
-    // Render markup
-    container.innerHTML = `
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Image gallery -->
-        <div>
-          <img id="main-image" src="${product.images[0]}" alt="${product.name}"
-               class="w-full h-auto rounded mb-4 shadow"/>
-          <div id="thumbnails" class="flex space-x-2 overflow-x-auto"></div>
-        </div>
-
-        <!-- Details & options -->
-        <div class="flex flex-col">
-          <h1 class="text-2xl font-bold mb-2">${product.name}</h1>
-          <p class="text-2xl text-pink-600 font-semibold mb-4">
-            $${product.price.toFixed(2)}
-          </p>
-          <p class="text-gray-700 mb-6">${product.description}</p>
-
-          <div class="mb-4">
-            <label for="product-color" class="font-medium">Color:</label>
-            <select id="product-color" class="mt-1 w-full border rounded p-2"></select>
-          </div>
-          <div class="mb-6">
-            <label for="product-size" class="font-medium">Size:</label>
-            <select id="product-size" class="mt-1 w-full border rounded p-2"></select>
-          </div>
-
-          <button id="add-to-cart"
-                  class="bg-[#CDE8F6] text-blue-900 px-6 py-3 rounded hover:bg-blue-200 transition">
-            Add to Cart
-          </button>
-          <p id="confirmation" class="mt-4 text-green-600 font-semibold hidden">
-            ✔ Added to cart!
-          </p>
-        </div>
-      </div>
-    `;
-
-    // Thumbnails
-    const mainImg = document.getElementById('main-image');
-    const thumbs  = document.getElementById('thumbnails');
-    product.images.forEach(src => {
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = product.name;
-      img.className = 'w-16 h-16 object-cover rounded cursor-pointer border';
-      img.addEventListener('click', () => mainImg.src = src);
-      thumbs.appendChild(img);
+    const client = ShopifyBuy.buildClient({
+      domain: 'mybabyfitsoriginal.myshopify.com',
+      storefrontAccessToken: 'befadbd49a6aed0ef16c3b91744cc025'
     });
 
-    // Colors & sizes
-    const colorSel = document.getElementById('product-color');
-    product.colors.forEach(c => colorSel.add(new Option(c, c)));
+    client.product.fetchByHandle(handle)
+      .then(renderProduct)
+      .catch(e => {
+        console.error('❌ fetchByHandle error:', e);
+        container.innerHTML = '<p class="text-red-500">Failed to load product.</p>';
+      });
 
-    const sizeSel = document.getElementById('product-size');
-    product.sizes.forEach(s => sizeSel.add(new Option(s, s)));
+    function renderProduct(product) {
+      container.innerHTML = '';
 
-    // Add to cart
-    document.getElementById('add-to-cart').addEventListener('click', () => {
-      const cart = JSON.parse(localStorage.getItem('cart')||'[]');
-      const key  = `${product.id}|${colorSel.value}|${sizeSel.value}`;
+      // --- Carousel ---
+      const carousel = document.createElement('div');
+      carousel.className = 'relative';
+      const slides = document.createElement('div');
+      slides.id = 'slides';
+      slides.className = 'flex overflow-x-auto snap-x snap-mandatory scroll-smooth';
 
-      // merge duplicates
-      let item = cart.find(i => i.key===key);
-      if (item) {
-        item.quantity++;
-      } else {
-        cart.push({
-          key,
-          id:       product.id,
-          name:     product.name,
-          price:    product.price,
-          image:    product.images[0],
-          color:    colorSel.value,
-          size:     sizeSel.value,
-          quantity: 1
-        });
+      product.images.forEach(imgObj => {
+        const wrap = document.createElement('div');
+        wrap.className = 'slide-container';
+        const img = document.createElement('img');
+        img.src = imgObj.src;
+        img.alt = product.title;
+        wrap.appendChild(img);
+        slides.appendChild(wrap);
+      });
+
+      // Prev/Next
+      ['left','right'].forEach(dir => {
+        const btn = document.createElement('button');
+        btn.className = `
+          absolute top-1/2 transform -translate-y-1/2
+          ${dir==='left'?'left-2':'right-2'}
+          bg-white p-2 rounded-full shadow
+        `;
+        btn.innerHTML = dir==='left'
+          ? '<svg class="w-6 h-6" viewBox="0 0 24 24"><path d="M15 19L8 12l7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>'
+          : '<svg class="w-6 h-6" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+        btn.onclick = () => {
+          const w = slides.clientWidth;
+          slides.scrollBy({ left: dir==='left'? -w : w, behavior: 'smooth' });
+        };
+        carousel.appendChild(btn);
+      });
+
+      carousel.appendChild(slides);
+      container.appendChild(carousel);
+
+      // --- Title & Description ---
+      const title = document.createElement('h1');
+      title.textContent = product.title;
+      title.className = 'text-2xl font-bold';
+      container.appendChild(title);
+
+      const desc = document.createElement('div');
+      desc.innerHTML = product.descriptionHtml;
+      desc.className = 'prose';
+      container.appendChild(desc);
+
+      // --- Options & Add to Cart ---
+      const selected = {};
+      product.options.forEach(opt => {
+        selected[opt.name] = opt.values[0];
+        const block = document.createElement('div');
+        block.className = 'mt-4';
+        block.innerHTML = `
+          <label class="block font-medium mb-1">${opt.name}</label>
+          <select class="w-full border rounded px-3 py-2">
+            ${opt.values.map(v => `<option value="${v}">${v}</option>`).join('')}
+          </select>
+        `;
+        const sel = block.querySelector('select');
+        sel.onchange = () => {
+          selected[opt.name] = sel.value;
+          updatePrice();
+        };
+        container.appendChild(block);
+      });
+
+      // Add to Cart
+      const buyBox = document.createElement('div');
+      buyBox.className = 'mt-6';
+      const priceEl = document.createElement('p');
+      priceEl.id = 'price';
+      priceEl.className = 'text-xl font-semibold text-purple-700 mb-3';
+      const addBtn = document.createElement('button');
+      addBtn.className = 'w-full bg-purple-600 text-white py-3 rounded hover:bg-purple-700 transition';
+      addBtn.textContent = 'Add to Cart';
+      addBtn.onclick = async () => {
+        const variant = product.variants.find(v =>
+          v.selectedOptions.every(o => selected[o.name] === o.value)
+        );
+        if (!variant || variant.availableForSale === false) {
+          return alert('❌ Out of stock or invalid selection, please choose a valid variant.');
+        }
+        let coId = localStorage.getItem('checkout_id');
+        if (!coId) {
+          const co = await client.checkout.create();
+          coId = co.id;
+          localStorage.setItem('checkout_id', coId);
+        }
+        await client.checkout.addLineItems(coId, [{ variantId: variant.id, quantity: 1 }]);
+        window.location.href = 'cart.html';
+      };
+
+      buyBox.append(priceEl, addBtn);
+      container.appendChild(buyBox);
+
+      function updatePrice() {
+        const v = product.variants.find(v =>
+          v.selectedOptions.every(o => selected[o.name] === o.value)
+        );
+        priceEl.textContent = v
+          ? `${v.priceV2.amount} ${v.priceV2.currencyCode}`
+          : '';
       }
+      updatePrice();
 
-      localStorage.setItem('cart', JSON.stringify(cart));
-      document.getElementById('confirmation').classList.remove('hidden');
-    });
-  });
+      // --- You May Also Like ---
+      const recSec = document.createElement('section');
+      recSec.className = 'mt-12';
+      recSec.innerHTML = '<h3 class="text-xl font-semibold mb-4">You May Also Like</h3>';
+      const grid = document.createElement('div');
+      grid.className = 'grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6';
+      recSec.appendChild(grid);
+      container.appendChild(recSec);
+
+      client.product.fetchAll(50)
+        .then(all => {
+          const picks = all
+            .filter(p => p.handle !== product.handle)
+            .sort(() => 0.5 - Math.random())
+            .slice(0, 3);
+          picks.forEach(p => {
+            const a = document.createElement('a');
+            a.href = `product.html?handle=${p.handle}`;
+            a.className = 'block bg-white rounded-lg shadow p-4 hover:shadow-lg transition';
+            const img = p.images[0] && document.createElement('img');
+            if (img) {
+              img.src = p.images[0].src;
+              img.alt = p.title;
+              img.className = 'w-full h-32 object-cover rounded mb-2';
+              a.appendChild(img);
+            }
+            a.innerHTML += `
+              <h4 class="text-sm font-medium">${p.title}</h4>
+              <p class="text-purple-700 font-semibold mt-1">
+                ${p.variants[0].priceV2.amount} ${p.variants[0].priceV2.currencyCode}
+              </p>
+            `;
+            grid.appendChild(a);
+          });
+        })
+        .catch(e => console.error('❌ related fetch failed:', e));
+    }
   </script>
 </body>
 </html>

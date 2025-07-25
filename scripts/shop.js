@@ -87,3 +87,47 @@ function addToCart(item) {
   localStorage.setItem('cart', JSON.stringify(cart));
   alert(`${item.name} added to cart!`);
 }
+import {
+  fetchAllProducts,
+  createCheckout,
+  addItemToCheckout,
+  redirectToCheckout
+} from './shopify.js';
+
+let checkout = null;
+
+// 1) On load, create or re‑use a checkout
+window.addEventListener('DOMContentLoaded', async () => {
+  // Try stored checkout
+  const stored = localStorage.getItem('shopify_checkout');
+  if (stored) {
+    checkout = await client.checkout.fetch(stored);
+  }
+  if (!checkout || checkout.completedAt) {
+    checkout = await createCheckout();
+    localStorage.setItem('shopify_checkout', checkout.id);
+  }
+
+  // 2) Fetch & render products
+  const products = await fetchAllProducts();
+  const grid = document.getElementById('product-list');
+  grid.innerHTML = products.map(p => {
+    const v = p.variants[0];
+    return `
+      <div class="product-card">
+        <img src="${p.images[0].src}" />
+        <h4>${p.title}</h4>
+        <p>$${v.price}</p>
+        <button data-vid="${v.id}">Add to Cart</button>
+      </div>`;
+  }).join('');
+
+  // 3) Handle Add to Cart clicks:
+  grid.addEventListener('click', async e => {
+    const btn = e.target.closest('button[data-vid]');
+    if (!btn) return;
+    const variantId = btn.dataset.vid;
+    checkout = await addItemToCheckout(checkout.id, variantId, 1);
+    alert('Added to cart! Cart has ' + checkout.lineItems.length + ' items.');
+  });
+});

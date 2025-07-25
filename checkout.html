@@ -224,5 +224,38 @@
     });
   })();
   </script>
+    <!-- … all your existing checkout HTML … -->
+
+  <!-- 1) Load the Shopify helper -->
+  <script type="module" src="./scripts/shopify.js"></script>
+
+  <!-- 2) Then wire up your cart-to-checkout redirect -->
+  <script type="module">
+    import { client } from './scripts/shopify.js';
+    import { redirectToCheckout } from './scripts/shopify.js';
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      // pull the checkout ID you stashed in localStorage
+      const checkoutId = localStorage.getItem('shopify_checkout');
+      if (!checkoutId) {
+        return alert('No checkout found. Please add something to your cart first.');
+      }
+
+      // fetch the latest checkout (so we get updated totals, line items, etc)
+      const checkout = await client.checkout.fetch(checkoutId);
+
+      // render your total:
+      document.getElementById('order-total').textContent =
+        `$${checkout.subtotalPrice}`;
+
+      // wire up the “Pay” button to redirect the customer
+      document.getElementById('submit').addEventListener('click', () => {
+        redirectToCheckout(checkout.webUrl);
+      });
+    });
+  </script>
+</body>
+</html>
+
 </body>
 </html>
